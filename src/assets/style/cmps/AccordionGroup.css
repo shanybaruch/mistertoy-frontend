@@ -1,0 +1,13 @@
+.accordion-group {
+    border: 1px solid gray;
+}
+
+.accordion-group summary {
+    cursor: pointer;
+    background-color: #eee;
+    border: 1px solid #ddd;
+    padding: 1em;
+}
+.accordion-group .content {
+    padding: 0em 2em;
+}

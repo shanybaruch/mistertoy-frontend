@@ -1,6 +1,17 @@
 .app-footer {
     font-weight: 700;
-    color: var(--gray1);
-    background-color: var(--3);
-    font-size: 1.25em;
+    color: var(--gray3);
+    background-color: var(--gray1);
+    font-size: 1rem;
+
+    .count {
+        font-weight: 100;
+        margin: 0;
+        font-size: .9rem;
+    }
+
+    .cart-footer {
+        font-weight: 100;
+        color: var(--gray3);
+    }
 }

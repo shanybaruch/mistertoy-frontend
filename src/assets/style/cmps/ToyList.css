@@ -13,4 +13,5 @@
     justify-content: space-around;
     background-color: var(--clr1bg);
     padding: 0.65em;
+    border-radius: 10px;
 }

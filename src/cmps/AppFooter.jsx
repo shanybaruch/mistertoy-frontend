@@ -19,10 +19,10 @@ export function AppFooter() {
                <span> {toysLength} </span> 
                 toys
             </h5>
-            <p>
+            <p className='count'>
                 Coffeerights to all - Count: {count}
             </p>
-            <h5>
+            <h5 className='cart-footer'>
                 <span>{shoppingCartLength}</span> Products in your Cart
                 <a href="#" onClick={(ev) => {
                     ev.preventDefault()

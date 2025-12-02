@@ -8,11 +8,11 @@ button {
 }
 
 button:hover {
-    background-color: var(--clr1);
-    /* color: white; */
+    background-color: var(--gray3);
+    color: white;
     transition: .3s;
 }
 input:focus {
-    background-color: var(--clr1bg);
+    background-color: var(--gray1);
     transition: background-color 1s;
 }

@@ -43,7 +43,7 @@ function save(toy) {
 
 function getEmptyToy() {
     return {
-        vendor: '',
+        name: '',
         price: '',
         speed: '',
     }
@@ -51,7 +51,7 @@ function getEmptyToy() {
 
 function getRandomToy() {
     return {
-        vendor: 'Susita-' + (Date.now() % 1000),
+        name: 'Susita-' + (Date.now() % 1000),
         price: utilService.getRandomIntInclusive(1000, 9000),
         speed: utilService.getRandomIntInclusive(90, 200),
     }
@@ -59,7 +59,7 @@ function getRandomToy() {
 
 
 function getDefaultFilter() {
-    return { txt: '', maxPrice: '', minSpeed: '' }
+    return { txt: '', maxPrice: '' }
 }
 
 

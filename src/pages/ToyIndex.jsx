@@ -65,7 +65,7 @@ export function ToyIndex() {
     }
 
     function addToCart(toy) {
-        console.log(`Adding ${toy.vendor} to Cart`)
+        console.log(`Adding ${toy.name} to Cart`)
         dispatch({ type: ADD_CAR_TO_CART, toy })
         showSuccessMsg('Added to Cart')
     }
@@ -75,7 +75,7 @@ export function ToyIndex() {
             {/* <h3>Toys App</h3> */}
             <main>
                 <Link to="/toy/edit">Add Toy</Link>
-                <button className='add-btn' onClick={onAddToy}>Add Random Toy ⛐</button>
+                <button className='add-btn' onClick={onAddToy}>Add Random Toy</button>
                 <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} />
                 {!isLoading
                     ? <ToyList

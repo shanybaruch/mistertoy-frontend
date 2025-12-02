@@ -22,7 +22,7 @@ export function HomePage() {
 
     return (
         <section>
-            <h2>
+            {/* <h2>
                 Count {count}
                 <button onClick={() => {
                     changeCount(1)
@@ -30,9 +30,9 @@ export function HomePage() {
                 <button onClick={() => {
                     changeCount(10)
                 }}>+10</button>
-            </h2 >
+            </h2 > */}
             {/* <img src="../img/vite.svg" /> */}
-            {/* <img src={logoImg} /> */}
+            <img style={{height: '200px'}} src='https://images.unsplash.com/photo-1508896694512-1eade558679c?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dG95fGVufDB8fDB8fHww' />
 
             <button onClick={toggleTheme}>Toggle Theme</button>
         </section >

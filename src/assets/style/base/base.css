@@ -5,9 +5,9 @@
 html {}
 
 body {
-  background-color: var(--gray3);
+  background-color: var(--gray2);
   margin: 0;
-  color: var(--gray1);
+  color: var(--gray3);
   font-family: sans-serif;
 }
 

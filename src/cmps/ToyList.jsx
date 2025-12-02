@@ -32,7 +32,7 @@ ToyList.propTypes = {
     onRemoveToy: PropTypes.func.isRequired,
     robots: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string,
-        vendor: PropTypes.string,
+        name: PropTypes.string,
         price: PropTypes.number,
         speed: PropTypes.number,
     }))

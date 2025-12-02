@@ -20,12 +20,12 @@ function query(filterBy = {}) {
         .then(toys => {
             if (!filterBy.txt) filterBy.txt = ''
             if (!filterBy.maxPrice) filterBy.maxPrice = Infinity
-            if (!filterBy.minSpeed) filterBy.minSpeed = -Infinity
+            // if (!filterBy.minSpeed) filterBy.minSpeed = -Infinity
             const regExp = new RegExp(filterBy.txt, 'i')
             return toys.filter(toy =>
-                regExp.test(toy.vendor) &&
-                toy.price <= filterBy.maxPrice &&
-                toy.speed >= filterBy.minSpeed
+                regExp.test(toy.name) &&
+                toy.price <= filterBy.maxPrice
+                // toy.speed >= filterBy.minSpeed
             )
         })
 }
@@ -52,7 +52,7 @@ function save(toy) {
 
 function getEmptyToy() {
     return {
-        vendor: '',
+        name: '',
         price: '',
         speed: '',
     }
@@ -60,9 +60,9 @@ function getEmptyToy() {
 
 function getRandomToy() {
     return {
-        vendor: 'Susita-' + (Date.now() % 1000),
-        price: utilService.getRandomIntInclusive(1000, 9000),
-        speed: utilService.getRandomIntInclusive(90, 200),
+        name: 'TOY-' + (Date.now() % 1000),
+        price: utilService.getRandomIntInclusive(50, 300),
+        // speed: utilService.getRandomIntInclusive(90, 200),
     }
 }
 
@@ -71,5 +71,17 @@ function getDefaultFilter() {
 }
 
 // TEST DATA
-// storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 6', price: 980}).then(x => console.log(x))
+// storageService.post(STORAGE_KEY, {name: 'Subali Rahok 6', price: 980}).then(x => console.log(x))
 
+// const labels = ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle',
+//     'Outdoor', 'Battery Powered']
+// const toy = {
+//     _id: 't101',
+//     name: 'Talking Doll',
+//     imgUrl: 'hardcoded-url-for-now'
+//     ,
+//     price: 123,
+//     labels: ['Doll', 'Battery Powered', 'Baby'],
+//     createdAt: 1631031801011,
+//     inStock: true,
+// }

@@ -15,7 +15,7 @@ export function UserMsg() {
                 timeoutIdRef.current = null
                 clearTimeout(timeoutIdRef.current)
             }
-            timeoutIdRef.current = setTimeout(closeMsg, 3000)
+            timeoutIdRef.current = setTimeout(closeMsg, 3500)
         })
         return unsubscribe
     }, [])
@@ -27,8 +27,8 @@ export function UserMsg() {
     if (!msg) return <span></span>
     return (
         <section className={`user-msg ${msg.type}`}>
-            <button onClick={closeMsg}>x</button>
             {msg.txt}
+            <button onClick={closeMsg}>x</button>
         </section>
     )
 }

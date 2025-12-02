@@ -45,7 +45,7 @@ export function ShoppingCart({ isCartShown }) {
                         <button onClick={() => {
                             removeFromCart(toy._id)
                         }}>x</button>
-                        {toy.vendor} | ${toy.price}
+                        {toy.name} | ${toy.price}
                     </li>)
                 }
             </ul>

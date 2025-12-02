@@ -1,6 +1,6 @@
 .app-header {
     background-color: var(--clr1);
-    color: var(--clr1bg);
+    color: var(--clr2-dark);
     padding-block: 1em;
 }
 

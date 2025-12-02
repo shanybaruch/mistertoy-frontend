@@ -1,6 +1,6 @@
 button {
     cursor: pointer;
-    background-color: var(--clr2bg);
+    background-color: var(--gray1);
     margin: 0.5em;
     border: 0;
     padding: 0.5em 0.8em;

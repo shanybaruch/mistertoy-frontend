@@ -45,15 +45,15 @@ function getEmptyToy() {
     return {
         name: '',
         price: '',
-        speed: '',
+        // speed: '',
     }
 }
 
 function getRandomToy() {
     return {
-        name: 'Susita-' + (Date.now() % 1000),
-        price: utilService.getRandomIntInclusive(1000, 9000),
-        speed: utilService.getRandomIntInclusive(90, 200),
+        name: 'TOY-' + (Date.now() % 1000),
+        price: utilService.getRandomIntInclusive(50, 300),
+        // speed: utilService.getRandomIntInclusive(90, 200),
     }
 }
 

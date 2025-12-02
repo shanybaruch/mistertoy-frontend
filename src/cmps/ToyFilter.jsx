@@ -35,6 +35,9 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                 <label htmlFor="maxPrice">Max price:</label>
                 <input type="number"
                     id="maxPrice"
+                    min={50}
+                    step={50}
+                    max={300}
                     name="maxPrice"
                     placeholder="By max price"
                     value={filterByToEdit.maxPrice || ''}

@@ -3,7 +3,7 @@
     align-items: center;
 
     background-color: lightgray;
-    padding: 1em;
+    padding-inline-start: 1em;
     position: fixed;
     bottom: 0;
     right: 1em;

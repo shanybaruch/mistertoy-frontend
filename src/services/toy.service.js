@@ -12,7 +12,8 @@ export const toyService = {
     remove,
     getEmptyToy,
     getRandomToy,
-    getDefaultFilter
+    getDefaultFilter,
+    getFilterFromSearchParams
 }
 
 function query(filterBy = {}) {
@@ -20,6 +21,13 @@ function query(filterBy = {}) {
         .then(toys => {
             if (!filterBy.txt) filterBy.txt = ''
             if (!filterBy.maxPrice) filterBy.maxPrice = Infinity
+            if (filterBy.sortBy) {
+                toys.sort((a, b) => {
+                    if (filterBy.sortBy === 'txt') return a.name.localeCompare(b.name)
+                    if (filterBy.sortBy === 'price') return a.price - b.price
+                    if (filterBy.sortBy === 'createdAt') return a.createdAt - b.createdAt
+                })
+            }
             // if (!filterBy.minSpeed) filterBy.minSpeed = -Infinity
             const regExp = new RegExp(filterBy.txt, 'i')
             return toys.filter(toy =>
@@ -54,7 +62,7 @@ function getEmptyToy() {
     return {
         name: '',
         price: '',
-        speed: '',
+        // speed: '',
     }
 }
 
@@ -62,12 +70,24 @@ function getRandomToy() {
     return {
         name: 'TOY-' + (Date.now() % 1000),
         price: utilService.getRandomIntInclusive(50, 300),
+        inStock: true
         // speed: utilService.getRandomIntInclusive(90, 200),
     }
 }
 
 function getDefaultFilter() {
-    return { txt: '', maxPrice: '', minSpeed: '' }
+    return { txt: '', maxPrice: '', inStock: true, sort: '' }
+}
+
+function getFilterFromSearchParams(searchParams) {
+    const filterBy = {
+        txt: searchParams.get('txt') || '',
+        inStock: searchParams.get('inStock') || 'all',
+        price: +searchParams.get('price') || 0,
+        sort: searchParams.get('sort') || ''
+    }
+
+    return filterBy
 }
 
 // TEST DATA

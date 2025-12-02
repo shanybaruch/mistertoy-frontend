@@ -38,7 +38,7 @@ export function ToyEdit() {
 
     function onSaveToy(ev) {
         ev.preventDefault()
-        if (!toyToEdit.price) toyToEdit.price = 1000
+        if (!toyToEdit.price) toyToEdit.price = 100
         saveToy(toyToEdit)
             .then(() => {
                 showSuccessMsg('Toy Saved!')

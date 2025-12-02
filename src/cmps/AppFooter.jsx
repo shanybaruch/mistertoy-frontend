@@ -15,7 +15,9 @@ export function AppFooter() {
     return (
         <footer className='app-footer'>
             <h5>
-                Currently {toysLength} toys in the shop
+               Total
+               <span> {toysLength} </span> 
+                toys
             </h5>
             <p>
                 Coffeerights to all - Count: {count}

@@ -11,11 +11,15 @@ import { loadToys, removeToy, removeToyOptimistic, saveToy, setFilterBy } from '
 import { ADD_CAR_TO_CART } from '../store/reducers/toy.reducer.js'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { ToySort } from '../cmps/ToySort.jsx'
+
 
 export function ToyIndex() {
 
     const dispatch = useDispatch()
     const toys = useSelector(storeState => storeState.toyModule.toys)
+    console.log(toys);
+    
     const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
     const isLoading = useSelector(storeState => storeState.toyModule.isLoading)
     // console.log('toys:', toys)
@@ -77,6 +81,7 @@ export function ToyIndex() {
                 <Link to="/toy/edit">Add Toy</Link>
                 <button className='add-btn' onClick={onAddToy}>Add Random Toy</button>
                 <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} />
+                <ToySort onSetFilter={onSetFilter} />
                 {!isLoading
                     ? <ToyList
                         toys={toys}

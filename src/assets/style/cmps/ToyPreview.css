@@ -6,7 +6,7 @@
 }
 .toy-preview h4{
     text-transform: capitalize;
-    color: black;
+    color: var(--gray3);
 }
 
 .toy-preview img {

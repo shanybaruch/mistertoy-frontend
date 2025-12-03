@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { userService } from '../services/user.service.js'
 import { checkout } from '../store/actions/user.actions.js'
-import { REMOVE_CAR_FROM_CART } from '../store/reducers/toy.reducer.js'
+import { REMOVE_TOY_FROM_CART } from '../store/reducers/toy.reducer.js'
 
 export function ShoppingCart({ isCartShown }) {
     const dispatch = useDispatch()
@@ -15,7 +15,7 @@ export function ShoppingCart({ isCartShown }) {
 
     function removeFromCart(toyId) {
         console.log(`Todo: remove: ${toyId} from cart`)
-        dispatch({ type: REMOVE_CAR_FROM_CART, toyId })
+        dispatch({ type: REMOVE_TOY_FROM_CART, toyId })
     }
 
     function getCartTotal() {

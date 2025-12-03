@@ -21,6 +21,7 @@ function query(filterBy = {}) {
         .then(toys => {
             if (!filterBy.txt) filterBy.txt = ''
             if (!filterBy.maxPrice) filterBy.maxPrice = Infinity
+            //sort
             if (filterBy.sortBy) {
                 toys.sort((a, b) => {
                     if (filterBy.sortBy === 'txt') return a.name.localeCompare(b.name)
@@ -28,12 +29,13 @@ function query(filterBy = {}) {
                     if (filterBy.sortBy === 'createdAt') return a.createdAt - b.createdAt
                 })
             }
-            // if (!filterBy.minSpeed) filterBy.minSpeed = -Infinity
             const regExp = new RegExp(filterBy.txt, 'i')
+
             return toys.filter(toy =>
                 regExp.test(toy.name) &&
-                toy.price <= filterBy.maxPrice
-                // toy.speed >= filterBy.minSpeed
+                toy.price <= filterBy.maxPrice &&
+                (filterBy.inStock ? toy.inStock : true)
+
             )
         })
 }
@@ -76,15 +78,15 @@ function getRandomToy() {
 }
 
 function getDefaultFilter() {
-    return { txt: '', maxPrice: '', inStock: true, sort: '' }
+    return { txt: '', maxPrice: '', inStock: false, sortBy: '' }
 }
 
 function getFilterFromSearchParams(searchParams) {
     const filterBy = {
         txt: searchParams.get('txt') || '',
-        inStock: searchParams.get('inStock') || 'all',
-        price: +searchParams.get('price') || 0,
-        sort: searchParams.get('sort') || ''
+        inStock: searchParams.get('inStock') === 'true',
+        price: +searchParams.get('maxPrice') || Infinity,
+        sort: searchParams.get('sortBy') || ''
     }
 
     return filterBy

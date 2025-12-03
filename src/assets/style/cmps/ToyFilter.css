@@ -4,6 +4,6 @@
     /* justify-content: center; */
     gap: 2em;
     background-color: var(--gray1);
-    padding: 1em;
+    padding: .5em;
     color: var(--gray3);
 }

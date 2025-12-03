@@ -7,7 +7,8 @@
     padding-block: .5em;
 
     .title {
-        font-size: 1.5rem;
+        font-size: 1.7rem;
+        margin-bottom: .5em;
     }
 }
 
@@ -15,6 +16,8 @@
     display: flex;
     justify-content: center;
     gap: 2em;
+    
+    margin-block: .3em;
 
     a {
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -27,6 +30,7 @@
         }
     }
     a.active {
-        font-weight: 600;
+        font-weight: 700;
+        color: var(--clr1-dark);
     }
 }

@@ -15,8 +15,38 @@ main {
         transition: .4s;
         border-radius: 10px;
     }
+
     a:hover {
         background-color: var(--gray3);
         color: var(--gray1);
     }
+}
+
+.links {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-items: center;
+}
+
+.descruption-toy {
+    margin-block: 1em;
+}
+
+.title {
+    text-align: center;
+}
+
+.btns-add-toy {
+
+    a,
+    button {
+        padding-block: .5em;
+        margin-inline: .2em;
+        background-color: var(--clr1-dark);
+    }
+}
+
+.btn-remove {
+    padding: 0;
+    background-color: transparent;
 }

@@ -3,10 +3,20 @@
     padding: 0.3em;
     display: flex;
     flex-direction: column;
-}
-.toy-preview h4{
-    text-transform: capitalize;
-    color: var(--gray3);
+  
+    .title{
+        padding-bottom: .3em;
+        text-transform: capitalize;
+        color: var(--gray3);
+    }
+
+    p {
+        font-size: .9rem;
+    }
+
+    a {
+        display: inline;
+    }
 }
 
 .toy-preview img {

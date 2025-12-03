@@ -11,7 +11,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    background-color: var(--clr1bg);
+    background-color: var(--clr1-dark);
     padding: 0.65em;
     border-radius: 10px;
 }

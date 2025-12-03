@@ -19,7 +19,7 @@ export function ToyIndex() {
     const dispatch = useDispatch()
     const toys = useSelector(storeState => storeState.toyModule.toys)
     console.log(toys);
-    
+
     const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
     const isLoading = useSelector(storeState => storeState.toyModule.isLoading)
     // console.log('toys:', toys)
@@ -78,8 +78,10 @@ export function ToyIndex() {
         <div>
             {/* <h3>Toys App</h3> */}
             <main>
-                <Link to="/toy/edit">Add Toy</Link>
-                <button className='add-btn' onClick={onAddToy}>Add Random Toy</button>
+                <section className='btns-add-toy'>
+                    <Link to="/toy/edit">Add Toy</Link>
+                    <button className='add-btn' onClick={onAddToy}>Add Random Toy</button>
+                </section>
                 <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} />
                 <ToySort onSetFilter={onSetFilter} />
                 {!isLoading

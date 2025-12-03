@@ -37,15 +37,15 @@ export function ShoppingCart({ isCartShown }) {
     if (!isCartShown) return <span></span>
     const total = getCartTotal()
     return (
-        <section className="cart" >
-            <h5>Your Cart</h5>
+        <section className="shopping-cart" >
+            <h5 className='title'>Cart</h5>
             <ul>
                 {
                     shoppingCart.map((toy, idx) => <li key={idx}>
                         <button onClick={() => {
                             removeFromCart(toy._id)
                         }}>x</button>
-                        {toy.name} | ${toy.price}
+                        {toy.name} <span> ${toy.price} </span> 
                     </li>)
                 }
             </ul>

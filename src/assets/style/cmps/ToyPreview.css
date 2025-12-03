@@ -3,8 +3,8 @@
     padding: 0.3em;
     display: flex;
     flex-direction: column;
-  
-    .title{
+
+    .title {
         padding-bottom: .3em;
         text-transform: capitalize;
         color: var(--gray3);
@@ -14,8 +14,17 @@
         font-size: .9rem;
     }
 
-    a {
-        display: inline;
+    .btns-preview {
+
+        a {
+            display: inline;
+            font-size: .8rem;
+            padding-inline: .4em;
+
+            &:hover {
+                background-color: transparent;
+            }
+        }
     }
 }
 

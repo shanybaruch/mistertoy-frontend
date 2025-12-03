@@ -6,4 +6,9 @@
     background-color: var(--gray1);
     padding: .5em;
     color: var(--gray3);
+
+    .filter-by-price,
+    .filter-by-name {
+        width: 120px;
+    }
 }

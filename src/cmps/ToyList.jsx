@@ -9,9 +9,6 @@ export function ToyList({ toys, onRemoveToy, onEditToy, addToCart }) {
                 <li className="toy-preview" key={toy._id}>
            
                     <ToyPreview toy={toy} onRemoveToy={onRemoveToy} />
-                    {/* <div>
-                        <button className='btn-remove' onClick={() => onRemoveToy(toy._id)}>x</button>
-                    </div> */}
 
                     <button className="buy" onClick={() => addToCart(toy)}>
                         Add to Cart

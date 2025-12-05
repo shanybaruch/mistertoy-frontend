@@ -26,7 +26,7 @@ export function LoginSignup() {
     }
 
     return (
-        <div className="login-page">
+        <div className="login-signup">
             <LoginForm
                 onLogin={onLogin}
                 isSignup={isSignup}

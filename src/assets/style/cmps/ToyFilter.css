@@ -7,14 +7,14 @@
     padding: .5em;
     color: var(--gray3);
 
-    .filtering {
-        
+    .title {
+        margin: 0 0 .3em;
     }
 
     .filter-by-price,
     .filter-by-name {
         width: 120px;
-        margin-inline: .6em;
+        /* margin-inline: .3em; */
 
     }
 }

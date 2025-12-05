@@ -8,14 +8,13 @@
 
     .title {
         font-size: 1.7rem;
-        margin-bottom: .5em;
     }
 }
 
 .app-nav {
     display: flex;
     justify-content: center;
-    gap: 2em;
+    gap: 1em;
 
     margin-block: .3em;
 
@@ -39,4 +38,27 @@
 
 .home-page {
     flex-direction: column;
+}
+
+.login-signup {
+
+    input {
+        font-size: .8rem;
+    }
+
+    .btns {
+        a {
+            font-size: .8rem;
+        }
+    }
+
+    .login-form {
+        
+        button {
+            margin: 0;
+            padding: .5em .7em .6em;
+            border-radius: 15px;
+
+        }
+    }
 }

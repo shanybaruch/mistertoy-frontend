@@ -44,16 +44,23 @@ export function ToyFilter({ filterBy, onSetFilter }) {
 
             <form className="filtering flex">
 
-                <input type="text"
+                <input 
+                    className="filter-by-name"
+                    type="text"
                     name="txt"
                     placeholder="By name"
                     value={filterByToEdit.txt}
                     onChange={handleChange}
                 />
 
-                <input type="number"
+                <input 
+                    type="number"
+                    className="filter-by-price"
                     name="maxPrice"
                     placeholder="By max price"
+                    min={50}
+                    max={300}
+                    step={50}
                     value={filterByToEdit.maxPrice || ''}
                     onChange={handleChange}
                 />

@@ -51,3 +51,9 @@ object {
 a.active {
   text-decoration: underline;
 }
+
+.loading {
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: .5em;
+}

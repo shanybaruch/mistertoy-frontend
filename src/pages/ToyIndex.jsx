@@ -93,7 +93,7 @@ export function ToyIndex() {
                         onEditToy={onEditToy}
                         addToCart={addToCart}
                     />
-                    : <div>Loading...</div>
+                    : <div className="loading">Loading...</div>
                 }
                 {/* <hr /> */}
             </main>

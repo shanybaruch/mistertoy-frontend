@@ -1,10 +1,11 @@
 button {
+    font-family: 'Elms Sans', sans-serif;
     cursor: pointer;
     background-color: var(--gray1);
     margin: 0.5em;
     border: 0;
     padding: 0.5em 0.8em;
-    border-radius: 10px;   
+    border-radius: 10px;
 }
 
 button:hover {
@@ -12,6 +13,7 @@ button:hover {
     color: white;
     transition: .3s;
 }
+
 input:focus {
     background-color: var(--gray1);
     transition: background-color 1s;

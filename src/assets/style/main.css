@@ -40,6 +40,6 @@ main {
 
 
 .dark {
-    background-color: #111 !important;
-    color: white !important;
+    background-color: var(--gray3) !important;
+    color: var(--gray1) !important;
 }

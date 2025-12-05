@@ -8,7 +8,9 @@ body {
   background-color: var(--gray1);
   margin: 0;
   color: var(--gray3);
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
+  font-family: 'Elms Sans', sans-serif;
+
 }
 
 h1,
@@ -18,7 +20,8 @@ h4,
 h5,
 h6 {
   margin: .3em 0 .3em;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+  font-family: 'Elms Sans', sans-serif;
 }
 
 p {

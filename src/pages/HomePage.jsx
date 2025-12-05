@@ -21,7 +21,7 @@ export function HomePage() {
     }
 
     return (
-        <section>
+        <section className="home-page flex">
             {/* <h2>
                 Count {count}
                 <button onClick={() => {
@@ -32,7 +32,7 @@ export function HomePage() {
                 }}>+10</button>
             </h2 > */}
             {/* <img src="../img/vite.svg" /> */}
-            <img style={{height: '200px'}} src='https://images.unsplash.com/photo-1508896694512-1eade558679c?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dG95fGVufDB8fDB8fHww' />
+            <img style={{height: '300px'}} src='https://images.unsplash.com/photo-1559715541-5daf8a0296d0?q=80&w=1286&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
 
             <button onClick={toggleTheme}>Toggle Theme</button>
         </section >

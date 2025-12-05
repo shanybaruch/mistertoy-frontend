@@ -17,7 +17,6 @@ import { ToyEdit } from './pages/ToyEdit.jsx'
 import { ToyDetails } from './pages/ToyDetails.jsx'
 import { UserDetails } from './pages/UserDetails.jsx'
 import { ThemeContext, ThemeProvider } from './contexts/ThemeContext.jsx'
-import { useState } from 'react'
 
 
 export function App() {

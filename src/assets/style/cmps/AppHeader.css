@@ -16,11 +16,12 @@
     display: flex;
     justify-content: center;
     gap: 2em;
-    
+
     margin-block: .3em;
 
     a {
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+        font-family: 'Elms Sans', sans-serif;
         font-weight: 100;
         transition: .3s;
         text-decoration: none;
@@ -29,8 +30,13 @@
             scale: 1.2;
         }
     }
+
     a.active {
         font-weight: 700;
         color: var(--clr1-dark);
     }
+}
+
+.home-page {
+    flex-direction: column;
 }

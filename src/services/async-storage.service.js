@@ -22,9 +22,10 @@ function get(entityType, entityId) {
 function post(entityType, newEntity) {
     newEntity = {...newEntity}
     newEntity._id = _makeId()
-    newEntity.labels = ['Doll', 'Battery Powered', 'Baby']
     newEntity.createdAt = Date.now()
     newEntity.inStock = Math.random() < 0.5
+    if (!newEntity.labels) newEntity.labels = []
+   
     return query(entityType).then(entities => {
         entities.push(newEntity)
         _save(entityType, entities)

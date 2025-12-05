@@ -21,6 +21,11 @@ function query(filterBy = {}) {
         .then(toys => {
             if (!filterBy.txt) filterBy.txt = ''
             if (!filterBy.maxPrice) filterBy.maxPrice = Infinity
+            if (filterBy.labels.length) {
+                toys = toys.filter(toy =>
+                    toy.labels.some(label => filterBy.labels.includes(label))
+                )
+            }
             //sort
             if (filterBy.sortBy) {
                 toys.sort((a, b) => {
@@ -64,7 +69,8 @@ function getEmptyToy() {
     return {
         name: '',
         price: '',
-        // speed: '',
+        labels: [],
+        inStock: true,
     }
 }
 
@@ -78,7 +84,7 @@ function getRandomToy() {
 }
 
 function getDefaultFilter() {
-    return { txt: '', maxPrice: '', inStock: false, sortBy: '' }
+    return { txt: '', maxPrice: '', inStock: false, sortBy: '', labels: [] }
 }
 
 function getFilterFromSearchParams(searchParams) {

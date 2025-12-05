@@ -6,6 +6,7 @@ import { Link, useNavigate, useParams } from "react-router-dom"
 // import { useOnlineStatus } from "../hooks/useOnlineStatusSyncStore.js"
 import { useOnlineStatus } from "../hooks/useOnlineStatus.js"
 import { useConfirmTabClose } from "../hooks/useConfirmTabClose.js"
+import Select from "react-select"
 
 
 export function ToyEdit() {
@@ -15,6 +16,17 @@ export function ToyEdit() {
 
     const isOnline = useOnlineStatus()
     const setHasUnsavedChanges = useConfirmTabClose()
+
+    const labelOptions = [
+        { value: "On wheels", label: "On wheels" },
+        { value: "Box game", label: "Box game" },
+        { value: "Art", label: "Art" },
+        { value: "Baby", label: "Baby" },
+        { value: "Doll", label: "Doll" },
+        { value: "Puzzle", label: "Puzzle" },
+        { value: "Outdoor", label: "Outdoor" },
+        { value: "Battery Powered", label: "Battery Powered" },
+    ]
 
     useEffect(() => {
         if (toyId) loadToy()
@@ -72,6 +84,19 @@ export function ToyEdit() {
                         placeholder="Enter price"
                         value={toyToEdit.price}
                         onChange={handleChange}
+                    />
+
+                    <label>Labels:</label>
+                    <Select
+                        isMulti
+                        options={labelOptions}
+                        value={labelOptions.filter(opt => toyToEdit.labels.includes(opt.value))}
+                        onChange={(selected) =>
+                            setToyToEdit(prev => ({
+                                ...prev,
+                                labels: selected.map(opt => opt.value)
+                            }))
+                        }
                     />
 
                     <div>

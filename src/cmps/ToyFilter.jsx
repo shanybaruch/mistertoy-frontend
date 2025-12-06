@@ -14,17 +14,19 @@ export function ToyFilter({ filterBy, onSetFilter }) {
         setFilterRef.current(filterByToEdit)
     }, [filterByToEdit])
 
+
     function handleChange({ target }) {
-        let { value, name: field, type } = target
-        if (type === 'select-multiple') {
-            const values = []
-            for (let i = 0; i < selectedOptions.length; i++) {
-                values.push(selectedOptions[i].value)
-            }
-            value = values
+        const { name: field, type, multiple, selectedOptions, value } = target
+
+        let newValue
+
+        if (multiple) {
+            newValue = [...target.selectedOptions].map(o => o.value)
+        } else {
+            newValue = type === 'number' ? +value : value
         }
-        value = type === 'number' ? +value : value
-        setFilterByToEdit(prev => ({ ...prev, [field]: value }))
+
+        setFilterByToEdit(prev => ({ ...prev, [field]: newValue }))
     }
 
     const options = [
@@ -44,7 +46,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
 
             <form className="filtering flex">
 
-                <input 
+                <input
                     className="filter-by-name"
                     type="text"
                     name="txt"
@@ -53,7 +55,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                     onChange={handleChange}
                 />
 
-                <input 
+                <input
                     type="number"
                     className="filter-by-price"
                     name="maxPrice"

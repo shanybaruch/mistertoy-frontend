@@ -74,6 +74,23 @@ export function ToyIndex() {
         showSuccessMsg('Added to Cart')
     }
 
+    function getFilteredToys() {
+        return toys.filter(toy => {
+            const matchesName =
+                filterBy.txt?.trim() === '' || toy.name?.toLowerCase().includes(filterBy.txt.toLowerCase())
+
+            const matchesPrice = !filterBy.maxPrice || toy.price <= filterBy.maxPrice
+
+            const matchesLabels =
+                !filterBy.labels?.length || toy.labels?.some(label => filterBy.labels.includes(label))
+
+            return matchesName && matchesPrice && matchesLabels
+        })
+    }
+
+
+    const filteredToys = getFilteredToys()
+
     return (
         <div>
             {/* <h3>Toys App</h3> */}
@@ -86,7 +103,7 @@ export function ToyIndex() {
                 <ToySort onSetFilter={onSetFilter} />
                 {!isLoading
                     ? <ToyList
-                        toys={toys}
+                        toys={filteredToys}
                         txt="babaasd"
                         nums={[1, 2]}
                         onRemoveToy={onRemoveToy}

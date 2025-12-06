@@ -69,16 +69,21 @@ export function ToyEdit() {
                 <h2>{toyToEdit._id ? 'Edit' : 'Add'} Toy</h2>
 
                 <form onSubmit={onSaveToy} >
-                    <label htmlFor="name">Name : </label>
-                    <input type="text"
+                    <label htmlFor="name">Name </label>
+                    <input
+                        type="text"
                         name="name"
                         id="name"
                         placeholder="Enter name..."
                         value={toyToEdit.name}
                         onChange={handleChange}
                     />
-                    <label htmlFor="price">Price : </label>
-                    <input type="number"
+                    <label htmlFor="price">Price </label>
+                    <input
+                        type="number"
+                        min={50}
+                        step={50}
+                        max={300}
                         name="price"
                         id="price"
                         placeholder="Enter price"
@@ -104,7 +109,7 @@ export function ToyEdit() {
                         <Link to="/toy">Cancel</Link>
                     </div>
                     <section>
-                        <h1>{isOnline ? '✅ Online' : '❌ Disconnected'}</h1>
+                        <p>{isOnline ? 'Online' : 'Disconnected'}</p>
                     </section>
                 </form>
             </section>

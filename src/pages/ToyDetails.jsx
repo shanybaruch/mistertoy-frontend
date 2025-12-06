@@ -29,7 +29,7 @@ export function ToyDetails() {
             <h5>In stock: {(toy.inStock) ? 'Yes' : 'No'}</h5>
             <h5>Created: {toy.createdAt}</h5>
             <h5>Price: ${toy.price}</h5>
-            <h5>Labels: {toy.labels.join(', ')}</h5>
+            <h5>Labels: {(toy.labels || []).join(', ')}</h5>
             <p className="descruption-toy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi voluptas cumque tempore, aperiam sed dolorum rem! Nemo quidem, placeat perferendis tempora aspernatur sit, explicabo veritatis corrupti perspiciatis repellat, enim quibusdam!</p>
 
             <div className="links">

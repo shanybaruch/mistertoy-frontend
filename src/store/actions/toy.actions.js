@@ -52,7 +52,7 @@ export function saveToy(toy) {
             return savedToy
         })
         .catch(err => {
-            console.log('toy action -> Cannot save toy', err)
+            console.log('toy action file: Cannot save toy', err)
             throw err
         })
 }

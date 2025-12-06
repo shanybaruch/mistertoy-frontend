@@ -5,7 +5,7 @@ export function ToyPreview({ toy, onRemoveToy }) {
     return (
         <article className="toy-preview">
             <h4 className="title">{toy.name}</h4>
-            {/* <img src="" alt="" /> */}
+            <img src={toy.imgUrl} alt="pic-toy" />
             <p>Price: <span>${toy.price.toLocaleString()}</span></p>
             {/* <p>Speed: <span>{toy.speed.toLocaleString()} km/h</span></p> */}
             {toy.owner && <p>Owner: <Link to={`/user/${toy.owner._id}`}>{toy.owner.fullname}</Link></p>}

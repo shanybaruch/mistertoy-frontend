@@ -23,6 +23,7 @@
             padding-inline: .4em;
 
             &:hover {
+                font-size: 1rem;
                 background-color: transparent;
             }
         }
@@ -39,6 +40,12 @@
 
     p {
         margin: 0;
+
+        a {
+            &:hover {
+                background-color: transparent;
+            }
+        }
     }
 
     .toy-img {

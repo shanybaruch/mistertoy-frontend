@@ -58,6 +58,12 @@ function updateScore(diff) {
 
 function getById(userId) {
     return httpService.get('/api/user/' + userId)
+        .then(user => {
+            console.log('user: ', user)
+        })
+        .catch(err => {
+            console.log('err: ', err)
+        })
 }
 
 

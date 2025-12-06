@@ -26,12 +26,11 @@ export function UserDetails() {
                 navigate('/')
             })
     }
-
-
+    
     if (!user) return <div className="loading">Loading...</div>
 
     const loggedInUser = userService.getLoggedinUser()
-    const isMyProfile = loggedInUser._id === userId
+    const isMyProfile = loggedInUser?._id === userId
     return (
         <section className="user-details">
             <h1>Fullname: {user.fullname}</h1>

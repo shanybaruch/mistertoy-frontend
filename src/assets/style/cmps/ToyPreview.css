@@ -6,7 +6,7 @@
     align-items: center;
 
     .title {
-        padding-bottom: .3em;
+        padding-bottom: 0;
         text-transform: capitalize;
         color: var(--gray3);
     }
@@ -31,9 +31,20 @@
 
 .toy-preview {
 
+    .buy {
+        padding: .3em;
+        margin-top: .1em;
+        padding-inline: .6em;
+    }
+
+    p {
+        margin: 0;
+    }
+
     .toy-img {
         max-width: 50px;
         height: auto;
+        margin-block: .2em;
         object-fit: cover;
     }
 }

@@ -13,6 +13,8 @@
     flex-direction: column;
     justify-content: space-around;
     background-color: var(--clr1-dark);
-    padding: 0.65em;
+    padding-inline: 0;
+    padding-top: .2em;
+    padding-bottom: .3em;
     border-radius: 10px;
 }

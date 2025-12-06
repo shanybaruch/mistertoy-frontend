@@ -30,7 +30,7 @@ export function ToyEdit() {
 
     useEffect(() => {
         if (toyId) loadToy()
-    }, [])
+    }, [toyId])
 
     function loadToy() {
         toyService.getById(toyId)

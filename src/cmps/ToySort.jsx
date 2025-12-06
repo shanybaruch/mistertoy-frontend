@@ -1,5 +1,4 @@
-import { utilService } from "../services/util.service.js"
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 
 export function ToySort({ onSetFilter }) {
 

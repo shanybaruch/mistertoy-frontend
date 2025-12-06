@@ -30,7 +30,8 @@ export function ToyIndex() {
     }, [filterBy])
 
     function onSetFilter(filterToUpdate) {
-        setFilterBy({ ...filterBy, ...filterToUpdate })
+        const updatedFilter = { ...filterBy, ...filterToUpdate }
+        setFilterBy(updatedFilter)
     }
 
     function onRemoveToy(toyId) {
@@ -82,7 +83,7 @@ export function ToyIndex() {
                 </section>
                 <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} />
                 <ToySort onSetFilter={onSetFilter} />
-                {!isLoading
+                {!isLoading && toys
                     ? <ToyList
                         toys={toys}
                         nums={[1, 2]}

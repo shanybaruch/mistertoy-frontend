@@ -7,7 +7,7 @@ export function ToyList({ toys, onRemoveToy, onEditToy, addToCart }) {
         <ul className="toy-list">
             {toys.map(toy =>
                 <li className="toy-preview" key={toy._id}>
-           
+
                     <ToyPreview toy={toy} onRemoveToy={onRemoveToy} />
 
                     <button className="buy" onClick={() => addToCart(toy)}>
@@ -19,16 +19,9 @@ export function ToyList({ toys, onRemoveToy, onEditToy, addToCart }) {
 }
 
 ToyList.propTypes = {
-    txt(props, propName, cmpName) {
-        if (props[propName].length < 4) {
-            return new Error('Txt is too short')
-        }
-    },
-    nums: PropTypes.arrayOf(PropTypes.number).isRequired,
+    toys: PropTypes.arrayOf(PropTypes.object).isRequired,
+
     onRemoveToy: PropTypes.func.isRequired,
-    robots: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.string,
-        name: PropTypes.string,
-        price: PropTypes.number,
-    }))
+    onEditToy: PropTypes.func,
+    addToCart: PropTypes.func.isRequired
 }

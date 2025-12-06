@@ -28,6 +28,11 @@
     }
 }
 
-.toy-preview img {
-    max-width: 100px;
+.toy-preview {
+
+    .toy-img {
+        max-width: 100px;
+        height: auto;
+        object-fit: cover;
+    }
 }

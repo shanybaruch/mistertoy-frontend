@@ -24,6 +24,7 @@ function post(entityType, newEntity) {
     newEntity._id = _makeId()
     newEntity.createdAt = Date.now()
     newEntity.inStock = Math.random() < 0.5
+    newEntity.img = 'https://www.freepik.com/free-photo/teddy-bear-lies-alone-snow_22446277.htm#fromView=keyword&page=1&position=7&uuid=76b4c6e5-12f6-4774-9944-60f0edfbd7b4&query=Toy+transparent+background'
     if (!newEntity.labels) newEntity.labels = []
    
     return query(entityType).then(entities => {

@@ -90,7 +90,7 @@ export function ToyEdit() {
                     <Select
                         isMulti
                         options={labelOptions}
-                        value={labelOptions.filter(opt => toyToEdit.labels.includes(opt.value))}
+                        value={labelOptions.filter(opt => (toyToEdit.labels || []).includes(opt.value))}
                         onChange={(selected) =>
                             setToyToEdit(prev => ({
                                 ...prev,

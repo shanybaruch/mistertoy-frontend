@@ -47,6 +47,10 @@ function query(filterBy = {}) {
 
 function getById(toyId) {
     return storageService.get(STORAGE_KEY, toyId)
+        .then(toy => {
+            toy.labels = toy.labels || []
+            setToyToEdit(toy)
+        })
 }
 
 function remove(toyId) {
@@ -79,7 +83,6 @@ function getRandomToy() {
         name: 'TOY-' + (Date.now() % 1000),
         price: utilService.getRandomIntInclusive(50, 300),
         inStock: true
-        // speed: utilService.getRandomIntInclusive(90, 200),
     }
 }
 

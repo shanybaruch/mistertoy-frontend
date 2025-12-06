@@ -3,35 +3,26 @@ import { useState, useRef } from 'react';
 
 export function ToySort({ onSetFilter }) {
 
+    const [filterByToEdit, setFilterByToEdit] = useState({ sortBy: '', inStock: false })
 
-    const [sortBy, setSortBy] = useState('')
-    const [inStock, setInStock] = useState(false)
+    function handleChange({ target }) {
+        const field = target.name
+        const value = target.type === 'checkbox' ? target.checked : target.value
 
-    const debouncedSetSort = useRef(
-        utilService.debounce((sort,stock) => {
-            onSetFilter({ sortBy: sort, inStock: stock })
-        }, 500)
-    ).current
-
-  function handleSortChange(ev) {
-        const value = ev.target.value
-        setSortBy(value)
-        debouncedSetSort(value, inStock)
-    }
-
-    function handleInStockChange(ev) {
-        const value = ev.target.checked
-        setInStock(value)
-        debouncedSetSort(sortBy, value)
+        setFilterByToEdit(prevFilter => {
+            const updatedFilter = { ...prevFilter, [field]: value }
+            onSetFilter(updatedFilter)
+            return updatedFilter
+        })
     }
 
     return (
         <div className="toy-sort">
 
-            <select 
-            name="sortBy" 
-            value={sortBy} 
-            onChange={handleSortChange}
+            <select
+                name="sortBy"
+                value={filterByToEdit.sortBy}
+                onChange={handleChange}
             >
                 <option value="">Sort By</option>
                 <option value="txt">Name</option>
@@ -43,8 +34,8 @@ export function ToySort({ onSetFilter }) {
                 id="instock"
                 type="checkbox"
                 name="inStock"
-                checked={inStock}
-                onChange={handleInStockChange}
+                checked={filterByToEdit.inStock}
+                onChange={handleChange}
             />
             <label htmlFor="instock">In stock</label>
 

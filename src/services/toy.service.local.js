@@ -94,8 +94,8 @@ function getFilterFromSearchParams(searchParams) {
     const filterBy = {
         txt: searchParams.get('txt') || '',
         inStock: searchParams.get('inStock') === 'true',
-        price: +searchParams.get('maxPrice') || Infinity,
-        sort: searchParams.get('sortBy') || ''
+        maxMrice: +searchParams.get('maxPrice') || Infinity,
+        sortBy: searchParams.get('sortBy') || ''
     }
 
     return filterBy

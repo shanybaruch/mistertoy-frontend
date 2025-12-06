@@ -15,14 +15,13 @@ import { ToySort } from '../cmps/ToySort.jsx'
 
 
 export function ToyIndex() {
-
     const dispatch = useDispatch()
-    const toys = useSelector(storeState => storeState.toyModule.toys)
-    console.log(toys);
 
+    const toys = useSelector(storeState => storeState.toyModule.toys)
+    // console.log(toys);
     const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
     const isLoading = useSelector(storeState => storeState.toyModule.isLoading)
-    // console.log('toys:', toys)
+
     useEffect(() => {
         loadToys()
             .catch(err => {
@@ -30,8 +29,8 @@ export function ToyIndex() {
             })
     }, [filterBy])
 
-    function onSetFilter(filterBy) {
-        setFilterBy(filterBy)
+    function onSetFilter(filterToUpdate) {
+        setFilterBy({ ...filterBy, ...filterToUpdate })
     }
 
     function onRemoveToy(toyId) {
@@ -74,23 +73,6 @@ export function ToyIndex() {
         showSuccessMsg('Added to Cart')
     }
 
-    function getFilteredToys() {
-        return toys.filter(toy => {
-            const matchesName =
-                filterBy.txt?.trim() === '' || toy.name?.toLowerCase().includes(filterBy.txt.toLowerCase())
-
-            const matchesPrice = !filterBy.maxPrice || toy.price <= filterBy.maxPrice
-
-            const matchesLabels =
-                !filterBy.labels?.length || toy.labels?.some(label => filterBy.labels.includes(label))
-
-            return matchesName && matchesPrice && matchesLabels
-        })
-    }
-
-
-    const filteredToys = getFilteredToys()
-
     return (
         <section className='toy-index' >
             <main>
@@ -102,8 +84,7 @@ export function ToyIndex() {
                 <ToySort onSetFilter={onSetFilter} />
                 {!isLoading
                     ? <ToyList
-                        toys={filteredToys}
-                        txt="babaasd"
+                        toys={toys}
                         nums={[1, 2]}
                         onRemoveToy={onRemoveToy}
                         onEditToy={onEditToy}

@@ -92,8 +92,7 @@ export function ToyIndex() {
     const filteredToys = getFilteredToys()
 
     return (
-        <div>
-            {/* <h3>Toys App</h3> */}
+        <section className='toy-index' >
             <main>
                 <section className='btns-add-toy'>
                     <Link to="/toy/edit">Add Toy</Link>
@@ -114,7 +113,7 @@ export function ToyIndex() {
                 }
                 {/* <hr /> */}
             </main>
-        </div>
+        </section>
     )
 }
 

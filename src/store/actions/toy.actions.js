@@ -1,6 +1,15 @@
 import { toyService } from "../../services/toy.service.js";
 import { showSuccessMsg } from "../../services/event-bus.service.js";
-import { ADD_TOY, TOY_UNDO, REMOVE_TOY, SET_TOYS, SET_FILTER_BY, SET_IS_LOADING, UPDATE_TOY } from "../reducers/toy.reducer.js";
+import { 
+    ADD_TOY, 
+    TOY_UNDO, 
+    REMOVE_TOY, 
+    SET_TOYS, 
+    SET_FILTER_BY, 
+    SET_IS_LOADING, 
+    UPDATE_TOY,
+    SET_SORT_BY,
+ } from "../reducers/toy.reducer.js";
 import { store } from "../store.js";
 
 export function loadToys() {
@@ -32,15 +41,11 @@ export function removeToy(toyId) {
 
 export function removeToyOptimistic(toyId) {
     store.dispatch({ type: REMOVE_TOY, toyId })
-    return toyService.remove(toyId)
-        .then(() => {
-            showSuccessMsg('Removed Toy!')
-        })
-        .catch(err => {
-            store.dispatch({ type: TOY_UNDO })
-            console.log('toy action -> Cannot remove toy', err)
-            throw err
-        })
+    return toyService.remove(toyId).catch(err => {
+        store.dispatch({ type: TOY_UNDO })
+        console.log('toy action -> Cannot remove toy', err)
+        throw err
+    })
 }
 
 export function saveToy(toy) {
@@ -57,6 +62,10 @@ export function saveToy(toy) {
         })
 }
 
-export function setFilterBy(filterBy) {
-    store.dispatch({ type: SET_FILTER_BY, filterBy })
+export function setFilter(filterBy = toyService.getDefaultFilter()) {
+    store.dispatch({ type: SET_FILTER_BY, filterBy: filterBy })
+}
+
+export function setSort(sortBy = toyService.getDefaultSort()) {
+    store.dispatch({ type: SET_SORT_BY, sortBy: sortBy })
 }

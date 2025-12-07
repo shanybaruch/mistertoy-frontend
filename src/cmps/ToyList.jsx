@@ -6,22 +6,17 @@ export function ToyList({ toys, onRemoveToy, onEditToy, addToCart }) {
     return (
         <ul className="toy-list">
             {toys.map(toy =>
-                <li className="toy-preview" key={toy._id}>
+                <li
+                    className="toy-list-preview"
+                    key={toy._id}
+                >
 
                     <ToyPreview toy={toy} onRemoveToy={onRemoveToy} />
 
-                    <button className="buy" onClick={() => addToCart(toy)}>
+                    {/* <button className="buy" onClick={() => addToCart(toy)}>
                         Add to Cart
-                    </button>
+                    </button> */}
                 </li>)}
         </ul>
     )
-}
-
-ToyList.propTypes = {
-    toys: PropTypes.arrayOf(PropTypes.object).isRequired,
-
-    onRemoveToy: PropTypes.func.isRequired,
-    onEditToy: PropTypes.func,
-    addToCart: PropTypes.func.isRequired
 }

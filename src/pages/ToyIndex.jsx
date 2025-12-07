@@ -7,11 +7,17 @@ import { ToyFilter } from '../cmps/ToyFilter.jsx'
 import { ToyList } from '../cmps/ToyList.jsx'
 import { toyService } from '../services/toy.service.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { loadToys, removeToy, removeToyOptimistic, saveToy, setFilterBy } from '../store/actions/toy.actions.js'
+import {
+    loadToys,
+    removeToy,
+    saveToy,
+    setFilter,
+    setSort,
+} from '../store/actions/toy.actions.js'
 import { ADD_TOY_TO_CART } from '../store/reducers/toy.reducer.js'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ToySort } from '../cmps/ToySort.jsx'
+import { PaginationButtons } from '../cmps/PaginationButtons.jsx'
 
 
 export function ToyIndex() {
@@ -21,25 +27,40 @@ export function ToyIndex() {
     // console.log(toys);
     const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
     const isLoading = useSelector(storeState => storeState.toyModule.isLoading)
+    const sortBy = useSelector(storeState => storeState.toyModule.sortBy)
+
+
+    const [pageIdx, setPageIdx] = useState(0)
+    const [toyLabels, setToyLabels] = useState()
+
 
     useEffect(() => {
-        loadToys()
+        loadToys(pageIdx)
+            .then(() => toyService.getToyLabels())
+            .then(labels => setToyLabels(labels))
             .catch(err => {
-                showErrorMsg('Cannot load toys!')
+                console.log('err:', err)
+                showErrorMsg('Cannot load toys')
             })
-    }, [filterBy])
+    }, [filterBy, sortBy, pageIdx])
 
-    function onSetFilter(filterToUpdate) {
-        const updatedFilter = { ...filterBy, ...filterToUpdate }
-        setFilterBy(updatedFilter)
+
+    function onSetFilter(filterBy) {
+        setFilter(filterBy)
+        setPageIdx(0)
+    }
+
+    function onSetSort(sortBy) {
+        setSort(sortBy)
     }
 
     function onRemoveToy(toyId) {
-        removeToyOptimistic(toyId)
+        removeToy(toyId)
             .then(() => {
                 showSuccessMsg('Toy removed')
             })
             .catch(err => {
+                console.log('Cannot remove toy', err)
                 showErrorMsg('Cannot remove toy')
             })
     }
@@ -77,22 +98,32 @@ export function ToyIndex() {
     return (
         <section className='toy-index' >
             <main>
+                <ToyFilter
+                    filterBy={filterBy}
+                    onSetFilter={onSetFilter}
+                    sortBy={sortBy}
+                    onSetSort={onSetSort}
+                    toyLabels={toyLabels}
+                />
                 <section className='btns-add-toy'>
                     <Link to="/toy/edit">Add Toy</Link>
                     <button className='add-btn' onClick={onAddToy}>Add Random Toy</button>
                 </section>
-                <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} />
-                <ToySort onSetFilter={onSetFilter} />
                 {!isLoading && toys
                     ? <ToyList
                         toys={toys}
-                        nums={[1, 2]}
                         onRemoveToy={onRemoveToy}
                         onEditToy={onEditToy}
                         addToCart={addToCart}
                     />
                     : <div className="loading">Loading...</div>
                 }
+
+                {<PaginationButtons
+                    pageIdx={pageIdx}
+                    setPageIdx={setPageIdx}
+                />}
+
                 {/* <hr /> */}
             </main>
         </section>

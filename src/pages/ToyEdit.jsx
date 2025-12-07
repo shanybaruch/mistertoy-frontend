@@ -82,7 +82,6 @@ export function ToyEdit() {
                     <input
                         type="number"
                         min={50}
-                        step={50}
                         max={300}
                         name="price"
                         id="price"

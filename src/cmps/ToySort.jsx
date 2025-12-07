@@ -1,43 +1,35 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-export function ToySort({ onSetFilter }) {
+export function ToySort({ sortBy, onSetSort }) {
 
-    const [filterByToEdit, setFilterByToEdit] = useState({ sortBy: '', inStock: false })
+    const [sortByToEdit, setSortByToEdit] = useState({ ...sortBy })
+
+    useEffect(() => {
+        onSetSort(sortByToEdit)
+    }, [sortByToEdit])
+
 
     function handleChange({ target }) {
         const field = target.name
-        const value = target.type === 'checkbox' ? target.checked : target.value
-
-        setFilterByToEdit(prevFilter => {
-            const updatedFilter = { ...prevFilter, [field]: value }
-            onSetFilter(updatedFilter)
-            return updatedFilter
-        })
+        let value = target.type === 'number' ? +target.value : target.value
+        setSortByToEdit(prevSort => ({
+            ...prevSort,
+            [field]: field === 'desc' ? -prevSort.desc : value,
+        }))
     }
 
     return (
         <div className="toy-sort">
-
             <select
-                name="sortBy"
-                value={filterByToEdit.sortBy}
+                name="type"
+                value={sortByToEdit.type}
                 onChange={handleChange}
             >
                 <option value="">Sort By</option>
-                <option value="txt">Name</option>
+                <option value="name">Name</option>
                 <option value="price">Price</option>
                 <option value="createdAt">Created</option>
             </select>
-
-            <input
-                id="instock"
-                type="checkbox"
-                name="inStock"
-                checked={filterByToEdit.inStock}
-                onChange={handleChange}
-            />
-            <label htmlFor="instock">In stock</label>
-
         </div>
     )
 }

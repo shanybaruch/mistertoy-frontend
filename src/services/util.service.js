@@ -5,7 +5,8 @@ export const utilService = {
     loadFromStorage,
     saveToStorage,
     animateCSS,
-    debounce
+    debounce,
+    getAssetSrc,
 }
 
 function makeId(length = 6) {
@@ -70,4 +71,11 @@ function debounce(func, timeout = 300) {
             func.apply(this, args)
         }, timeout)
     }
+}
+
+function getAssetSrc(name) {
+    const path = `/src/assets/img/${name}`
+    const modules = import.meta.globEager('/src/assets/img/*')
+    const mod = modules[path]
+    return mod.default
 }

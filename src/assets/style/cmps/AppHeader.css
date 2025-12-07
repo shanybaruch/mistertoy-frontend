@@ -38,6 +38,7 @@
 
 .home-page {
     flex-direction: column;
+    position: absolute;
 }
 
 .login-signup {
@@ -53,7 +54,7 @@
     }
 
     .login-form {
-        
+
         button {
             margin: 0;
             padding: .5em .7em .6em;

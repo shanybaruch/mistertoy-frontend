@@ -25,18 +25,24 @@ const initialState = {
     shoppingCart: [],
     isLoading: false,
     filterBy: toyService.getDefaultFilter(),
-    lastToys: []
+    lastToys: [],
+    maxPage: 0,
 }
 
 export function toyReducer(state = initialState, action = {}) {
 
     switch (action.type) {
 
-        //* Toys
         case SET_TOYS:
-            return { ...state, toys: action.toys }
+            return {
+                ...state,
+                toys: action.toys,
+                maxPage: action.maxPage
+            }
         case REMOVE_TOY:
-            const lastToys = [...state.toys]
+            const lastToys = [
+                ...state.toys
+            ]
             return {
                 ...state,
                 toys: state.toys.filter(toy => toy._id !== action.toyId),
@@ -45,12 +51,37 @@ export function toyReducer(state = initialState, action = {}) {
         case ADD_TOY:
             return {
                 ...state,
-                toys: [...state.toys, action.toy]
+                toys: [
+                    ...state.toys,
+                    action.toy
+                ]
             }
         case UPDATE_TOY:
             return {
                 ...state,
                 toys: state.toys.map(toy => toy._id === action.toy._id ? action.toy : toy)
+            }
+        case SET_FILTER_BY:
+            return {
+                ...state,
+                filterBy: { ...state.filterBy, ...action.filterBy }
+            }
+        case SET_SORT_BY:
+            return {
+                ...state,
+                sortBy: {
+                    ...action.sortBy
+                }
+            }
+        case SET_IS_LOADING:
+            return {
+                ...state,
+                isLoading: action.isLoading
+            }
+        case TOY_UNDO:
+            return {
+                ...state,
+                toys: [...state.lastToys]
             }
 
         //* Shopping cart
@@ -60,7 +91,9 @@ export function toyReducer(state = initialState, action = {}) {
         case ADD_TOY_TO_CART:
             return {
                 ...state,
-                shoppingCart: [...state.shoppingCart, action.toy]
+                shoppingCart: [
+                    ...state.shoppingCart, action.toy
+                ]
             }
         case REMOVE_TOY_FROM_CART:
             const shoppingCart =
@@ -75,29 +108,6 @@ export function toyReducer(state = initialState, action = {}) {
                 ...state,
                 shoppingCart: []
             }
-        case SET_FILTER_BY:
-            return {
-                ...state,
-                filterBy: { ...state.filterBy, ...action.filterBy }
-            }
-        case SET_IS_LOADING:
-            return {
-                ...state,
-                isLoading: action.isLoading
-            }
-        case TOY_UNDO:
-            return {
-                ...state,
-                toys: [...state.lastToys]
-            }
-        case SET_SORT_BY:
-            return {
-                ...state,
-                sortBy: {
-                    ...action.sortBy
-                }
-            }
-
 
         default:
             return state

@@ -15,6 +15,7 @@ export function ToySort({ sortBy, onSetSort }) {
         setSortByToEdit(prevSort => ({
             ...prevSort,
             [field]: field === 'desc' ? -prevSort.desc : value,
+            pageIdx: 0
         }))
     }
 

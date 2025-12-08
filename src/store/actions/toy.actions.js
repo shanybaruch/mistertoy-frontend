@@ -1,26 +1,31 @@
 import { toyService } from "../../services/toy.service.js";
 import { showSuccessMsg } from "../../services/event-bus.service.js";
-import { 
-    ADD_TOY, 
-    TOY_UNDO, 
-    REMOVE_TOY, 
-    SET_TOYS, 
-    SET_FILTER_BY, 
-    SET_IS_LOADING, 
+import {
+    ADD_TOY,
+    TOY_UNDO,
+    REMOVE_TOY,
+    SET_TOYS,
+    SET_FILTER_BY,
+    SET_IS_LOADING,
     UPDATE_TOY,
     SET_SORT_BY,
- } from "../reducers/toy.reducer.js";
+} from "../reducers/toy.reducer.js";
 import { store } from "../store.js";
 
-export function loadToys() {
-    const filterBy = store.getState().toyModule.filterBy
+export function loadToys(pageIdx) {
+    const { filterBy, sortBy } = store.getState().toyModule
     store.dispatch({ type: SET_IS_LOADING, isLoading: true })
-    return toyService.query(filterBy)
-        .then(toys => {
-            store.dispatch({ type: SET_TOYS, toys })
+
+    return toyService.query(filterBy, sortBy, pageIdx)
+        .then(res => {
+            store.dispatch({
+                type: SET_TOYS,
+                toys: res.toys,
+                maxPage: res.maxPage
+            })
         })
         .catch(err => {
-            console.log('toy action -> Cannot load toys', err)
+            console.log('toy action -> Cannot load toys')
             throw err
         })
         .finally(() => {

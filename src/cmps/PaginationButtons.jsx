@@ -1,12 +1,22 @@
-export function PaginationButtons({ pageIdx, setPageIdx }) {
+export function PaginationButtons({ pageIdx, maxPage, onChangePageIdx }) {
+
+    const isLastPage = (pageIdx + 1) >= maxPage
 
     return (
         <div className="pagination">
-            <button onClick={() => setPageIdx(pageIdx - 1)} disabled={pageIdx === 0}>
+            <button
+                className="btn-prev"
+                onClick={() => { onChangePageIdx(-1) }}
+                disabled={pageIdx === 0}
+            >
                 Previous
             </button>
             {pageIdx + 1}
-            <button onClick={() => setPageIdx(pageIdx + 1)} >
+            <button
+                className="btn-next"
+                onClick={() => { onChangePageIdx(1) }}
+                disabled={isLastPage}
+            >
                 Next
             </button>
         </div>

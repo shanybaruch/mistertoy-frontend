@@ -29,7 +29,7 @@ export function ToyIndex() {
     const isLoading = useSelector(storeState => storeState.toyModule.isLoading)
     const sortBy = useSelector(storeState => storeState.toyModule.sortBy)
 
-
+    const maxPage = useSelector((storeState) => storeState.toyModule.maxPage)
     const [pageIdx, setPageIdx] = useState(0)
     const [toyLabels, setToyLabels] = useState()
 
@@ -95,6 +95,14 @@ export function ToyIndex() {
         showSuccessMsg('Added to Cart')
     }
 
+    function onChangePageIdx(diff) {
+        if (!maxPage) return
+        const newPageIdx = pageIdx + diff
+        if (newPageIdx >= maxPage) return
+
+        setPageIdx(newPageIdx)
+    }
+
     return (
         <section className='toy-index' >
             <main>
@@ -121,7 +129,8 @@ export function ToyIndex() {
 
                 {<PaginationButtons
                     pageIdx={pageIdx}
-                    setPageIdx={setPageIdx}
+                    maxPage={maxPage}
+                    onChangePageIdx={onChangePageIdx}
                 />}
 
                 {/* <hr /> */}

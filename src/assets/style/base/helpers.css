@@ -1,22 +1,22 @@
 /* flex helpers */
 
 .flex {
-  display: flex;
+    display: flex;
 }
 
-.flex.flex-column{
+.flex.flex-column {
     flex-direction: column;
 }
 
-.flex.justify-center{
+.flex.justify-center {
     justify-content: center;
 }
 
-.flex.justify-between{
+.flex.justify-between {
     justify-content: space-between;
 }
 
-.flex.align-center{
+.flex.align-center {
     align-items: center;
 }
 
@@ -54,4 +54,17 @@
 
 .fa.fa-behance::before {
     content: "\f1b4";
+}
+
+.btn-prev:disabled,
+.btn-next:disabled {
+    color: var(--gray2);
+    opacity: .6;
+    cursor: default;
+    background-color: transparent;
+
+    &:hover {
+        color: var(--gray2);
+        opacity: .6;
+    }
 }

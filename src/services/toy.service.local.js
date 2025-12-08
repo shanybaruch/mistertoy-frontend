@@ -301,6 +301,7 @@ function getFilterFromSearchParams(searchParams) {
         txt: searchParams.get('txt') || '',
         inStock: searchParams.get('inStock') === 'true',
         maxMrice: +searchParams.get('maxPrice') || Infinity,
+        pageIdx: +searchParams.get('pageIdx') || 0,
         sortBy: searchParams.get('sortBy') || ''
     }
 

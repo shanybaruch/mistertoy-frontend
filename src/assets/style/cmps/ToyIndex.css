@@ -23,12 +23,6 @@ main {
     }
 }
 
-.links {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    justify-items: center;
-}
-
 .descruption-toy {
     margin-block: 1em;
 }

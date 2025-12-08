@@ -1,0 +1,53 @@
+.toy-details {
+    h5 {
+        text-align: center;
+    }
+
+    .links {
+        display: grid;
+        grid-auto-flow: column;
+        justify-items: center;
+    }
+
+    .toy-img {
+        width: 20vw;
+    }
+
+    .green {
+        color: green;
+        font-size: 1rem;
+    }
+
+    .red {
+        color: crimson;
+        font-size: 1rem;
+    }
+
+    .open-chat:hover {
+        background-color: #0056b3;
+    }
+
+    .open-chat {
+        background-color: rgb(236, 52, 52);
+        color: white;
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 35% 35% 0% 35%;
+        bottom: 80px;
+        padding: 2em;
+        right: 10px;
+        width: 3em;
+        height: 3em;
+
+        transition: .3s;
+        transform-origin: bottom right;
+
+        &:hover {
+            scale: 1.5;
+            background-color: rgb(236, 52, 52);
+
+        }
+    }
+}

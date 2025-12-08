@@ -17,19 +17,19 @@ export function AppFooter() {
             <h5>
                Total
                <span> {toysLength} </span> 
-                toys
+                toy
             </h5>
-            <p className='count'>
+            {/* <p className='count'>
                 Coffeerights to all - Count: {count}
-            </p>
+            </p> */}
             <h5 className='cart-footer'>
-                <span>{shoppingCartLength}</span> Products in your Cart
-                <a href="#" onClick={(ev) => {
+                <span>{shoppingCartLength}</span> Products in Cart
+                {/* <a href="#" onClick={(ev) => {
                     ev.preventDefault()
                     dispatch({ type: TOGGLE_CART_IS_SHOWN })
                 }}>
                     ({(isCartShown) ? 'hide' : 'show'})
-                </a>
+                </a> */}
             </h5>
             <ShoppingCart isCartShown={isCartShown} />
             <UserMsg />

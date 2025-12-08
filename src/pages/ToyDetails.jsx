@@ -22,26 +22,33 @@ export function ToyDetails() {
                 navigate('/toy')
             })
     }
+
+    
     if (!toy) return <div className="loading">Loading...</div>
+    const formattedDate = new Date(toy.createdAt).toLocaleString('he')
     return (
         <section className="toy-details">
             <h1 className="title">{toy.name}</h1>
-            <h5>In stock: {(toy.inStock) ? 'Yes' : 'No'}</h5>
-            <h5>Created: {toy.createdAt}</h5>
+            <h5 className={(toy.inStock) ? 'green' : 'red'}>{(toy.inStock) ? 'In stock ' : 'Not in stock'}</h5>
+            <h5>Created: {formattedDate}</h5>
             <h5>Price: ${toy.price}</h5>
             <h5>Labels: {(toy.labels || []).join(', ')}</h5>
-            <p className="descruption-toy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi voluptas cumque tempore, aperiam sed dolorum rem! Nemo quidem, placeat perferendis tempora aspernatur sit, explicabo veritatis corrupti perspiciatis repellat, enim quibusdam!</p>
+
+            {/* <p className="descruption-toy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi voluptas cumque tempore, aperiam sed dolorum rem! Nemo quidem, placeat perferendis tempora aspernatur sit, explicabo veritatis corrupti perspiciatis repellat, enim quibusdam!</p> */}
+
+            <img className="toy-img" src={toy.imgUrl} alt="toy-img" />
 
             <div className="links">
                 <div>
                     <Link to={`/toy`}>Back</Link>
                 </div>
                 <div>
-                    <Link to={`/toy/edit/${toy._id}`}>Edit</Link> &nbsp;
+                    <Link to={`/toy/edit/${toy._id}`}>Edit</Link>
+                    {/* &nbsp; */}
                 </div>
-                <div>
-                    <Link to="/toy/nJ5L4">Next Toy</Link>
-                </div>
+                {/* <div>
+                    <Link to="/toy/nmRU3">Next Toy</Link>
+                </div> */}
             </div>
         </section>
     )

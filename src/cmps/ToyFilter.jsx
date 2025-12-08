@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react"
 import { utilService } from "../services/util.service.js"
-import { ToySort } from './ToySort'
+import { ToySort } from './ToySort.jsx'
 
 
-export function ToyFilter({ filterBy, onSetFilter, sortBy, onSetSort, toyLabels }) {
+export function ToyFilter({ filterBy, onSetFilter, sortBy, onSetSort, toyLabels = [] }) {
 
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
     const debouncedOnSetFilter = useRef(utilService.debounce(onSetFilter, 300)).current
@@ -18,6 +18,8 @@ export function ToyFilter({ filterBy, onSetFilter, sortBy, onSetSort, toyLabels 
         // console.log('value:', value)
         if (type === 'select-multiple') {
             value = [...target.selectedOptions].map(option => option.value)
+        console.log('value: ', value);
+        
         }
         value = type === 'number' ? +value || '' : value
         setFilterByToEdit(prevFilter => ({ ...prevFilter, [field]: value }))
@@ -29,10 +31,10 @@ export function ToyFilter({ filterBy, onSetFilter, sortBy, onSetSort, toyLabels 
     }
 
     const { txt, inStock, labels } = filterByToEdit
-
+    
     return (
         <section className="toy-filter">
-            <h2 className="title">Filter</h2>
+            {/* <h2 className="title">Filter</h2> */}
 
             <form onSubmit={onSubmitFilter} className="filtering flex">
 
@@ -40,7 +42,7 @@ export function ToyFilter({ filterBy, onSetFilter, sortBy, onSetSort, toyLabels 
                     className="filter-by-name"
                     type="text"
                     name="txt"
-                    placeholder="Search by name"
+                    placeholder="Filter by name"
                     value={txt}
                     onChange={handleChange}
                 />
@@ -49,7 +51,7 @@ export function ToyFilter({ filterBy, onSetFilter, sortBy, onSetSort, toyLabels 
                     type="number"
                     className="filter-by-price"
                     name="maxPrice"
-                    placeholder="By max price"
+                    placeholder="Filter by max price"
                     min={50}
                     max={300}
                     step={50}

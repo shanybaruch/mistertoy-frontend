@@ -1,11 +1,17 @@
 .toy-filter {
-    /* display: flex;
-    align-items: center; */
+    display: flex;
+    align-items: center;
     /* justify-content: center; */
+    flex-direction: column;
     /* gap: 2em; */
+    
     background-color: var(--gray1);
     padding: .5em;
     color: var(--gray3);
+
+    .filtering {
+        align-items: center;
+    }
 
     .title {
         margin: 0 0 .3em;
@@ -13,7 +19,7 @@
 
     .filter-by-price,
     .filter-by-name {
-        width: 120px;
+        width: 140px;
         /* margin-inline: .3em; */
 
     }

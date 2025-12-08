@@ -27,7 +27,7 @@ export const toyService = {
 }
 
 function query(filterBy = {}, sortBy, pageIdx) {
-    console.log('sortby: ', sortBy)
+    // console.log('sortby: ', sortBy)
 
     const sortType = sortBy.type || ''
     const sortDesc = sortBy.desc || 1
@@ -37,11 +37,12 @@ function query(filterBy = {}, sortBy, pageIdx) {
         txt: filterBy.txt,
         maxPrice: filterBy.maxPrice,
         inStock: filterBy.inStock, 
-        sortBy: sortType,         
+        sortBy: sortType,
+        labels: filterBy.labels,         
         desc: sortDesc,  
         pageIdx: pageIdx
     }
-    console.log('Sending to Backend:', params)
+    // console.log('Sending to Backend:', params)
     return httpService.get(BASE_URL, params)
 }
 
@@ -60,9 +61,9 @@ function save(toy) {
 
 function getRandomToy() {
     return {
-        name: 'Toy-' + (Date.now() % 1000),
+        name: 'Toy ' + (Date.now() % 1000),
         price: utilService.getRandomIntInclusive(50, 300),
-        labels: ['Doll', 'Art', 'Baby'], // הוספתי לייבלים כדי שלא יהיה ריק
+        labels: ['Doll', 'Art', 'Baby'], 
         inStock: Math.random() < 0.5
     }
 }

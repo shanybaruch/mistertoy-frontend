@@ -24,11 +24,13 @@ export const toyService = {
     getToyLabelCounts,
 }
 
-function query(filterBy = {}, sortBy = {}, pageIdx) {
+function query(filterBy = {}, sortBy , pageIdx) {
     const params = {
         ...filterBy,
-        sortBy,  
         pageIdx
+    }
+    if (!params.sortBy && sortBy) {
+        params.sortBy = sortBy
     }
     return httpService.get(BASE_URL, params)
 }

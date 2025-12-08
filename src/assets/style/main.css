@@ -24,6 +24,10 @@
 
 @import 'cmps/ShoppingCart.css';
 
+@import 'cmps/PopUp.css';
+@import 'cmps/Chat.css';
+
+
 
 .app {
     display: flex;

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { toyService } from "../services/toy.service.js"
-import { Link, useParams } from "react-router-dom"
+import { Link, useParams, useNavigate } from "react-router-dom"
+import { PopUp } from "../cmps/PopUp.jsx"
+import { Chat } from "../cmps/Chat.jsx"
 
 // const { useEffect, useState } = React
 // const { Link, useParams } = ReactRouterDOM
@@ -9,6 +11,8 @@ import { Link, useParams } from "react-router-dom"
 export function ToyDetails() {
     const [toy, setToy] = useState(null)
     const { toyId } = useParams()
+    const [isChatOpen, setIsChatOpen] = useState(false)
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (toyId) loadToy()
@@ -23,7 +27,7 @@ export function ToyDetails() {
             })
     }
 
-    
+
     if (!toy) return <div className="loading">Loading...</div>
     const formattedDate = new Date(toy.createdAt).toLocaleString('he')
     return (
@@ -36,7 +40,7 @@ export function ToyDetails() {
 
             {/* <p className="descruption-toy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi voluptas cumque tempore, aperiam sed dolorum rem! Nemo quidem, placeat perferendis tempora aspernatur sit, explicabo veritatis corrupti perspiciatis repellat, enim quibusdam!</p> */}
 
-            <img className="toy-img" src={toy.imgUrl} alt="toy-img" />
+            {/* <img className="toy-img" src={toy.imgUrl} alt="toy-img" /> */}
 
             <div className="links">
                 <div>
@@ -50,6 +54,22 @@ export function ToyDetails() {
                     <Link to="/toy/nmRU3">Next Toy</Link>
                 </div> */}
             </div>
+
+            <section>
+                <PopUp
+                    header={<h3>Chat About {toy.name}s</h3>}
+                    footer={<h4>&copy; 2025-9999 Toys INC.</h4>}
+                    onClose={() => setIsChatOpen(false)}
+                    isOpen={isChatOpen}
+                >
+                    <Chat />
+                </PopUp>
+            </section >
+            {!isChatOpen && <button
+                onClick={() => setIsChatOpen(true)}
+                className='open-chat'
+            >Chat </button>
+            }
         </section>
     )
 }

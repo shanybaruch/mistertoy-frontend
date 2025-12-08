@@ -37,7 +37,7 @@ main {
     button {
         padding-block: .3em;
         margin-inline: .2em;
-        background-color: var(--clr1-dark);
+        background-color: var(--clr2);
     }
 }
 

@@ -57,3 +57,22 @@ a.active {
   font-weight: 500;
   padding: .5em;
 }
+
+.popup-menu {
+  position: fixed;
+  flex-direction: column;
+  padding: 40px;
+  width: 30vw;
+  align-items: center;
+  height: auto;
+  background-color: rgb(248, 250, 247);
+  border: 1px solid #bebebe;
+  box-shadow: 1px 2px 16px #000000a6;
+  display: flex;
+  inset: 0;
+  margin: auto;
+  height: fit-content;
+}
+.popup-menu h1 {
+  font-size: 1.5em;
+}

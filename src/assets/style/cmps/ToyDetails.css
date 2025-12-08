@@ -28,26 +28,27 @@
     }
 
     .open-chat {
-        background-color: rgb(236, 52, 52);
+        background-color: var(--clr2);
         color: white;
         position: fixed;
         display: flex;
         justify-content: center;
         align-items: center;
-        border-radius: 35% 35% 0% 35%;
+        border-radius: 50% 50% 0% 50%;
         bottom: 80px;
-        padding: 2em;
+        padding-block: 1.6em;
+        padding-inline: 2em;
+
         right: 10px;
-        width: 3em;
-        height: 3em;
+        width: 2em;
+        height: 1.3em;
 
         transition: .3s;
         transform-origin: bottom right;
 
         &:hover {
-            scale: 1.5;
-            background-color: rgb(236, 52, 52);
-
+            scale: 1.2;
+            background-color: var(--clr2);
         }
     }
 }

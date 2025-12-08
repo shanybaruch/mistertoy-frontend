@@ -1,8 +1,10 @@
 :root {
-  --clr1: #a8edfe;
-  --clr2: #b5f5ff;
-  --clr1-dark: #f4c1e7;
-  --clr2-dark: #66e0ff;
+  --clr1: #6debff;
+  --clr2: #00ccff;
+  --clr1-light: #b5f5ff;
+ 
+  --clr2: #ffc1f4;
+  --clr2-dark: #ffa6e9;
 
   --clr1bg: #c3eddf;
   --clr1bg-light: #c1f1e1;

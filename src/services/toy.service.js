@@ -1,4 +1,5 @@
-import { httpService } from './http.service'
+import { httpService } from './http.service.js'
+import { utilService } from './util.service.js'
 
 const BASE_URL = 'toy/'
 const labels = [
@@ -18,20 +19,29 @@ export const toyService = {
     save,
     remove,
     getEmptyToy,
+    getRandomToy,
     getDefaultFilter,
     getDefaultSort,
     getToyLabels,
     getToyLabelCounts,
 }
 
-function query(filterBy = {}, sortBy , pageIdx) {
+function query(filterBy = {}, sortBy, pageIdx) {
+    console.log('sortby: ', sortBy)
+
+    const sortType = sortBy.type || ''
+    const sortDesc = sortBy.desc || 1
+
     const params = {
         ...filterBy,
-        pageIdx
+        txt: filterBy.txt,
+        maxPrice: filterBy.maxPrice,
+        inStock: filterBy.inStock, 
+        sortBy: sortType,         
+        desc: sortDesc,  
+        pageIdx: pageIdx
     }
-    if (!params.sortBy && sortBy) {
-        params.sortBy = sortBy
-    }
+    console.log('Sending to Backend:', params)
     return httpService.get(BASE_URL, params)
 }
 
@@ -46,6 +56,15 @@ function remove(toyId) {
 function save(toy) {
     const method = toy._id ? 'put' : 'post'
     return httpService[method](BASE_URL, toy)
+}
+
+function getRandomToy() {
+    return {
+        name: 'Toy-' + (Date.now() % 1000),
+        price: utilService.getRandomIntInclusive(50, 300),
+        labels: ['Doll', 'Art', 'Baby'], // הוספתי לייבלים כדי שלא יהיה ריק
+        inStock: Math.random() < 0.5
+    }
 }
 
 function getDefaultFilter() {

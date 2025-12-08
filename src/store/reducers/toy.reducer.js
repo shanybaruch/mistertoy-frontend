@@ -37,7 +37,7 @@ export function toyReducer(state = initialState, action = {}) {
             return {
                 ...state,
                 toys: action.toys,
-                maxPage: action.maxPage
+                maxPage: action.maxPage,
             }
         case REMOVE_TOY:
             const lastToys = [

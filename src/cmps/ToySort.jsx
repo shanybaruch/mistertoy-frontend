@@ -1,29 +1,20 @@
-import { useState, useEffect } from 'react';
-
 export function ToySort({ sortBy, onSetSort }) {
-
-    const [sortByToEdit, setSortByToEdit] = useState({ ...sortBy })
-
-    useEffect(() => {
-        onSetSort(sortByToEdit)
-    }, [sortByToEdit])
-
 
     function handleChange({ target }) {
         const field = target.name
-        let value = target.type === 'number' ? +target.value : target.value
-        setSortByToEdit(prevSort => ({
-            ...prevSort,
-            [field]: field === 'desc' ? -prevSort.desc : value,
-            pageIdx: 0
-        }))
+        const value = target.type === 'checkbox' ? (target.checked ? -1 : 1) : target.value
+
+        const updatedSort = { ...sortBy, [field]: value }
+        
+        onSetSort(updatedSort)
     }
 
     return (
         <div className="toy-sort">
             <select
-                name="type"
-                value={sortByToEdit.type}
+                className="sort-select"
+                name="type" 
+                value={sortBy.type || ''}
                 onChange={handleChange}
             >
                 <option value="">Sort By</option>
@@ -31,6 +22,16 @@ export function ToySort({ sortBy, onSetSort }) {
                 <option value="price">Price</option>
                 <option value="createdAt">Created</option>
             </select>
+
+            {/* <label className="sort-desc">
+                <input 
+                    type="checkbox" 
+                    name="desc"
+                    checked={sortBy.desc === -1}
+                    onChange={handleChange}
+                />
+                Descending
+            </label> */}
         </div>
     )
 }

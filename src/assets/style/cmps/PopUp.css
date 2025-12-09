@@ -27,10 +27,13 @@
 
 .popup-header {
     text-align: center;
-    font-size: .7rem;
+    font-size: 1rem;
     padding: .8rem;
     /* border-bottom: 1px solid #eee; */
-    font-weight: bold;
+    h3 {
+
+        font-weight: 200;
+    }
 }
 
 .popup-main {

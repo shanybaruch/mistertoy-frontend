@@ -14,10 +14,9 @@
     flex-direction: column;
     justify-content: space-around;
     background-color: var(--clr2-light);
-    /* background-color: white; */
-    /* border: 1px solid white; */
     padding-inline: 0;
     padding-top: .2em;
     padding-bottom: .3em;
     border-radius: 5px;
+    transition: .4s;
 }

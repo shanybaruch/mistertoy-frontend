@@ -33,6 +33,7 @@ export function ToyIndex() {
     const maxPage = useSelector((storeState) => storeState.toyModule.maxPage)
     const [pageIdx, setPageIdx] = useState(0)
     const [toyLabels, setToyLabels] = useState()
+    const loggedInUser = useSelector(storeState => storeState.userModule.loggedInUser)
 
 
     useEffect(() => {
@@ -43,7 +44,7 @@ export function ToyIndex() {
                 console.log('err:', err)
                 showErrorMsg('Cannot load toys')
             })
-    }, [filterBy, sortBy, pageIdx])
+    }, [filterBy, sortBy, pageIdx, loggedInUser])
 
 
     function onSetFilter(filterBy) {
@@ -104,7 +105,6 @@ export function ToyIndex() {
         setPageIdx(newPageIdx)
     }
 
-    const loggedInUser = userService.getLoggedinUser()
     console.log('toys: ',toys);
     
     return (

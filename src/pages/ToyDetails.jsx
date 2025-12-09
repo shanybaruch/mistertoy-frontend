@@ -27,24 +27,31 @@ export function ToyDetails() {
             })
     }
 
-
     if (!toy) return <div className="loading">Loading...</div>
     const formattedDate = new Date(toy.createdAt).toLocaleString('he')
     return (
         <section className="toy-details">
-            <h1 className="title">{toy.name}</h1>
-            <h5 className={(toy.inStock) ? 'green' : 'red'}>{(toy.inStock) ? 'In stock ' : 'Not in stock'}</h5>
-            <h5>Created: {formattedDate}</h5>
-            <h5>Price: ${toy.price}</h5>
-            <h5>Labels: {(toy.labels || []).join(', ')}</h5>
+            <div className="top-page">
+                <h1 className="title">{toy.name}</h1>
 
+                <div className="body-details flex">
+
+                    <div className="main-details">
+                        <h5>Created: <span>{formattedDate}</span></h5>
+                        <h5>Price: <span>${toy.price}</span></h5>
+                        <h5>Labels: <span>{(toy.labels || []).join(', ')}</span></h5>
+                    </div>
+                    <div className="div-img-stock">
+                        <img className="toy-img" src={toy.imgUrl} alt="toy-img" />
+                        <h5 className={(toy.inStock) ? 'green' : 'red'}>{(toy.inStock) ? 'In stock ' : 'Not in stock'}</h5>
+                    </div>
+                </div>
+            </div>
             {/* <p className="descruption-toy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi voluptas cumque tempore, aperiam sed dolorum rem! Nemo quidem, placeat perferendis tempora aspernatur sit, explicabo veritatis corrupti perspiciatis repellat, enim quibusdam!</p> */}
 
-            {/* <img className="toy-img" src={toy.imgUrl} alt="toy-img" /> */}
-
-            <div className="links">
+            <div className="links bottom-page">
                 <div>
-                    <Link to={`/toy`}>Back</Link>
+                    <Link className="btn-back" to={`/toy`}>Back</Link>
                 </div>
                 {/* <div>
                     <Link to={`/toy/edit/${toy._id}`}>Edit</Link>

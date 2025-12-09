@@ -1,9 +1,11 @@
 .toy-preview {
-    text-align: center;
-    padding: 0.3em;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    padding-block: 0.3em;
+    cursor: pointer;
+    transition: .4s;
 
     .title {
         padding-bottom: 0;
@@ -16,7 +18,7 @@
 
         a {
             font-size: .8rem;
-            font-weight:700;
+            font-weight: 300;
         }
     }
 
@@ -24,24 +26,15 @@
         display: flex;
         justify-content: center;
         width: 100%;
-        align-items: end;
+        align-items: center;
 
-
+        .btn-edit,
+        .btn-details,
         .btn-remove {
-            font-size: 1rem;
-            padding-block: 0;
-            padding-bottom: .1em;
-            /* padding-inline: .5em; */
-        }
-
-        a {
             display: inline;
-            font-size: .8rem;
-            /* padding-inline-start: .1em; */
-            /* background-color: var(--gray1); */
-            /* padding-block: .1em; */
+            font-size: .75rem;
             padding-inline: .2em;
-            padding-bottom: .2em;            
+            padding-block: 0;
 
             &:hover {
                 background-color: transparent;
@@ -75,4 +68,9 @@
         margin-block: .2em;
         object-fit: cover;
     }
+}
+
+.toy-list:has(.toy-list-preview:hover) > .toy-list-preview:not(:hover) {
+    scale: .9;
+    opacity: .7;
 }

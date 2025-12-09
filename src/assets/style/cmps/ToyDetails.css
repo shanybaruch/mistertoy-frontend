@@ -1,7 +1,33 @@
 .toy-details {
-    h5 {
-        text-align: center;
-        margin-block: 1em;
+    display: grid;
+    grid-template-rows: 6fr 1fr;
+
+    .body-details {
+        gap: .5em;
+
+        .main-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        h5 {
+            margin-block: 1em;
+
+            span {
+                display: block;
+                font-weight: 200;
+            }
+        }
+    }
+
+    .div-img-stock {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .toy-img {
+            max-width: 140px;
+        }
     }
 
     a {
@@ -21,13 +47,16 @@
     .links {
         display: grid;
         grid-auto-flow: column;
-        /* justify-items: center; */
-        width: max-content;
-        margin: 1em auto;
-    }
+        align-self: end;
+        margin: 0 auto;
 
-    .toy-img {
-        width: 20vw;
+        .btn-back {
+            transition: .3s;
+
+            &:hover {
+                background-color: white;
+            }
+        }
     }
 
     .green {
@@ -47,7 +76,7 @@
     }
 
     .open-chat {
-        background-color: var(--clr2);
+        background-color: var(--clr1-dark);
         color: white;
         position: fixed;
         display: flex;
@@ -67,7 +96,7 @@
 
         &:hover {
             scale: 1.2;
-            background-color: var(--clr2);
+            background-color: var(--clr1-dark);
         }
     }
 }

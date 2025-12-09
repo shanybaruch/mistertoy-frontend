@@ -1,4 +1,3 @@
-import PropTypes from "prop-types"
 import { ToyPreview } from "./ToyPreview.jsx"
 
 export function ToyList({ loggedInUser, toys, onRemoveToy, onEditToy, addToCart }) {

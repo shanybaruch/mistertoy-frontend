@@ -5,7 +5,6 @@ import { saveToy } from "../store/actions/toy.actions.js"
 import { Link, useNavigate, useParams } from "react-router-dom"
 
 
-
 export function ToyEdit() {
 
     const [toyToEdit, setToyToEdit] = useState(toyService.getEmptyToy())
@@ -74,12 +73,12 @@ export function ToyEdit() {
     const priceValidations = {
         min: "1",
         required: true
-    }
+    }    
 
     return (
         <>
             <section className="toy-edit">
-                <h2>{toyToEdit._id ? 'Edit' : 'Add'} Toy</h2>
+                <h2>{toyToEdit._id ? `Edit ${toyToEdit.name}`  : 'Add Toy'}</h2>
                 <form onSubmit={onSaveToy} >
 
                     <div className="form-group">

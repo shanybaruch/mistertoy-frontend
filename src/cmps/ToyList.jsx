@@ -1,7 +1,7 @@
 import PropTypes from "prop-types"
 import { ToyPreview } from "./ToyPreview.jsx"
 
-export function ToyList({ toys, onRemoveToy, onEditToy, addToCart }) {
+export function ToyList({ loggedInUser, toys, onRemoveToy, onEditToy, addToCart }) {
 
     return (
         <ul className="toy-list">
@@ -11,7 +11,7 @@ export function ToyList({ toys, onRemoveToy, onEditToy, addToCart }) {
                     key={toy._id}
                 >
 
-                    <ToyPreview toy={toy} onRemoveToy={onRemoveToy} />
+                    <ToyPreview loggedInUser={loggedInUser} toy={toy} onRemoveToy={onRemoveToy} />
 
                     {/* <button className="buy" onClick={() => addToCart(toy)}>
                         Add to Cart

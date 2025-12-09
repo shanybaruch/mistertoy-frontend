@@ -23,23 +23,24 @@
     .btns-preview {
         display: flex;
         justify-content: center;
-        gap: .5em;
         width: 100%;
         align-items: end;
+
 
         .btn-remove {
             font-size: 1rem;
             padding-block: 0;
             padding-bottom: .1em;
+            /* padding-inline: .5em; */
         }
 
         a {
             display: inline;
             font-size: .8rem;
-            padding-inline-start: .3em;
-            padding-inline-end: .3em;
+            /* padding-inline-start: .1em; */
             /* background-color: var(--gray1); */
-            padding-block: .1em;
+            /* padding-block: .1em; */
+            padding-inline: .2em;
             padding-bottom: .2em;            
 
             &:hover {

@@ -18,6 +18,7 @@ import { ADD_TOY_TO_CART } from '../store/reducers/toy.reducer.js'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { PaginationButtons } from '../cmps/PaginationButtons.jsx'
+import { userService } from '../services/user.service.js'
 
 
 export function ToyIndex() {
@@ -103,6 +104,11 @@ export function ToyIndex() {
         setPageIdx(newPageIdx)
     }
 
+    const loggedInUser = userService.getLoggedinUser()
+    console.log(loggedInUser);
+
+    // const isMyProfile = loggedInUser?._id === userId
+
     return (
         <section className='toy-index' >
             <main>
@@ -119,6 +125,7 @@ export function ToyIndex() {
                 </section>
                 {!isLoading && toys
                     ? <ToyList
+                        loggedInUser={loggedInUser}
                         toys={toys}
                         onRemoveToy={onRemoveToy}
                         onEditToy={onEditToy}
@@ -133,7 +140,6 @@ export function ToyIndex() {
                     onChangePageIdx={onChangePageIdx}
                 />}
 
-                {/* <hr /> */}
             </main>
         </section>
     )

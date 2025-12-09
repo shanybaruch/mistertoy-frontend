@@ -9,7 +9,7 @@
 
     .sort-select {
         border-radius: 5px;
-        color: #737373;
+        color: var(--gray3);
         border: 1px solid #c7c7c7;
     }
 
@@ -21,14 +21,21 @@
             justify-content: center;
             flex-direction: column;
             align-items: center;
+            width: 145px;
+        }
+
+        .filter-by-price,
+        .filter-by-name,
+        .filter-by-stock {
+            color: var(--gray3);
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
         }
 
         .filter-by-stock {
-            width: 100%;
-            padding: 6px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            color: #737373;
+            padding: 7px;
         }
     }
 
@@ -36,17 +43,5 @@
         margin: 0 0 .3em;
     }
 
-    div {
-        width: 145px;
-
-        .filter-by-price,
-        .filter-by-name,
-        .filter-by-stock {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            /* margin-inline: .3em; */
-        }
-    }
+    div {}
 }

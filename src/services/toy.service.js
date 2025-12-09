@@ -65,7 +65,7 @@ function getRandomToy() {
     return {
         name: 'Toy ' + (Date.now() % 1000),
         price: utilService.getRandomIntInclusive(50, 300),
-        labels: ['Doll', 'Art', 'Baby'],
+        labels: _getRandomLabels(),
         inStock: Math.random() < 0.5
     }
 }
@@ -87,7 +87,7 @@ function getEmptyToy() {
     return {
         name: '',
         price: '',
-        labels: _getRandomLabels(),
+        labels: [],
         inStock: true
     }
 }

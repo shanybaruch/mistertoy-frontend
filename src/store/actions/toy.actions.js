@@ -21,7 +21,8 @@ export function loadToys(pageIdx) {
             store.dispatch({
                 type: SET_TOYS,
                 toys: res.toys,
-                maxPage: res.maxPage
+                maxPage: res.maxPage,
+                labels: res.labels
             })
         })
         .catch(err => {

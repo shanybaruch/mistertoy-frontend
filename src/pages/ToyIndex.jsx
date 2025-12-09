@@ -105,10 +105,8 @@ export function ToyIndex() {
     }
 
     const loggedInUser = userService.getLoggedinUser()
-    console.log(loggedInUser);
-
-    // const isMyProfile = loggedInUser?._id === userId
-
+    console.log('toys: ',toys);
+    
     return (
         <section className='toy-index' >
             <main>

@@ -46,10 +46,10 @@ export function ToyDetails() {
                 <div>
                     <Link to={`/toy`}>Back</Link>
                 </div>
-                <div>
+                {/* <div>
                     <Link to={`/toy/edit/${toy._id}`}>Edit</Link>
-                    {/* &nbsp; */}
-                </div>
+                    &nbsp;
+                </div> */}
                 {/* <div>
                     <Link to="/toy/nmRU3">Next Toy</Link>
                 </div> */}
@@ -57,7 +57,7 @@ export function ToyDetails() {
 
             <section>
                 <PopUp
-                    header={<h3>Chat About {toy.name}s</h3>}
+                    header={<h3>Chat About {toy.name}</h3>}
                     footer={<h4>&copy; 2025-9999 Toys INC.</h4>}
                     onClose={() => setIsChatOpen(false)}
                     isOpen={isChatOpen}

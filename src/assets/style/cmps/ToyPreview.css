@@ -12,18 +12,37 @@
     }
 
     p {
-        font-size: .9rem;
+        font-size: .8rem;
+
+        a {
+            font-size: .8rem;
+            font-weight:700;
+        }
     }
 
     .btns-preview {
+        display: flex;
+        justify-content: center;
+        gap: .5em;
+        width: 100%;
+        align-items: end;
+
+        .btn-remove {
+            font-size: 1rem;
+            padding-block: 0;
+            padding-bottom: .1em;
+        }
 
         a {
             display: inline;
             font-size: .8rem;
-            padding-inline: .4em;
+            padding-inline-start: .3em;
+            padding-inline-end: .3em;
+            /* background-color: var(--gray1); */
+            padding-block: .1em;
+            padding-bottom: .2em;            
 
             &:hover {
-                font-size: 1rem;
                 background-color: transparent;
             }
         }
@@ -39,6 +58,7 @@
     }
 
     p {
+        font-size: .8rem;
         margin: 0;
 
         a {
@@ -49,7 +69,7 @@
     }
 
     .toy-img {
-        max-width: 50px;
+        max-width: 40px;
         height: auto;
         margin-block: .2em;
         object-fit: cover;

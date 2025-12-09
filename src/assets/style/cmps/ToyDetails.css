@@ -1,12 +1,29 @@
 .toy-details {
     h5 {
         text-align: center;
+        margin-block: 1em;
+    }
+
+    a {
+        /* background-color: white; */
+        padding-block: .3em;
+        font-weight: 200;
+        transition: .2s;
+        font-size: 1rem;
+
+        &:hover {
+            background-color: transparent;
+            font-size: 1.1rem;
+            color: black;
+        }
     }
 
     .links {
         display: grid;
         grid-auto-flow: column;
-        justify-items: center;
+        /* justify-items: center; */
+        width: max-content;
+        margin: 1em auto;
     }
 
     .toy-img {

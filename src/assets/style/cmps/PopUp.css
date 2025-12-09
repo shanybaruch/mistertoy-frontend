@@ -26,6 +26,7 @@
 }
 
 .popup-header {
+    text-align: center;
     font-size: .7rem;
     padding: .8rem;
     /* border-bottom: 1px solid #eee; */

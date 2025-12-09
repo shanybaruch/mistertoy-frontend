@@ -18,8 +18,8 @@ export function ToyFilter({ filterBy, onSetFilter, sortBy, onSetSort, toyLabels 
         // console.log('value:', value)
         if (type === 'select-multiple') {
             value = [...target.selectedOptions].map(option => option.value)
-        console.log('value: ', value);
-        
+            console.log('value: ', value);
+
         }
         value = type === 'number' ? +value || '' : value
         setFilterByToEdit(prevFilter => ({ ...prevFilter, [field]: value }))
@@ -31,35 +31,36 @@ export function ToyFilter({ filterBy, onSetFilter, sortBy, onSetSort, toyLabels 
     }
 
     const { txt, inStock, labels } = filterByToEdit
-    
+
     return (
         <section className="toy-filter">
             {/* <h2 className="title">Filter</h2> */}
 
             <form onSubmit={onSubmitFilter} className="filtering flex">
+                <div>
+                    <input
+                        className="filter-by-name"
+                        type="text"
+                        name="txt"
+                        placeholder="Filter by name"
+                        value={txt}
+                        onChange={handleChange}
+                    />
 
-                <input
-                    className="filter-by-name"
-                    type="text"
-                    name="txt"
-                    placeholder="Filter by name"
-                    value={txt}
-                    onChange={handleChange}
-                />
-
-                <input
-                    type="number"
-                    className="filter-by-price"
-                    name="maxPrice"
-                    placeholder="Filter by max price"
-                    min={50}
-                    max={300}
-                    step={50}
-                    value={filterByToEdit.maxPrice || ''}
-                    onChange={handleChange}
-                />
+                    <input
+                        type="number"
+                        className="filter-by-price"
+                        name="maxPrice"
+                        placeholder="Filter by max price"
+                        min={50}
+                        max={300}
+                        step={50}
+                        value={filterByToEdit.maxPrice || ''}
+                        onChange={handleChange}
+                    />
 
                 <select
+                    className="filter-by-stock"
                     name="inStock"
                     value={inStock || ''}
                     onChange={handleChange}>
@@ -67,6 +68,7 @@ export function ToyFilter({ filterBy, onSetFilter, sortBy, onSetSort, toyLabels 
                     <option value="true">In Stock</option>
                     <option value="false">Not in stock</option>
                 </select>
+                        </div>
 
                 {toyLabels &&
                     <select

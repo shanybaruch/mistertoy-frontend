@@ -36,10 +36,10 @@ function query(filterBy = {}, sortBy, pageIdx) {
         ...filterBy,
         txt: filterBy.txt,
         maxPrice: filterBy.maxPrice,
-        inStock: filterBy.inStock, 
+        inStock: filterBy.inStock,
         sortBy: sortType,
-        labels: filterBy.labels,         
-        desc: sortDesc,  
+        labels: filterBy.labels,
+        desc: sortDesc,
         pageIdx: pageIdx
     }
     // console.log('Sending to Backend:', params)
@@ -56,14 +56,16 @@ function remove(toyId) {
 
 function save(toy) {
     const method = toy._id ? 'put' : 'post'
-    return httpService[method](BASE_URL, toy)
+    const url = toy._id ? BASE_URL + toy._id : BASE_URL
+
+    return httpService[method](url, toy)
 }
 
 function getRandomToy() {
     return {
         name: 'Toy ' + (Date.now() % 1000),
         price: utilService.getRandomIntInclusive(50, 300),
-        labels: ['Doll', 'Art', 'Baby'], 
+        labels: ['Doll', 'Art', 'Baby'],
         inStock: Math.random() < 0.5
     }
 }

@@ -1,51 +1,60 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { toyService } from "../services/toy.service.js"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 import { saveToy } from "../store/actions/toy.actions.js"
 import { Link, useNavigate, useParams } from "react-router-dom"
-// import { useOnlineStatus } from "../hooks/useOnlineStatusSyncStore.js"
-import { useOnlineStatus } from "../hooks/useOnlineStatus.js"
-import { useConfirmTabClose } from "../hooks/useConfirmTabClose.js"
-import Select from "react-select"
+
 
 
 export function ToyEdit() {
-    const navigate = useNavigate()
+
     const [toyToEdit, setToyToEdit] = useState(toyService.getEmptyToy())
+    const [labels, setLabels] = useState([])
+
+    const navigate = useNavigate()
     const { toyId } = useParams()
 
-    const isOnline = useOnlineStatus()
-    const setHasUnsavedChanges = useConfirmTabClose()
-
-    const labelOptions = [
-        { value: "On wheels", label: "On wheels" },
-        { value: "Box game", label: "Box game" },
-        { value: "Art", label: "Art" },
-        { value: "Baby", label: "Baby" },
-        { value: "Doll", label: "Doll" },
-        { value: "Puzzle", label: "Puzzle" },
-        { value: "Outdoor", label: "Outdoor" },
-        { value: "Battery Powered", label: "Battery Powered" },
-    ]
-
     useEffect(() => {
-        if (toyId) loadToy()
-    }, [toyId])
+        loadToy()
+        loadToyLabels()
+    }, [])
 
     function loadToy() {
+        if (!toyId) return
         toyService.getById(toyId)
-            .then(toy => setToyToEdit(toy))
+            .then(setToyToEdit)
             .catch(err => {
                 console.log('Had issues in toy edit', err)
                 navigate('/toy')
+                showErrorMsg('Toy not found')
+            })
+    }
+
+    function loadToyLabels() {
+        toyService.getToyLabels()
+            .then(setLabels)
+            .catch(err => {
+                console.log('Had issues in toy edit:', err)
+                navigate('/toy')
+                showErrorMsg('Toy not found!')
             })
     }
 
     function handleChange({ target }) {
-        let { value, type, name: field } = target
-        value = type === 'number' ? +value : value
-        setToyToEdit((prevToy) => ({ ...prevToy, [field]: value }))
-        setHasUnsavedChanges(true)
+        const { name, value, type, checked } = target
+        let fieldValue = value
+        if (type === 'checkbox') {
+            fieldValue = checked
+        } else if (type === 'number') {
+            fieldValue = +value
+        } else if (type === 'select-multiple') {
+            fieldValue = [...target.selectedOptions].map(option => option.value)
+        }
+
+        setToyToEdit(prevToy => ({
+            ...prevToy,
+            [name]: fieldValue
+        }))
     }
 
     function onSaveToy(ev) {
@@ -62,54 +71,80 @@ export function ToyEdit() {
             })
     }
 
+    const priceValidations = {
+        min: "1",
+        required: true
+    }
+
     return (
         <>
-            <div></div>
             <section className="toy-edit">
                 <h2>{toyToEdit._id ? 'Edit' : 'Add'} Toy</h2>
-
                 <form onSubmit={onSaveToy} >
-                    <label htmlFor="name">Name </label>
-                    <input
-                        type="text"
-                        name="name"
-                        id="name"
-                        placeholder="Enter name..."
-                        value={toyToEdit.name}
-                        onChange={handleChange}
-                    />
-                    <label htmlFor="price">Price </label>
-                    <input
-                        type="number"
-                        min={50}
-                        max={300}
-                        name="price"
-                        id="price"
-                        placeholder="Enter price"
-                        value={toyToEdit.price}
-                        onChange={handleChange}
-                    />
 
-                    <label>Labels:</label>
-                    <Select
-                        isMulti
-                        options={labelOptions}
-                        value={labelOptions.filter(opt => (toyToEdit.labels || []).includes(opt.value))}
-                        onChange={(selected) =>
-                            setToyToEdit(prev => ({
-                                ...prev,
-                                labels: selected.map(opt => opt.value)
-                            }))
-                        }
-                    />
+                    <div className="form-group">
+                        <label htmlFor="name">Name:</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            value={toyToEdit.name}
+                            onChange={handleChange}
+                            required
+                            placeholder="Enter name..."
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="price">Price:</label>
+                        <input
+                            type="number"
+                            id="price"
+                            name="price"
+                            value={toyToEdit.price || ''}
+                            {...priceValidations}
+                            onChange={handleChange}
+                            min={50}
+                            max={300}
+                            placeholder="Enter price"
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="labels">Labels:</label>
+                        <select
+                            id="labels"
+                            name="labels"
+                            multiple
+                            value={toyToEdit.labels}
+                            onChange={handleChange}
+                        >
+                            {labels.map(label => (
+                                <option key={label} value={label}>
+                                    {label}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+
+                    {toyToEdit._id && (
+                        <div className="form-group">
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    name="inStock"
+                                    checked={toyToEdit.inStock}
+                                    onChange={handleChange}
+                                />
+                                In Stock
+                            </label>
+                        </div>
+                    )}
 
                     <div>
                         <button>{toyToEdit._id ? 'Save' : 'Add'}</button>
                         <Link to="/toy">Cancel</Link>
                     </div>
-                    <section>
-                        <p>{isOnline ? 'Online' : 'Disconnected'}</p>
-                    </section>
                 </form>
             </section>
         </>

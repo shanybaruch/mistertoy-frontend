@@ -37,7 +37,13 @@ main {
     button {
         padding-block: .3em;
         margin-inline: .2em;
-        background-color: var(--clr2);
+        background-color: var(--clr2-dark);
+        color: white;
+
+        &:hover {
+            background-color: var(--clr2);
+            color: white;
+        }
     }
 }
 

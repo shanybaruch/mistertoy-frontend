@@ -1,26 +1,52 @@
 .toy-filter {
     display: flex;
     align-items: center;
-    /* justify-content: center; */
     flex-direction: column;
     /* gap: 2em; */
-    
     background-color: var(--gray1);
     padding: .5em;
     color: var(--gray3);
 
+    .sort-select {
+        border-radius: 5px;
+        color: #737373;
+        border: 1px solid #c7c7c7;
+    }
+
     .filtering {
         align-items: center;
+
+        div {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .filter-by-stock {
+            width: 100%;
+            padding: 6px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            color: #737373;
+        }
     }
 
     .title {
         margin: 0 0 .3em;
     }
 
-    .filter-by-price,
-    .filter-by-name {
-        width: 140px;
-        /* margin-inline: .3em; */
+    div {
+        width: 145px;
 
+        .filter-by-price,
+        .filter-by-name,
+        .filter-by-stock {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            /* margin-inline: .3em; */
+        }
     }
 }

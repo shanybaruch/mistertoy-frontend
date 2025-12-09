@@ -8,7 +8,7 @@ export function ToyPreview({ toy, onRemoveToy }) {
             <img className="toy-img" src={toy.imgUrl} alt="toy-img" />
             <p>Price: <span>${toy.price.toLocaleString()}</span></p>
             {/* <p>Speed: <span>{toy.speed.toLocaleString()} km/h</span></p> */}
-            {toy.owner && <p>Owner: <Link to={`/user/${toy.owner._id}`}>{toy.owner.fullname}</Link></p>}
+            {toy.owner && <p><Link to={`/user/${toy.owner._id}`}>{toy.owner.fullname}</Link></p>}
             {/* <hr /> */}
         
           <div className="btns-preview">

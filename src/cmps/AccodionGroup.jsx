@@ -32,7 +32,7 @@ export function AccordionItem({ title, children, isActive, onToggle }) {
     return (
         <article>
             <details onClick={handleToggle} open={isActive}>
-                <summary>{title}</summary>
+                <summary className="">{title}</summary>
                 <div className="content">
                     {children}
                 </div>

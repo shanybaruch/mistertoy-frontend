@@ -1,0 +1,11 @@
+.about-us {
+
+    &.container {
+        margin: 0;
+    }
+
+    .title {
+        text-align: center;
+        margin-top: 0;
+    }
+}

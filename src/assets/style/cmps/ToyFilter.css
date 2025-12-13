@@ -1,54 +1,3 @@
-/* .toy-filter {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background-color: var(--gray1);
-    padding: .5em;
-    color: var(--gray3);
-
-
-    .sort-select {
-        border-radius: 5px;
-        color: var(--gray3);
-        border: 1px solid #c7c7c7;
-    }
-
-    .filtering {
-        align-items: center;
-
-        gap: 16px;
-        flex-wrap: wrap;
-
-        div {
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            align-items: center;
-            width: 145px;
-        }
-
-        .filter-by-price,
-        .filter-by-name,
-        .filter-by-stock {
-            color: var(--gray3);
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
-
-        .filter-by-stock {
-            padding: 7px;
-        }
-    }
-
-    .title {
-        margin: 0 0 .3em;
-    }
-
-    div {}
-} */
-
 .toy-filter {
     display: flex;
     align-items: center;
@@ -59,9 +8,8 @@
 
     .filtering {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
         align-items: center;
-
 
         .filter-right-side {
             display: flex;
@@ -78,13 +26,13 @@
                 margin: 0;
                 height: 36px;
 
-                .div-select {
+                .select-labels {
                     background-color: white;
-                    width: 120px;
                 }
             }
 
             label {
+                padding-top: 4px;
                 font-size: .85rem;
                 font-family: 'Elms Sans', sans-serif;
             }
@@ -136,8 +84,79 @@
         height: 25px;
         padding: 2px 3px;
         background-color: #fff;
-        margin-top: 6px;
+        margin-top: 5px;
     }
+
+    .div-select {
+            width: 120px !important;  
+            min-width: 120px !important;
+            max-width: 120px !important;
+            margin: 0 !important;
+
+            .MuiOutlinedInput-root {
+                height: 35px !important;  
+                background-color: #fff;
+                border-radius: 2px;
+                padding-right: 0 !important;
+                overflow: hidden; 
+            }
+
+            .MuiOutlinedInput-notchedOutline {
+                border-color: #c4c4c4;
+            }
+
+            .Mui-focused .MuiOutlinedInput-notchedOutline {
+                border-color: #ffa9eb !important;
+                border-width: 2px !important;
+            }
+
+            .MuiInputLabel-root {
+                font-size: 0.8rem;
+                color: var(--gray3);
+                font-family: inherit;
+                top: -5px;
+            }
+            .MuiInputLabel-shrink {
+                top: 0;
+            }
+
+            .MuiChip-root {
+                height: 35px !important;
+                padding: 0;
+                font-size: 0.6rem !important;
+                margin: 0 0 !important;
+            }
+        }
+}
+
+.toy-filter-menu {
+    border-radius: 8px !important; 
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important; 
+    background-color: #ffffff !important;
+    border: 1px solid #eee !important;
+}
+
+.toy-filter-menu .MuiMenuItem-root {
+    font-size: 0.9rem !important;
+    font-family: 'Elms Sans', sans-serif !important; 
+    color: #555 !important;
+    transition: all 0.2s ease;
+    padding-block: 0;
+}
+
+.toy-filter-menu .MuiMenuItem-root:hover {
+    background-color: #ffebf6 !important; 
+    color: #f148b9 !important;
+}
+
+.toy-filter-menu .MuiMenuItem-root.Mui-selected {
+    background-color: #ffa8eb !important; 
+    color: white !important;
+    font-weight: 400 !important;
+}
+
+.toy-filter-menu .MuiMenuItem-root.Mui-selected:hover {
+    background-color: #ff8ce2 !important; 
 }
 
 @media (max-width: 600px) {

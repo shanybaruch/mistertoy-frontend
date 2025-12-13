@@ -85,7 +85,7 @@ export function ToyFilter({ filterBy, onSetFilter, sortBy, onSetSort, toyLabels 
                         <option value="false">Not in stock</option>
                     </select>
 
-                {/* {toyLabels &&
+                    {/* {toyLabels &&
                     <select
                     multiple
                     name="labels"
@@ -103,34 +103,54 @@ export function ToyFilter({ filterBy, onSetFilter, sortBy, onSetSort, toyLabels 
                         </select>
                         } */}
 
-                {toyLabels && (
-                    <FormControl sx={{ m: 1, width: 250 }} size="small">
-                        <InputLabel id="labels-label">Labels</InputLabel>
-                        <Select
-                            labelId="labels-label"
-                            multiple
-                            name="labels"
+                    {toyLabels && (
+                        <FormControl
                             className="div-select"
-                            value={labels || []}
-                            onChange={handleChange}
-                            input={<OutlinedInput label="Labels" />}
-                            
-                            renderValue={(selected) => (
-                                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                                    {selected.map((value) => (
-                                        <Chip key={value} label={value} size="small" />
-                                    ))}
-                                </Box>
-                            )}
+                            size="small"
+                        >
+                            <InputLabel id="labels-label">Labels</InputLabel>
+                            <Select
+                                labelId="labels-label"
+                                multiple
+                                name="labels"
+                                className="select-labels"
+                                value={labels || []}
+                                onChange={handleChange}
+                                input={<OutlinedInput label="Labels" />}
+
+                                MenuProps={{
+                                    PaperProps: {
+                                        className: 'toy-filter-menu',
+                                        style: {
+                                            maxHeight: 200,
+                                            width: 250,
+                                        },
+                                    }
+                                }}
+
+                                renderValue={(selected) => (
+                                    <Box sx={{
+                                        display: 'flex',
+                                        flexWrap: 'nowrap',  // 1. מונע ירידת שורה
+                                        gap: 0.5,
+                                        overflow: 'hidden',  // 2. מסתיר את מה שיוצא מהרוחב
+                                        textOverflow: 'ellipsis',
+                                        maxWidth: '100%' // מבטיח שלא יחרוג מהאבא
+                                    }}>
+                                        {selected.map((value) => (
+                                            <Chip key={value} label={value} size="small" />
+                                        ))}
+                                    </Box>
+                                )}
                             >
-                            {toyLabels.map((label) => (
-                                <MenuItem key={label} value={label}>
-                                    {label}
-                                </MenuItem>
-                            ))}
-                        </Select>
-                    </FormControl>
-                )}
+                                {toyLabels.map((label) => (
+                                    <MenuItem key={label} value={label}>
+                                        {label}
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                        </FormControl>
+                    )}
                 </div>
 
             </form>

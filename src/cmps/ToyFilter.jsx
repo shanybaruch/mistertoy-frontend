@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import { utilService } from "../services/util.service.js"
 import { ToySort } from './ToySort.jsx'
 
+import { OutlinedInput, InputLabel, MenuItem, Select, FormControl, Chip, Box } from '@mui/material';
 
 export function ToyFilter({ filterBy, onSetFilter, sortBy, onSetSort, toyLabels = [] }) {
 
@@ -13,15 +14,28 @@ export function ToyFilter({ filterBy, onSetFilter, sortBy, onSetSort, toyLabels 
     }, [filterByToEdit])
 
 
-    function handleChange({ target }) {
-        let { value, name: field, type } = target
-        // console.log('value:', value)
-        if (type === 'select-multiple') {
-            value = [...target.selectedOptions].map(option => option.value)
-            console.log('value: ', value);
+    // function handleChange({ target }) {
+    //     let { value, name: field, type } = target
+    //     // console.log('value:', value)
+    //     if (type === 'select-multiple') {
+    //         value = [...target.selectedOptions].map(option => option.value)
+    //         console.log('value: ', value);
 
+    //     }
+    //     value = type === 'number' ? +value || '' : value
+    //     setFilterByToEdit(prevFilter => ({ ...prevFilter, [field]: value }))
+    // }
+
+    function handleChange(ev) {
+        let { value, name: field, type } = ev.target
+
+        if (field === 'labels') {
+            value = typeof value === 'string' ? value.split(',') : value
         }
-        value = type === 'number' ? +value || '' : value
+        else if (type === 'number') {
+            value = +value || ''
+        }
+
         setFilterByToEdit(prevFilter => ({ ...prevFilter, [field]: value }))
     }
 
@@ -37,12 +51,12 @@ export function ToyFilter({ filterBy, onSetFilter, sortBy, onSetSort, toyLabels 
             {/* <h2 className="title">Filter</h2> */}
 
             <form onSubmit={onSubmitFilter} className="filtering flex">
-                <div>
+                <div className="filter-left-side">
                     <input
                         className="filter-by-name"
                         type="text"
                         name="txt"
-                        placeholder="Filter by name"
+                        placeholder="Toy name"
                         value={txt}
                         onChange={handleChange}
                     />
@@ -51,7 +65,7 @@ export function ToyFilter({ filterBy, onSetFilter, sortBy, onSetSort, toyLabels 
                         type="number"
                         className="filter-by-price"
                         name="maxPrice"
-                        placeholder="Filter by max price"
+                        placeholder="Max price"
                         min={50}
                         max={300}
                         step={50}
@@ -59,34 +73,65 @@ export function ToyFilter({ filterBy, onSetFilter, sortBy, onSetSort, toyLabels 
                         onChange={handleChange}
                     />
 
-                <select
-                    className="filter-by-stock"
-                    name="inStock"
-                    value={inStock || ''}
-                    onChange={handleChange}>
-                    <option value="">All</option>
-                    <option value="true">In Stock</option>
-                    <option value="false">Not in stock</option>
-                </select>
-                        </div>
-
-                {toyLabels &&
+                </div>
+                <div className="filter-right-side">
                     <select
-                        multiple
-                        name="labels"
-                        value={labels || []}
-                        onChange={handleChange}
-                    >
-                        <option disabled value="">Labels</option>
-                        <>
-                            {toyLabels.map(label => (
-                                <option key={label} value={label}>
-                                    {label}
-                                </option>
-                            ))}
-                        </>
+                        className="filter-by-stock"
+                        name="inStock"
+                        value={inStock || ''}
+                        onChange={handleChange}>
+                        <option value="">All</option>
+                        <option value="true">In Stock</option>
+                        <option value="false">Not in stock</option>
                     </select>
-                }
+
+                {/* {toyLabels &&
+                    <select
+                    multiple
+                    name="labels"
+                    value={labels || []}
+                    onChange={handleChange}
+                    >
+                    <option disabled value="">Labels</option>
+                    <>
+                    {toyLabels.map(label => (
+                        <option key={label} value={label}>
+                        {label}
+                        </option>
+                        ))}
+                        </>
+                        </select>
+                        } */}
+
+                {toyLabels && (
+                    <FormControl sx={{ m: 1, width: 250 }} size="small">
+                        <InputLabel id="labels-label">Labels</InputLabel>
+                        <Select
+                            labelId="labels-label"
+                            multiple
+                            name="labels"
+                            className="div-select"
+                            value={labels || []}
+                            onChange={handleChange}
+                            input={<OutlinedInput label="Labels" />}
+                            
+                            renderValue={(selected) => (
+                                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                                    {selected.map((value) => (
+                                        <Chip key={value} label={value} size="small" />
+                                    ))}
+                                </Box>
+                            )}
+                            >
+                            {toyLabels.map((label) => (
+                                <MenuItem key={label} value={label}>
+                                    {label}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </FormControl>
+                )}
+                </div>
 
             </form>
             <ToySort sortBy={sortBy} onSetSort={onSetSort} />

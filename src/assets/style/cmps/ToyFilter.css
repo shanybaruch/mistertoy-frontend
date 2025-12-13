@@ -1,11 +1,11 @@
-.toy-filter {
+/* .toy-filter {
     display: flex;
     align-items: center;
     flex-direction: column;
-    /* gap: 2em; */
     background-color: var(--gray1);
     padding: .5em;
     color: var(--gray3);
+
 
     .sort-select {
         border-radius: 5px;
@@ -15,6 +15,9 @@
 
     .filtering {
         align-items: center;
+
+        gap: 16px;
+        flex-wrap: wrap;
 
         div {
             display: flex;
@@ -44,4 +47,107 @@
     }
 
     div {}
+} */
+
+.toy-filter {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--gray1);
+    padding: .5em;
+    color: var(--gray3);
+
+    .filtering {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+
+
+        .filter-right-side {
+            display: flex;
+            align-items: start;
+        }
+
+        .filter-left-side {
+            display: flex;
+            align-items: end;
+        }
+
+        div {
+            div {
+                margin: 0;
+                height: 36px;
+
+                .div-select {
+                    background-color: white;
+                    width: 120px;
+                }
+            }
+
+            label {
+                font-size: .85rem;
+                font-family: 'Elms Sans', sans-serif;
+            }
+        }
+
+        .filter-by-price,
+        .filter-by-name,
+        .filter-by-stock {
+            background-color: #fff;
+            color: var(--gray3);
+
+            height: 35px;
+            border: 1px solid #c4c4c4;
+            border-radius: 2px;
+            padding: 0 10px;
+
+            font-size: .8rem;
+            font-family: inherit;
+            box-sizing: border-box;
+            transition: all 0.2s ease;
+
+            width: 120px;
+        }
+
+        .filter-by-price:focus,
+        .filter-by-name:focus,
+        .filter-by-stock:focus {
+            border-color: #ffa9eb;
+            border-width: 2px;
+            outline: none;
+            padding: 0 10px;
+        }
+
+        ::placeholder {
+            color: #999;
+            opacity: 1;
+        }
+    }
+
+    .title {
+        margin: 0 0 .5em;
+        font-size: 1rem;
+        font-weight: 300;
+    }
+
+    .sort-select {
+        color: var(--gray3);
+        border: 1px solid #c7c7c7;
+        height: 25px;
+        padding: 2px 3px;
+        background-color: #fff;
+        margin-top: 6px;
+    }
+}
+
+@media (max-width: 600px) {
+    .toy-filter .filtering div {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .toy-filter .filtering input,
+    .toy-filter .filtering select {
+        width: 100%;
+    }
 }

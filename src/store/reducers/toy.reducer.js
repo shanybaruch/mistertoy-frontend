@@ -42,21 +42,18 @@ export function toyReducer(state = initialState, action = {}) {
                 totalCount: action.totalCount 
             }
         case REMOVE_TOY:
-            const lastToys = [
-                ...state.toys
-            ]
+            const lastToys = [...state.toys]
             return {
                 ...state,
                 toys: state.toys.filter(toy => toy._id !== action.toyId),
-                lastToys
+                lastToys,
+                totalCount: state.totalCount - 1
             }
         case ADD_TOY:
             return {
                 ...state,
-                toys: [
-                    ...state.toys,
-                    action.toy
-                ]
+                toys: [...state.toys, action.toy],
+                totalCount: state.totalCount + 1
             }
         case UPDATE_TOY:
             return {

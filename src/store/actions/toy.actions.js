@@ -59,7 +59,7 @@ export function saveToy(toy) {
     const type = toy._id ? UPDATE_TOY : ADD_TOY
     return toyService.save(toy)
         .then(savedToy => {
-            console.log('savedToy:', savedToy)
+            // console.log('savedToy:', savedToy)
             store.dispatch({ type, toy: savedToy })
             return savedToy
         })

@@ -5,7 +5,7 @@ const API_KEY = 'AIzaSyAi7MXdIi0M6OMiTHGb4HZvv6R4AWvGhC8'
 
 export function GoogleMap() {
     const defaultCenter = { lat: 32.073, lng: 34.78 }
-    // const [coords, setCoords] = useState({ defaultCenter })
+    const [coords, setCoords] = useState({ ...defaultCenter })
     const zoom = 13
 
     const [selectedBranch, setSelectedBranch] = useState(null)
@@ -60,7 +60,7 @@ export function GoogleMap() {
                     defaultCenter={defaultCenter}
                     gestureHandling={'greedy'}
                     disableDefaultUI={true}
-                    // onClick={handleClick}
+                    onClick={handleClick}
                 >
 
                     {branches.map(branch => (
@@ -85,7 +85,7 @@ export function GoogleMap() {
                         </InfoWindow>
                     )}
 
-                    {/* <AdvancedMarker
+                    <AdvancedMarker
                         ref={markerRef}
                         onClick={() => setIsInfoOpen(isOpen => !isOpen)}
                         position={coords}
@@ -100,7 +100,7 @@ export function GoogleMap() {
                                 <h4>The marker</h4>
                             </InfoWindow>}
 
-                    </AdvancedMarker> */}
+                    </AdvancedMarker>
                 </Map>
             </APIProvider>
 

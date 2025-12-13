@@ -105,7 +105,7 @@ export function ToyIndex() {
         setPageIdx(newPageIdx)
     }
 
-    console.log('toys: ',toys);
+    // console.log('toys: ',toys);
     
     return (
         <section className='toy-index' >

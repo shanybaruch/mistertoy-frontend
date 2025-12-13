@@ -49,7 +49,7 @@ export function AppHeader() {
 
                 </nav>
             </section>
-            {user ? (
+            {/* {user ? (
                 < section >
                     <span to={`/user/${user._id}`}>{user.fullname} <span>${user.score.toLocaleString()}</span></span>
                     <button onClick={onLogout}>Logout</button>
@@ -58,7 +58,7 @@ export function AppHeader() {
                 <section>
                     <LoginSignup />
                 </section>
-            )}
+            )} */}
             <UserMsg />
             
         </header>

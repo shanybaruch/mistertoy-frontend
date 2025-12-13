@@ -27,6 +27,7 @@ const initialState = {
     filterBy: toyService.getDefaultFilter(),
     lastToys: [],
     maxPage: 0,
+    totalCount: 0,
 }
 
 export function toyReducer(state = initialState, action = {}) {
@@ -38,6 +39,7 @@ export function toyReducer(state = initialState, action = {}) {
                 ...state,
                 toys: action.toys,
                 maxPage: action.maxPage,
+                totalCount: action.totalCount 
             }
         case REMOVE_TOY:
             const lastToys = [

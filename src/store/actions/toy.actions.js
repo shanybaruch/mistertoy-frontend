@@ -22,7 +22,8 @@ export function loadToys(pageIdx) {
                 type: SET_TOYS,
                 toys: res.toys,
                 maxPage: res.maxPage,
-                labels: res.labels
+                labels: res.labels,
+                totalCount: res.totalCount
             })
         })
         .catch(err => {

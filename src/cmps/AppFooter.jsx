@@ -8,7 +8,7 @@ export function AppFooter() {
     const dispatch = useDispatch()
     const isCartShown = useSelector(storeState => storeState.toyModule.isCartShown)
     const count = useSelector(storeState => storeState.userModule.count)
-    const toysLength = useSelector(storeState => storeState.toyModule.toys.length)
+    const toysLength = useSelector(storeState => storeState.toyModule.totalCount)
     const shoppingCartLength = useSelector(storeState => storeState.toyModule.shoppingCart.length)
 
 
@@ -16,7 +16,7 @@ export function AppFooter() {
         <footer className='app-footer'>
             <h5>
                Total
-               <span> {toysLength} </span> 
+               <span> {toysLength || 0} </span> 
                 toy
             </h5>
             {/* <p className='count'>

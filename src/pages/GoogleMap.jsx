@@ -103,6 +103,29 @@ export function GoogleMap() {
                     </AdvancedMarker> */}
                 </Map>
             </APIProvider>
+
+            <section className="branches-list-container">
+                <div className="branches-grid">
+                    {branches.map(branch => (
+                        <article 
+                            key={branch._id} 
+                            className={`branch-card ${selectedBranch?._id === branch._id ? 'active' : ''}`}
+                            onClick={() => onSelectStore(branch)}
+                        >
+                            <div className="card-content">
+                                <h3>{branch.name}</h3>
+                                <p className="address">{branch.address}</p>
+                                <div className="divider"></div>
+                                <p className="hours">
+                                    <span className="clock-icon">⏰</span> 
+                                    {branch.hours}
+                                </p>
+                            </div>
+                            <div className="card-icon">📍</div>
+                        </article>
+                    ))}
+                </div>
+            </section>
         </section>
     )
 }

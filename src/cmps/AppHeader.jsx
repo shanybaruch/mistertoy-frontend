@@ -7,9 +7,6 @@ import { NavLink } from 'react-router-dom'
 import { useContext } from 'react'
 import { ThemeContext } from '../contexts/ThemeContext.jsx'
 
-// const { NavLink } = ReactRouterDOM
-// const { useSelector, useDispatch } = ReactRedux
-
 export function AppHeader() {
     const dispatch = useDispatch()
     const user = useSelector(storeState => storeState.userModule.loggedInUser)

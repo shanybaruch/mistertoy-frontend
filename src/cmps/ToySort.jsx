@@ -17,7 +17,7 @@ export function ToySort({ sortBy, onSetSort }) {
                 value={sortBy.type || ''}
                 onChange={handleChange}
             >
-                <option value="">Sort By</option>
+                <option value="">Sort by</option>
                 <option value="name">Name</option>
                 <option value="price">Price</option>
                 <option value="createdAt">Created</option>

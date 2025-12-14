@@ -4,10 +4,6 @@ import { Link, useParams, useNavigate } from "react-router-dom"
 import { PopUp } from "../cmps/PopUp.jsx"
 import { Chat } from "../cmps/Chat.jsx"
 
-// const { useEffect, useState } = React
-// const { Link, useParams } = ReactRouterDOM
-
-
 export function ToyDetails() {
     const [toy, setToy] = useState(null)
     const { toyId } = useParams()

@@ -1,7 +1,3 @@
-// const { useState, useEffect } = React
-// const { Link } = ReactRouterDOM
-// const { useSelector, useDispatch } = ReactRedux
-
 import { useDispatch, useSelector } from 'react-redux'
 import { ToyFilter } from '../cmps/ToyFilter.jsx'
 import { ToyList } from '../cmps/ToyList.jsx'

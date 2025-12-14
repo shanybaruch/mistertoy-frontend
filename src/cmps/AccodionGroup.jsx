@@ -2,8 +2,7 @@ import React, { useState } from "react"
 
 export function AccordionGroup({ children }) {
     const [activeIdx, setActiveIdx] = useState(-1)
-    
-    // console.log('children:', children)
+
     const childrenWithProps = React.Children.map(children, (child, idx) => {
         const childProps = {
             onToggle: () => {

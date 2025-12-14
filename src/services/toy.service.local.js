@@ -34,27 +34,20 @@ _createToys()
 
 
 function query(filterBy = {}, sortBy = {}, pageIdx = 0) {
-    // return Promise.reject('Cannot get toys!')
     return storageService.query(STORAGE_KEY).then(toys => {
         let toysToShow = toys
-        // Filter by text
         if (filterBy.txt) {
             const regExp = new RegExp(filterBy.txt, 'i')
             toysToShow = toysToShow.filter(toy => regExp.test(toy.name))
         }
-
-        // Filter by inStock
         if (filterBy.inStock !== null) {
             toysToShow = toysToShow.filter(toy => toy.inStock === JSON.parse(filterBy.inStock))
         }
-
-        // Filter by labels
         if (filterBy.labels?.length) {
             toysToShow = toysToShow.filter(toy =>
                 filterBy.labels.every(label => toy.labels.includes(label))
             )
         }
-
         // Sort
         if (sortBy.type) {
             const dir = +sortBy.desc
@@ -66,7 +59,6 @@ function query(filterBy = {}, sortBy = {}, pageIdx = 0) {
                 }
             })
         }
-
         // Pagination
         const startIdx = pageIdx * PAGE_SIZE
         toysToShow = toysToShow.slice(startIdx, startIdx + PAGE_SIZE)

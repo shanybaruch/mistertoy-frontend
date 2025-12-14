@@ -1,7 +1,3 @@
-// const Router = ReactRouterDOM.BrowserRouter
-// // const Router = ReactRouterDOM.HashRouter
-// const { Route, Routes } = ReactRouterDOM
-// const { Provider } = ReactRedux
 import './assets/style/main.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { Provider } from 'react-redux'
@@ -41,7 +37,6 @@ export function App() {
                         </main>
                         <AppFooter />
                     </ThemeProvider>
-
                 </section>
             </Router>
         </Provider>

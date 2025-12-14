@@ -82,81 +82,83 @@
         color: var(--gray3);
         border: 1px solid #c7c7c7;
         height: 25px;
-        padding: 2px 3px;
+        padding: 0;
         background-color: #fff;
         margin-top: 5px;
+        font-family: 'Elms Sans', sans-serif;
     }
 
     .div-select {
-            width: 120px !important;  
-            min-width: 120px !important;
-            max-width: 120px !important;
-            margin: 0 !important;
+        width: 120px;
+        min-width: 120px;
+        max-width: 120px;
+        margin: 0;
 
-            .MuiOutlinedInput-root {
-                height: 35px !important;  
-                background-color: #fff;
-                border-radius: 2px;
-                padding-right: 0 !important;
-                overflow: hidden; 
-            }
-
-            .MuiOutlinedInput-notchedOutline {
-                border-color: #c4c4c4;
-            }
-
-            .Mui-focused .MuiOutlinedInput-notchedOutline {
-                border-color: #ffa9eb !important;
-                border-width: 2px !important;
-            }
-
-            .MuiInputLabel-root {
-                font-size: 0.8rem;
-                color: var(--gray3);
-                font-family: inherit;
-                top: -5px;
-            }
-            .MuiInputLabel-shrink {
-                top: 0;
-            }
-
-            .MuiChip-root {
-                height: 35px !important;
-                padding: 0;
-                font-size: 0.6rem !important;
-                margin: 0 0 !important;
-            }
+        .MuiOutlinedInput-root {
+            height: 35px;
+            background-color: #fff;
+            border-radius: 2px;
+            padding-right: 0;
+            overflow: hidden;
         }
+
+        .MuiOutlinedInput-notchedOutline {
+            border-color: #c4c4c4;
+        }
+
+        .Mui-focused .MuiOutlinedInput-notchedOutline {
+            border-color: #ffa9eb;
+            border-width: 2px;
+        }
+
+        .MuiInputLabel-root {
+            font-size: 0.8rem;
+            color: var(--gray3);
+            font-family: inherit;
+            top: -5px;
+        }
+
+        .MuiInputLabel-shrink {
+            top: 0;
+        }
+
+        .MuiChip-root {
+            height: 35px;
+            padding: 0;
+            font-size: 0.6rem;
+            margin: 0 0;
+        }
+    }
 }
 
 .toy-filter-menu {
-    border-radius: 8px !important; 
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important; 
-    background-color: #ffffff !important;
-    border: 1px solid #eee !important;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    background-color: #ffffff;
+    border: 1px solid #eee;
 }
 
 .toy-filter-menu .MuiMenuItem-root {
-    font-size: 0.9rem !important;
-    font-family: 'Elms Sans', sans-serif !important; 
-    color: #555 !important;
+    font-size: 0.9rem;
+    font-family: 'Elms Sans', sans-serif;
+    color: #555;
     transition: all 0.2s ease;
     padding-block: 0;
 }
 
 .toy-filter-menu .MuiMenuItem-root:hover {
-    background-color: #ffebf6 !important; 
-    color: #f148b9 !important;
+    background-color: #ffebf6;
+    color: #f148b9;
 }
 
 .toy-filter-menu .MuiMenuItem-root.Mui-selected {
-    background-color: #ffa8eb !important; 
-    color: white !important;
-    font-weight: 400 !important;
+    background-color: #ffa8eb;
+    color: white;
+    font-weight: 400;
 }
 
 .toy-filter-menu .MuiMenuItem-root.Mui-selected:hover {
-    background-color: #ff8ce2 !important; 
+    background-color: #ff8ce2;
 }
 
 @media (max-width: 600px) {

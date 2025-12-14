@@ -131,11 +131,11 @@ export function ToyFilter({ filterBy, onSetFilter, sortBy, onSetSort, toyLabels 
                                 renderValue={(selected) => (
                                     <Box sx={{
                                         display: 'flex',
-                                        flexWrap: 'nowrap',  // 1. מונע ירידת שורה
+                                        flexWrap: 'nowrap',
                                         gap: 0.5,
-                                        overflow: 'hidden',  // 2. מסתיר את מה שיוצא מהרוחב
+                                        overflow: 'hidden', 
                                         textOverflow: 'ellipsis',
-                                        maxWidth: '100%' // מבטיח שלא יחרוג מהאבא
+                                        maxWidth: '100%'
                                     }}>
                                         {selected.map((value) => (
                                             <Chip key={value} label={value} size="small" />

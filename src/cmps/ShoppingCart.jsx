@@ -1,9 +1,5 @@
-// const { useState, useEffect } = React
-// const { useSelector, useDispatch } = ReactRedux
-
 import { useDispatch, useSelector } from 'react-redux'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { userService } from '../services/user.service.js'
 import { checkout } from '../store/actions/user.actions.js'
 import { REMOVE_TOY_FROM_CART } from '../store/reducers/toy.reducer.js'
 

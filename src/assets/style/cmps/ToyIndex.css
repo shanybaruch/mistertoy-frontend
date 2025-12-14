@@ -32,13 +32,18 @@ main {
 }
 
 .btns-add-toy {
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    
     a,
     button {
         padding-block: .3em;
         margin-inline: .2em;
         background-color: var(--clr2-dark);
         color: white;
+        border-radius: 5px;
 
         &:hover {
             background-color: var(--clr2);

@@ -1,20 +1,22 @@
 
 import { UserMsg } from './UserMsg.jsx'
 import { ShoppingCart } from './ShoppingCart.jsx'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
+import { useLocation } from 'react-router-dom'
 
 export function AppFooter() {
-    const dispatch = useDispatch()
     const isCartShown = useSelector(storeState => storeState.toyModule.isCartShown)
-    const count = useSelector(storeState => storeState.userModule.count)
     const toysLength = useSelector(storeState => storeState.toyModule.totalCount)
     const shoppingCartLength = useSelector(storeState => storeState.toyModule.shoppingCart.length)
-
+    
+    const location = useLocation()
+    const hiddenPaths = ['/map', '/about', '/']
+    if (hiddenPaths.includes(location.pathname)) return null
     return (
         <footer className='app-footer'>
             <h5>
-               Total
-               <span> {toysLength || 0} </span> 
+                Total
+                <span> {toysLength || 0} </span>
                 toy
             </h5>
             <h5 className='cart-footer'>

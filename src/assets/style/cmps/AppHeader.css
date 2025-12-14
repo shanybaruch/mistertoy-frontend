@@ -1,13 +1,20 @@
 .app-header {
-    display: flex;
-    flex-direction: column;
-
-    text-align: center;
     background-color: var(--gray1);
     padding-block: .5em;
+    
+    .header-container {
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+        align-items: center;
+        padding-block: .5em;
 
-    .title {
-        font-size: 1.7rem;
+        margin-bottom: .5em;
+
+        .title {
+            font-size: 1rem;
+            font-weight: 200;
+            text-align: center;
+        }
     }
 }
 
@@ -19,7 +26,6 @@
     margin-block: .3em;
 
     a {
-        /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
         font-family: 'Elms Sans', sans-serif;
         font-weight: 100;
         transition: .3s;
@@ -33,87 +39,5 @@
     a.active {
         font-weight: 700;
         color: var(--clr2);
-    }
-}
-
-.home-page {
-    flex-direction: column;
-    position: absolute;
-
-    .toggle-theme {
-        margin-top: 2em;
-    }
-
-    .login {
-        background-color: white;
-        box-shadow: 0 0 10px 0 var(--gray2);
-        padding-top: .6em;
-        padding-bottom: 1.2em;
-        padding-inline: 2em;
-        border-radius: 10px;
-        margin-top: 2.5em;
-
-        section {
-            display: flex;
-            flex-direction: column;
-
-            span {
-                padding: .3em;
-                font-weight: 200;
-                font-size: 1.5rem;
-                margin-top: .8em;
-                text-transform: capitalize;
-
-
-                span {
-                    margin-top: .4em;
-                    display: block;
-                    font-size: 1rem;
-                    text-align: center;
-                    color: var(--gray2);
-                    font-weight: 200;
-                }
-            }
-
-            button {
-                margin-top: 1em;
-                font-size: 1rem;
-            }
-        }
-
-    }
-}
-
-.login-signup {
-    margin-block: 2em;
-
-    input {
-        font-size: .9rem;
-        border-radius: 10px;
-        border: 1px solid rgb(205, 205, 205);
-        padding: .6em;
-    }
-
-    .btns {
-        display: flex;
-        justify-content: center;
-
-        a {
-            font-size: .9rem;
-        }
-    }
-
-    .login-form {
-        display: flex;
-        gap: 1em;
-        flex-direction: column;
-
-
-        button {
-            margin: 0;
-            padding: .5em .7em .6em;
-            border-radius: 15px;
-            font-size: .9rem;
-        }
     }
 }

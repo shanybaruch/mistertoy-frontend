@@ -82,9 +82,9 @@
         color: var(--gray3);
         border: 1px solid #c7c7c7;
         height: 25px;
-        padding: 0;
+        padding-inline-start: 5px;
         background-color: #fff;
-        margin-top: 5px;
+        margin-top: 4px;
         font-family: 'Elms Sans', sans-serif;
     }
 

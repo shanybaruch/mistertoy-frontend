@@ -1,6 +1,10 @@
+import { useSelector } from "react-redux";
 import { AccordionGroup, AccordionItem } from "../cmps/AccodionGroup.jsx";
+import { ShoppingCart } from "../cmps/ShoppingCart.jsx";
 
 export function AboutUs() {
+    const isCartShown = useSelector(storeState => storeState.toyModule.isCartShown)
+
     return (
         <section className="about-us container">
             <h2 className="title">About Us</h2>
@@ -23,6 +27,9 @@ export function AboutUs() {
                     <p>Lorem ipsum</p>
                 </AccordionItem>
             </AccordionGroup>
+           
+           < ShoppingCart isCartShown={isCartShown} />
+
         </section>
     )
 }

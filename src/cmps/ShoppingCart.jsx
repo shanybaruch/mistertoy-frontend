@@ -20,7 +20,6 @@ export function ShoppingCart({ isCartShown }) {
 
     function onCheckout() {
         const amount = getCartTotal()
-        // DONE: checkout function that dispatch
         checkout(amount)
             .then(()=>{
                 showSuccessMsg(`Charged you: $ ${amount.toLocaleString()}`)
@@ -30,8 +29,8 @@ export function ShoppingCart({ isCartShown }) {
             })
     }
 
-    if (!isCartShown) return <span></span>
     const total = getCartTotal()
+    if (!isCartShown) return
     return (
         <section className="shopping-cart" >
             <h5 className='title'>Cart</h5>

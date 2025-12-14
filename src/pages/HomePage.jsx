@@ -5,9 +5,12 @@ import { ThemeContext } from "../contexts/ThemeContext.jsx"
 import { LoginSignup } from "../cmps/LoginSignup.jsx"
 import { logout } from "../store/actions/user.actions.js"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
+import { ShoppingCart } from "../cmps/ShoppingCart.jsx"
 
 
 export function HomePage() {
+    const isCartShown = useSelector(storeState => storeState.toyModule.isCartShown)
+
     const user = useSelector(storeState => storeState.userModule.loggedInUser)
 
     const { toggleTheme } = useContext(ThemeContext)
@@ -43,6 +46,8 @@ export function HomePage() {
 
             </div>
             <button className="toggle-theme" onClick={toggleTheme}>Toggle Theme</button>
+
+           < ShoppingCart isCartShown={isCartShown} />
 
         </section >
     )

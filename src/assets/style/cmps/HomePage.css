@@ -24,6 +24,8 @@
             section {
                 display: flex;
                 flex-direction: column;
+                margin-bottom: 0;
+                align-items: center;
 
                 span {
                     padding: .3em;
@@ -31,6 +33,7 @@
                     font-size: 1.5rem;
                     margin-top: .8em;
                     text-transform: capitalize;
+                    text-align: center;
 
                     span {
                         margin-top: .4em;
@@ -44,7 +47,7 @@
 
                 button {
                     margin-top: .5em;
-                    margin-bottom: .2em;
+                    margin-bottom: 1.5em;
                     font-size: 1rem;
                 }
             }
@@ -72,7 +75,7 @@
 
         a {
             font-size: .9rem;
-            margin-block: .4em;
+            margin-top: -1em;
         }
     }
 

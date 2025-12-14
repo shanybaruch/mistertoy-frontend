@@ -85,6 +85,7 @@ export function toyReducer(state = initialState, action = {}) {
 
         //* Shopping cart
         case TOGGLE_CART_IS_SHOWN:
+            // console.log('isCartShown: ',state.isCartShown);
             return { ...state, isCartShown: !state.isCartShown }
 
         case ADD_TOY_TO_CART:

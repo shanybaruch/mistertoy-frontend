@@ -1,9 +1,13 @@
 import { AdvancedMarker, APIProvider, InfoWindow, Map, Marker, useAdvancedMarkerRef } from "@vis.gl/react-google-maps"
 import { useState } from "react"
+import { ShoppingCart } from "../cmps/ShoppingCart"
+import { useSelector } from "react-redux"
 
 const API_KEY = 'AIzaSyAi7MXdIi0M6OMiTHGb4HZvv6R4AWvGhC8'
 
 export function GoogleMap() {
+    const isCartShown = useSelector(storeState => storeState.toyModule.isCartShown)
+
     const defaultCenter = { lat: 32.073, lng: 34.78 }
     const [coords, setCoords] = useState({ ...defaultCenter })
     const zoom = 13
@@ -107,8 +111,8 @@ export function GoogleMap() {
             <section className="branches-list-container">
                 <div className="branches-grid">
                     {branches.map(branch => (
-                        <article 
-                            key={branch._id} 
+                        <article
+                            key={branch._id}
                             className={`branch-card ${selectedBranch?._id === branch._id ? 'active' : ''}`}
                             onClick={() => onSelectStore(branch)}
                         >
@@ -126,6 +130,9 @@ export function GoogleMap() {
                     ))}
                 </div>
             </section>
+
+            < ShoppingCart isCartShown={isCartShown} />
+
         </section>
     )
 }

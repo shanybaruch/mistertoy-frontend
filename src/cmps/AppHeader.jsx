@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { useContext } from 'react'
 import { ThemeContext } from '../contexts/ThemeContext.jsx'
+import { LoginSignup } from './LoginSignup.jsx'
 
 export function AppHeader() {
     const dispatch = useDispatch()
@@ -52,7 +53,6 @@ export function AppHeader() {
                 </section>
             )} */}
             <UserMsg />
-            
         </header>
     )
 }

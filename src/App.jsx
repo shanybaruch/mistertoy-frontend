@@ -1,6 +1,6 @@
 import './assets/style/main.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import { Provider } from 'react-redux'
+import { Provider, useSelector } from 'react-redux'
 
 import { AppHeader } from './cmps/AppHeader.jsx'
 import { AppFooter } from './cmps/AppFooter.jsx'
@@ -17,6 +17,7 @@ import { GoogleMap } from './pages/GoogleMap.jsx'
 
 
 export function App() {
+    
     return (
         <Provider store={store}>
             <Router>

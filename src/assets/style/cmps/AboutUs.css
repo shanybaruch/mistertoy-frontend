@@ -1,5 +1,9 @@
 .about-us {
 
+    p {
+        font-weight: 200;
+    }
+
     &.container {
         margin: 0;
     }
@@ -7,5 +11,6 @@
     .title {
         text-align: center;
         margin-top: 0;
+        margin-bottom: .5em;
     }
 }

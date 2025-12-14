@@ -75,7 +75,7 @@ export function GoogleMap() {
                     {selectedBranch && (
                         <InfoWindow
                             position={selectedBranch.position}
-                            onCloseClick={() => setSelectedBranch(null)} // סגירת החלון
+                            onCloseClick={() => setSelectedBranch(null)}
                         >
                             <div style={{ padding: '10px' }}>
                                 <h4>{selectedBranch.name}</h4>
@@ -90,7 +90,7 @@ export function GoogleMap() {
                         onClick={() => setIsInfoOpen(isOpen => !isOpen)}
                         position={coords}
                     >
-                        <div style={{ fontSize: '2rem' }}>📍</div>
+                        <div className="location-icon">📍</div>
 
                         {isInfoOpen &&
                             <InfoWindow
@@ -117,7 +117,7 @@ export function GoogleMap() {
                                 <p className="address">{branch.address}</p>
                                 <div className="divider"></div>
                                 <p className="hours">
-                                    <span className="clock-icon">⏰</span> 
+                                    {/* <span className="clock-icon">⏰</span>  */}
                                     {branch.hours}
                                 </p>
                             </div>

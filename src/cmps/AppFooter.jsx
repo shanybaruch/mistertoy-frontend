@@ -19,9 +19,9 @@ export function AppFooter() {
                 <span> {toysLength || 0} </span>
                 toy
             </h5>
-            <h5 className='cart-footer'>
+            {/* <h5 className='cart-footer'>
                 <span>{shoppingCartLength}</span> Products in Cart
-            </h5>
+            </h5> */}
             <ShoppingCart isCartShown={isCartShown} />
             <UserMsg />
         </footer>

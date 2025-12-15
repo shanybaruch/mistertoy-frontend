@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { AccordionGroup, AccordionItem } from "../cmps/AccodionGroup.jsx";
 import { ShoppingCart } from "../cmps/ShoppingCart.jsx";
+import { Chart } from "../cmps/Chart.jsx";
 
 export function AboutUs() {
     const isCartShown = useSelector(storeState => storeState.toyModule.isCartShown)

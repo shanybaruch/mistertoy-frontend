@@ -68,3 +68,11 @@
         opacity: .6;
     }
 }
+
+.not-in-stock {
+    color: red;
+}
+
+.in-stock {
+    color: green;
+}

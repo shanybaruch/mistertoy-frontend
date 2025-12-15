@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 export function ToyPreview({ loggedInUser, toy, onRemoveToy }) {
   const navigate = useNavigate()
-
+  // console.log('toy: ', toy);
+  
   return (
     <article
       className="toy-preview"
@@ -13,6 +14,8 @@ export function ToyPreview({ loggedInUser, toy, onRemoveToy }) {
       <img className="toy-img" src={toy.imgUrl} alt="toy-img" />
 
       <p> <span>${toy.price.toLocaleString()}</span></p>
+
+      <p className={toy.inStock ? 'in-stock' : 'not-in-stock'}>{toy.inStock ? 'In stock' : 'Not in stock'}</p>
 
       {toy.owner &&
         <p>

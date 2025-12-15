@@ -52,39 +52,35 @@ export function ToyIndex() {
         setSort(sortBy)
     }
 
-    function onRemoveToy(toyId) {
-        removeToy(toyId)
-            .then(() => {
-                showSuccessMsg('Toy removed')
-            })
-            .catch(err => {
-                console.log('Cannot remove toy', err)
-                showErrorMsg('Cannot remove toy')
-            })
+    async function onRemoveToy(toyId) {
+        try {
+            await removeToy(toyId)
+            showSuccessMsg('Toy removed')
+        } catch (err) {
+            console.log('Cannot remove toy', err)
+            showErrorMsg('Cannot remove toy')
+        }
     }
 
-    function onAddToy() {
+    async function onAddToy() {
         const toyToSave = toyService.getRandomToy()
-        saveToy(toyToSave)
-            .then((savedToy) => {
-                showSuccessMsg(`Toy added (id: ${savedToy._id})`)
-            })
-            .catch(err => {
-                showErrorMsg('Cannot add toy')
-            })
+        try {
+            const savedToy = await saveToy(toyToSave)
+            showSuccessMsg(`Toy added`)
+        } catch (err) {
+            showErrorMsg('Cannot add toy')
+        }
     }
 
-    function onEditToy(toy) {
+    async function onEditToy(toy) {
         const price = +prompt('New price?')
         const toyToSave = { ...toy, price }
-
-        saveToy(toyToSave)
-            .then((savedToy) => {
-                showSuccessMsg(`Toy updated to price: $${savedToy.price}`)
-            })
-            .catch(err => {
-                showErrorMsg('Cannot update toy')
-            })
+        try {
+            await saveToy(toyToSave)
+            showSuccessMsg(`Toy updated`)
+        } catch (err) {
+            showErrorMsg('Cannot update toy')
+        }
     }
 
     function addToCart(toy) {
@@ -102,7 +98,7 @@ export function ToyIndex() {
     }
 
     // console.log('toys: ',toys);
-    
+
     return (
         <section className='toy-index' >
             <main>

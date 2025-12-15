@@ -10,19 +10,17 @@ import { ShoppingCart } from "../cmps/ShoppingCart.jsx"
 
 export function HomePage() {
     const isCartShown = useSelector(storeState => storeState.toyModule.isCartShown)
-
     const user = useSelector(storeState => storeState.userModule.loggedInUser)
-
     const { toggleTheme } = useContext(ThemeContext)
 
-    function onLogout() {
-        logout()
-            .then(() => {
-                showSuccessMsg('logout successfully')
-            })
-            .catch((err) => {
-                showErrorMsg('OOPs try again')
-            })
+    async function onLogout() {
+        try {
+            await logout()
+            showSuccessMsg('logout successfully')
+        }
+        catch (err) {
+            showErrorMsg('OOPs try again')
+        }
     }
 
     return (
@@ -47,7 +45,7 @@ export function HomePage() {
             </div>
             <button className="toggle-theme" onClick={toggleTheme}>Toggle Theme</button>
 
-           < ShoppingCart isCartShown={isCartShown} />
+            < ShoppingCart isCartShown={isCartShown} />
 
         </section >
     )

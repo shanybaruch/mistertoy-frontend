@@ -14,19 +14,14 @@ export function AppHeader() {
     // console.log('user:', user)
     const { theme } = useContext(ThemeContext)
 
-    function onLogout() {
-        logout()
-            .then(() => {
-                showSuccessMsg('logout successfully')
-            })
-            .catch((err) => {
-                showErrorMsg('OOPs try again')
-            })
-    }
-
-    function onToggleCart(ev) {
-        ev.preventDefault()
-        dispatch({ type: TOGGLE_CART_IS_SHOWN })
+    async function onLogout() {
+        try {
+           await logout()
+            showSuccessMsg('logout successfully')
+        }
+        catch (err) {
+            showErrorMsg('OOPs try again')
+        }
     }
 
     return (

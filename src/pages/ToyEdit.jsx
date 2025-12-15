@@ -18,25 +18,27 @@ export function ToyEdit() {
         loadToyLabels()
     }, [])
 
-    function loadToy() {
+    async function loadToy() {
         if (!toyId) return
-        toyService.getById(toyId)
-            .then(setToyToEdit)
-            .catch(err => {
-                console.log('Had issues in toy edit', err)
-                navigate('/toy')
-                showErrorMsg('Toy not found')
-            })
+        try {
+            const toy = await toyService.getById(toyId)
+            setToyToEdit(toy)
+        } catch (err) {
+            console.log('Had issues in toy edit', err)
+            navigate('/toy')
+            showErrorMsg('Toy not found')
+        }
     }
 
-    function loadToyLabels() {
-        toyService.getToyLabels()
-            .then(setLabels)
-            .catch(err => {
-                console.log('Had issues in toy edit:', err)
-                navigate('/toy')
-                showErrorMsg('Toy not found!')
-            })
+    async function loadToyLabels() {
+        try {
+            const labelsToy = await toyService.getToyLabels()
+            setLabels(labelsToy)
+        } catch (err) {
+            console.log('Had issues in toy edit:', err)
+            navigate('/toy')
+            showErrorMsg('Could not load labels')
+        }
     }
 
     function handleChange({ target }) {
@@ -56,29 +58,28 @@ export function ToyEdit() {
         }))
     }
 
-    function onSaveToy(ev) {
+    async function onSaveToy(ev) {
         ev.preventDefault()
         if (!toyToEdit.price) toyToEdit.price = 100
-        saveToy(toyToEdit)
-            .then(() => {
-                showSuccessMsg('Toy Saved!')
-                navigate('/toy')
-            })
-            .catch(err => {
-                console.log('Had issues in toy details', err)
-                showErrorMsg('Had issues in toy details')
-            })
+        try {
+            await saveToy(toyToEdit)
+            showSuccessMsg('Toy Saved!')
+            navigate('/toy')
+        } catch (err) {
+            console.log('Had issues in toy details', err)
+            showErrorMsg('Had issues in toy details')
+        }
     }
 
     const priceValidations = {
         min: "1",
         required: true
-    }    
+    }
 
     return (
         <>
             <section className="toy-edit">
-                <h2>{toyToEdit._id ? `Edit ${toyToEdit.name}`  : 'Add Toy'}</h2>
+                <h2>{toyToEdit._id ? `Edit ${toyToEdit.name}` : 'Add Toy'}</h2>
                 <form onSubmit={onSaveToy} >
 
                     <div className="form-group">

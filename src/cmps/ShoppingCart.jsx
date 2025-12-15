@@ -18,15 +18,15 @@ export function ShoppingCart({ isCartShown }) {
         return shoppingCart.reduce((acc, toy) => acc + toy.price, 0)
     }
 
-    function onCheckout() {
+    async function onCheckout() {
         const amount = getCartTotal()
-        checkout(amount)
-            .then(()=>{
-                showSuccessMsg(`Charged you: $ ${amount.toLocaleString()}`)
-            })
-            .catch(()=>{
-                showErrorMsg('There was a problem checking out!')
-            })
+        try {
+            await checkout(amount)
+            showSuccessMsg(`Charged you: $ ${amount.toLocaleString()}`)
+        }
+        catch (err) {
+            showErrorMsg('There was a problem checking out!')
+        }
     }
 
     const total = getCartTotal()
@@ -40,7 +40,7 @@ export function ShoppingCart({ isCartShown }) {
                         <button onClick={() => {
                             removeFromCart(toy._id)
                         }}>x</button>
-                        {toy.name} <span> ${toy.price} </span> 
+                        {toy.name} <span> ${toy.price} </span>
                     </li>)
                 }
             </ul>

@@ -17,7 +17,6 @@ export const userService = {
 
 
 function login({ username, password }) {
-
     return httpService.post(BASE_URL + 'login', { username, password })
         .then(user => {
             console.log('user FETCH:', user)

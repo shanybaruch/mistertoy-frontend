@@ -40,7 +40,7 @@
         &:hover {
             background-color: transparent;
             font-size: 1.1rem;
-            color: black;
+            color: var(--gray3);
         }
     }
 
@@ -54,7 +54,7 @@
             transition: .3s;
 
             &:hover {
-                background-color: white;
+                background-color: var(--gray1-light);
             }
         }
     }

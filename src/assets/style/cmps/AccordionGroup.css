@@ -1,27 +1,13 @@
-/* .accordion-group {
-   
-    summary {
-       cursor: pointer;
-       background-color: #e4e4e4;
-       border: 1px solid #ddd;
-       padding: 1em;
-    }
-    .content {
-        padding: 0em 2em;
-    }
-} */
-
 .accordion-group {
-    border: 1px solid #e0e0e0;
     border-radius: 14px;
     overflow: hidden;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
     max-width: 600px;
     margin: 20px auto;
 }
 
 .accordion-group article {
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--gray1);
 }
 
 .accordion-group article:last-child {
@@ -34,7 +20,7 @@
     align-items: center;
 
     padding: 1.2em;
-    background-color: #fff;
+    background-color: var(--gray1-light);
     cursor: pointer;
     font-weight: 500;
     font-size: 1rem;
@@ -68,7 +54,6 @@
 .accordion-group details[open] summary {
     background-color: var(--gray1);
     color: var(--clr1-dark);
-    border-bottom: 1px solid #e0e0e0;
 }
 
 .accordion-group details[open] summary::after {
@@ -79,9 +64,9 @@
 .accordion-group .content {
     padding-block: .5em;
     padding-inline: 1.4em;
-    background-color: #fff;
+    background-color: var(--gray1-light);
     line-height: 1.6;
-    color: #555;
+    color: var(--gray3);
 
     animation: fadeIn 0.4s ease;
 }

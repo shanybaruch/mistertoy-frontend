@@ -84,7 +84,7 @@ export function ToyEdit() {
                     <div className="form-group">
                         <label htmlFor="name">Name:</label>
                         <input
-                            type="text"
+                            type="search"
                             id="name"
                             name="name"
                             value={toyToEdit.name}

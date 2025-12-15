@@ -161,7 +161,7 @@
     background-color: #ff8ce2;
 }
 
-@media (max-width: 460px) {
+@media (max-width: 440px) {
     .toy-filter .filtering div {
         flex-direction: column;
         width: 100%;

@@ -38,7 +38,7 @@
     }
 
     .branch-card {
-        background: #ffffff;
+        background: var(--gray1-light);
         border-radius: 8px;
         padding: 12px;
         border: 1px solid var(--gray1);
@@ -84,15 +84,8 @@
         font-size: 0.8rem;
     }
 
-    /* .divider {
-        height: 1px;
-        background-color: var(--gray1);
-        margin: 5px 0;
-        width: 100%;
-    } */
-
     .card-content .hours {
-        color: #555;
+        color: var(--gray3);
         font-size: 0.8rem;
         font-weight: 300;
         display: flex;

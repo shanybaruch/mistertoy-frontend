@@ -54,7 +54,7 @@ export function ToyFilter({ filterBy, onSetFilter, sortBy, onSetSort, toyLabels 
                 <div className="filter-left-side">
                     <input
                         className="filter-by-name"
-                        type="text"
+                        type="search"
                         name="txt"
                         placeholder="Toy name"
                         value={txt}

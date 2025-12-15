@@ -17,7 +17,7 @@
   height: 1em;
   width: 1em;
   border-radius: 1em;
-  background: #FFF;
+  background: var(--gray1-light);
   box-shadow: 0 0.1em 0.3em rgba(0,0,0,0.3);
   transition: all 300ms;
 }

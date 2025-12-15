@@ -1,7 +1,6 @@
 .chat-container {
     max-width: 270px;
     margin: 10px auto;
-    /* border: 1px solid #ccc; */
     border-radius: 15px;
     padding: 1px;
 
@@ -75,7 +74,7 @@
 .chat-input-form input {
     flex: 1;
     padding-inline: 15px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--gray2-light);
     border-radius: 20px;
 }
 
@@ -83,7 +82,7 @@
     padding: 10px 16px;
     background-color: #007bff;
     font-weight: 500;
-    color: white;
+    color: var(--gray1-light);
     border: none;
     border-radius: 40px;
     cursor: pointer;

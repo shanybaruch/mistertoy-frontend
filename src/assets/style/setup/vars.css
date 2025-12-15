@@ -12,7 +12,9 @@
   --gray3-light: #c0ffeb;
 
   --gray1: rgb(240, 240, 240);
+  --gray1-light: rgb(255, 255, 255);
   --gray2: rgb(155, 155, 155);
+  --gray2-light: rgb(199, 199, 199);
   --gray3: rgb(44, 44, 44);
 
 }

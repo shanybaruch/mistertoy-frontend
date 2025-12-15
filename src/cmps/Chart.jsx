@@ -1,30 +1,58 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import { useSelector } from 'react-redux';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export function Chart() {
+
+    const toys = useSelector(storeState => storeState.toyModule.toys)
+
+    const labels = [
+        'On wheels',
+        'Box game',
+        'Art',
+        'Baby',
+        'Doll',
+        'Puzzle',
+        'Outdoor',
+        'Battery Powered',
+    ]
+
+    const dataValues = labels.map(label => {
+        return toys.reduce((acc, toy) => {
+            if (toy.labels && toy.labels.includes(label)) {
+                return acc + 1
+            }
+            return acc
+        }, 0)
+    })
+
     const data = {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: labels,
         datasets: [
             {
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                label: '# of Toys',
+                data: dataValues,
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 160, 7, 0.2)',
                     'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(121, 255, 188, 0.2)',
+                    'rgba(94, 255, 255, 0.2)',
+                    'rgba(25, 163, 255, 0.2)',
+                    'rgba(163, 118, 255, 0.2)',
+                    'rgba(255, 99, 229, 0.2)',
+                    'rgba(255, 0, 0, 0.2)',
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 149, 42, 1)',
+                    'rgba(255, 214, 50, 1)',
+                    'rgba(0, 223, 130, 1)',
+                    'rgba(55, 248, 248, 1)',
+                    'rgba(27, 164, 255, 1)',
                     'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)',
+                    'rgba(255, 99, 226, 1)',
+                    'rgba(255, 0, 0, 1)',
                 ],
                 borderWidth: 1,
             },
@@ -32,7 +60,8 @@ export function Chart() {
     }
 
     return (
-        <section className="chart-page">
+        <section className="chart-dashboard" style={{ maxWidth: '500px', margin: ' 2em auto' }}>
+            <h2 style={{ textAlign: 'center', marginBlock: '.5em' }}>Toys by Labels</h2>
             <Doughnut data={data} />
         </section>
     )

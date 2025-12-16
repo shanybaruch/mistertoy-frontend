@@ -5,7 +5,8 @@
     padding-left: 0;
     gap: 0.6em;
     margin-block: 0.6em;
-    
+    height: 100%;
+
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
@@ -28,12 +29,14 @@
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 }
-@media (max-width: 800px) {
+
+@media (max-width: 700px) {
     .toy-list {
         grid-template-columns: 1fr 1fr;
     }
 }
-@media (max-width: 440px) {
+
+@media (max-width: 380px) {
     .toy-list {
         grid-template-columns: 1fr;
     }

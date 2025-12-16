@@ -1,16 +1,21 @@
 .app-header {
     background-color: var(--gray1);
-    padding-block: .5em;
+    padding-block: .8em;
+    padding-inline: .5em;
+
+    display: grid;
+    grid-template-columns: 1fr minmax(auto, 800px) 1fr;
+    grid-template-rows: 1fr;
     
     .header-container {
-        display: grid;
-        grid-template-columns: 1fr 4fr;
         align-items: center;
-        padding-block: .5em;
+        display: flex;
+        justify-content: space-between;
 
-        margin-bottom: .5em;
-
+        grid-column: 2;
+        
         .title {
+            grid-column: 2 / 3;
             font-size: 1rem;
             font-weight: 200;
             text-align: center;
@@ -21,7 +26,7 @@
 .app-nav {
     display: flex;
     justify-content: center;
-    gap: 1em;
+    gap: .6em;
 
     margin-block: .3em;
 

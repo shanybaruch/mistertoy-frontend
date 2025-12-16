@@ -43,17 +43,14 @@
         .filter-by-stock {
             background-color: var(--gray1-light);
             color: var(--gray3);
-
             height: 35px;
             border: 1px solid #c4c4c4;
             border-radius: 2px;
             padding: 0 10px;
-
             font-size: .8rem;
             font-family: inherit;
             box-sizing: border-box;
             transition: all 0.2s ease;
-
             width: 120px;
         }
 
@@ -69,6 +66,22 @@
         ::placeholder {
             color: #999;
             opacity: 1;
+        }
+    }
+
+    @media (min-width: 700px) {
+        .filtering {
+            display: flex !important; 
+            flex-direction: row;      
+            justify-content: center;
+            flex-wrap: wrap;          
+        }
+        
+        .filtering .filter-right-side,
+        .filtering .filter-left-side {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
         }
     }
 
@@ -166,7 +179,6 @@
         flex-direction: column;
         width: 100%;
     }
-
     .toy-filter .filtering input,
     .toy-filter .filtering select {
         width: 100%;

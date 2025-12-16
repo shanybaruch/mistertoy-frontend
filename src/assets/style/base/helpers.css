@@ -56,6 +56,17 @@
     content: "\f1b4";
 }
 
+.btn-prev, .btn-next {
+    margin: 1em;
+    padding-block: .3em;
+    padding-inline: .6em;
+
+    &:hover {
+        color: var(--gray1-light);
+        background-color: transparent;
+    }
+}
+
 .btn-prev:disabled,
 .btn-next:disabled {
     color: var(--gray2);

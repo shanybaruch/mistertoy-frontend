@@ -3,7 +3,12 @@
     color: var(--gray3);
     background-color: var(--gray1);
     font-size: 1rem;
+    padding-block: .5em;
 
+    h5 {
+        margin: 0;
+        padding-block: 0;
+    }
     .count {
         font-weight: 100;
         margin: 0;

@@ -11,7 +11,7 @@ export function PaginationButtons({ pageIdx, maxPage, onChangePageIdx }) {
             >
                 Previous
             </button>
-            {pageIdx + 1}
+            {pageIdx + 1} - {maxPage}
             <button
                 className="btn-next"
                 onClick={() => { onChangePageIdx(1) }}

@@ -12,38 +12,38 @@ import {
 } from "../reducers/toy.reducer.js";
 import { store } from "../store.js";
 
-export function loadToys(pageIdx) {
+export async function loadToys(pageIdx) {
     const { filterBy, sortBy } = store.getState().toyModule
     store.dispatch({ type: SET_IS_LOADING, isLoading: true })
 
-    return toyService.query(filterBy, sortBy, pageIdx)
-        .then(res => {
-            store.dispatch({
-                type: SET_TOYS,
-                toys: res.toys,
-                maxPage: res.maxPage,
-                labels: res.labels,
-                totalCount: res.totalCount
-            })
+    try {
+        const res = await toyService.query(filterBy, sortBy, pageIdx)
+        store.dispatch({
+            type: SET_TOYS,
+            toys: res.toys,
+            maxPage: res.maxPage,
+            labels: res.labels,
+            totalCount: res.totalCount
         })
-        .catch(err => {
-            console.log('toy action -> Cannot load toys')
-            throw err
-        })
-        .finally(() => {
-            store.dispatch({ type: SET_IS_LOADING, isLoading: false })
-        })
+        return res
+
+    } catch (err) {
+        console.log('toy action -> Cannot load toys')
+        throw err
+    } finally {
+        store.dispatch({ type: SET_IS_LOADING, isLoading: false })
+    }
 }
 
-export function removeToy(toyId) {
-    return toyService.remove(toyId)
-        .then(() => {
-            store.dispatch({ type: REMOVE_TOY, toyId })
-        })
-        .catch(err => {
-            console.log('toy action -> Cannot remove toy', err)
-            throw err
-        })
+export async function removeToy(toyId) {
+    try {
+        const toy = await toyService.remove(toyId)
+        store.dispatch({ type: REMOVE_TOY, toyId })
+        return toy
+    } catch (err) {
+        console.log('toy action -> Cannot remove toy', err)
+        throw err
+    }
 }
 
 export function removeToyOptimistic(toyId) {
@@ -55,18 +55,17 @@ export function removeToyOptimistic(toyId) {
     })
 }
 
-export function saveToy(toy) {
+export async function saveToy(toy) {
     const type = toy._id ? UPDATE_TOY : ADD_TOY
-    return toyService.save(toy)
-        .then(savedToy => {
-            // console.log('savedToy:', savedToy)
-            store.dispatch({ type, toy: savedToy })
-            return savedToy
-        })
-        .catch(err => {
-            console.log('toy action file: Cannot save toy', err)
-            throw err
-        })
+    try {
+        const savedToy = await toyService.save(toy)
+        store.dispatch({ type, toy: savedToy })
+        return savedToy
+    }
+    catch (err) {
+        console.log('toy action file: Cannot save toy', err)
+        throw err
+    }
 }
 
 export function setFilter(filterBy = toyService.getDefaultFilter()) {

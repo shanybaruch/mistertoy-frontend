@@ -3,8 +3,8 @@
     align-items: center;
     flex-direction: column;
     background-color: var(--gray1);
-    padding: .5em;
     color: var(--gray3);
+    justify-content: start;
 
     .filtering {
         display: grid;

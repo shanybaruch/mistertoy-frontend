@@ -1,4 +1,5 @@
 .about-us {
+        grid-column: 2;
 
     p {
         font-weight: 200;

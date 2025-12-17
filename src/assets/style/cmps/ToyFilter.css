@@ -9,13 +9,13 @@
     backdrop-filter: blur(3px);
     opacity: 0;
     visibility: hidden;
-    pointer-events: none;   
+    pointer-events: none;
     transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
 .app-overlay.open {
     opacity: 1;
-    visibility: visible;  
+    visibility: visible;
     pointer-events: auto;
 }
 
@@ -61,7 +61,7 @@
     position: absolute;
     right: -67px;
     top: 65px;
-   
+
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -71,7 +71,7 @@
     font-size: 1rem;
     margin: 0;
     width: max-content;
-   
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -241,11 +241,13 @@
     .toy-filter {
         width: 170px;
     }
+
     .toy-filter .filtering {
         display: flex;
         flex-direction: column;
         justify-content: center;
     }
+
     .toy-filter .filtering .filter-right-side,
     .toy-filter .filtering .filter-left-side {
         display: flex;
@@ -259,11 +261,13 @@
     .toy-filter {
         width: 130px;
     }
+
     .toy-filter .filtering {
         display: flex;
         flex-direction: column;
         justify-content: center;
     }
+
     .toy-filter .filtering .filter-right-side,
     .toy-filter .filtering .filter-left-side {
         display: flex;

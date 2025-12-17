@@ -5,7 +5,6 @@ import { ToySort } from './ToySort.jsx'
 import { OutlinedInput, InputLabel, MenuItem, Select, FormControl, Chip, Box } from '@mui/material';
 
 export function ToyFilter({ filterBy, onSetFilter, sortBy, onSetSort, toyLabels = [] }) {
-
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
     const debouncedOnSetFilter = useRef(utilService.debounce(onSetFilter, 300)).current
 
@@ -46,7 +45,7 @@ export function ToyFilter({ filterBy, onSetFilter, sortBy, onSetSort, toyLabels 
     const { txt, inStock, labels } = filterByToEdit
 
     return (
-        <>
+        <section className="main-layout">
             <div
                 className={`app-overlay ${isOpen ? 'open' : ''}`}
                 onClick={() => setIsOpen(false)}
@@ -154,6 +153,6 @@ export function ToyFilter({ filterBy, onSetFilter, sortBy, onSetSort, toyLabels 
                 </form>
                 <ToySort sortBy={sortBy} onSetSort={onSetSort} />
             </section>
-        </>
+        </section>
     )
 }

@@ -60,9 +60,9 @@ export function Chart() {
     }
 
     return (
-        <section className="chart-dashboard" style={{ maxWidth: '500px', margin: ' 2em auto' }}>
+        <section className="chart-dashboard" style={{ maxWidth: '500px', margin: ' 2em auto', gridColumn: 2}}>
             <h2 style={{ textAlign: 'center', marginBlock: '.5em' }}>Toys by Labels</h2>
             <Doughnut data={data} />
-        </section>
+        </section >
     )
 }

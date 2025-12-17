@@ -2,6 +2,8 @@
     height: 80%;
     min-width: 80%;
 
+    grid-column: 2;
+
     .branches-list-container {
         padding-bottom: 10px;
     }

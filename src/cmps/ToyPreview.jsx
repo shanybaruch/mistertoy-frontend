@@ -17,7 +17,7 @@ export function ToyPreview({ loggedInUser, toy, onRemoveToy }) {
 
       <p className={toy.inStock ? 'in-stock' : 'not-in-stock'}>{toy.inStock ? 'In stock' : 'Not in stock'}</p>
 
-      {toy.owner &&
+      {/* {toy.owner &&
         <p>
           <Link
             to={`/user/${toy.owner._id}`}
@@ -25,7 +25,7 @@ export function ToyPreview({ loggedInUser, toy, onRemoveToy }) {
           >
             {toy.owner.fullname}
           </Link>
-        </p>}
+        </p>} */}
 
       <div className="btns-preview">
         {/* <Link className="btn-details" to={`/toy/${toy._id}`}>Details</Link> */}

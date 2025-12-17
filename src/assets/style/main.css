@@ -13,9 +13,6 @@
 @import 'cmps/ToyEdit.css';
 @import 'cmps/AppHeader.css';
 @import 'cmps/AppFooter.css';
-@import 'cmps/ToggleBtn.css';
-@import 'cmps/UserMsg.css';
-@import 'cmps/AccordionGroup.css';
 
 @import 'cmps/ToyFilter.css';
 @import 'cmps/ToyList.css';
@@ -25,10 +22,14 @@
 @import 'cmps/HomePage.css';
 
 @import 'cmps/ShoppingCart.css';
-
+@import 'cmps/ToggleBtn.css';
+@import 'cmps/AccordionGroup.css';
 @import 'cmps/PopUp.css';
 @import 'cmps/Chat.css';
 @import 'cmps/GoogleMap.css';
+@import 'cmps/common/Loader.css';
+@import 'cmps/common/UserMsg.css';
+
 
 
 

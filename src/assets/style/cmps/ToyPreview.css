@@ -5,7 +5,10 @@
 
     padding-block: 0.3em;
     cursor: pointer;
-    transition: .4s;
+
+    opacity: 1;
+    transition: opacity 0.4s ease, scale 0.4s ease;
+
 
     .title {
         padding-bottom: 0;
@@ -44,6 +47,7 @@
 }
 
 .toy-preview {
+    transition: .4s;
 
     .buy {
         padding: .3em;
@@ -70,7 +74,28 @@
     }
 }
 
-.toy-list:has(.toy-list-preview:hover) > .toy-list-preview:not(:hover) {
+.toy-list:has(.toy-list-preview:hover)>.toy-list-preview:not(:hover) {
     scale: .9;
-    opacity: .7;
+    /* opacity: 0.7; */
+}
+
+.toy-list-preview {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.toy-preview.start-animation {
+    animation: fadeInUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

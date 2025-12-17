@@ -15,6 +15,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { PaginationButtons } from '../cmps/PaginationButtons.jsx'
 import { userService } from '../services/user.service.js'
+import { Loader } from '../cmps/Loader.jsx'
 
 
 export function ToyIndex() {
@@ -113,15 +114,16 @@ export function ToyIndex() {
                     <Link to="/toy/edit">Add Toy</Link>
                     <button className='add-btn' onClick={onAddToy}>Add Random Toy</button>
                 </section>
+                {isLoading && <Loader />}
                 {!isLoading && toys
-                    ? <ToyList
+                    && <ToyList
                         loggedInUser={loggedInUser}
                         toys={toys}
                         onRemoveToy={onRemoveToy}
                         onEditToy={onEditToy}
                         addToCart={addToCart}
                     />
-                    : <div className="loading">Loading...</div>
+
                 }
 
                 {<PaginationButtons

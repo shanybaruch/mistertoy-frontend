@@ -8,11 +8,15 @@
     z-index: 49;
     backdrop-filter: blur(3px);
     opacity: 0;
+    visibility: hidden;
+    pointer-events: none;   
     transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
 .app-overlay.open {
     opacity: 1;
+    visibility: visible;  
+    pointer-events: auto;
 }
 
 .toy-filter {
@@ -21,7 +25,6 @@
     top: 0;
     left: 0;
     background-color: var(--gray1-light);
-    z-index: 50;
     border-radius: 7px;
     transform: translateX(-108%);
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
@@ -31,6 +34,7 @@
     transition: transform 0.45s var(--smooth-bezier), box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
+    z-index: 50;
 }
 
 .toy-filter.open {

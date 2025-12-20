@@ -5,10 +5,9 @@
 
     padding-block: 0.3em;
     cursor: pointer;
-
+    
+    transition: .4s;
     opacity: 1;
-    transition: opacity 0.4s ease, scale 0.4s ease;
-
 
     .title {
         padding-bottom: 0;
@@ -23,6 +22,13 @@
             font-size: .8rem;
             font-weight: 300;
         }
+    }
+
+    p.not-in-stock {
+        opacity: .5;
+    }
+    p.in-stock {
+        opacity: .7;
     }
 
     .btns-preview {
@@ -44,12 +50,8 @@
             }
         }
     }
-}
 
-.toy-preview {
-    transition: .4s;
-
-    .buy {
+     .buy {
         padding: .3em;
         margin-top: .1em;
         padding-inline: .6em;

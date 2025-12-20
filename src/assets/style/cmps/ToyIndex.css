@@ -6,7 +6,6 @@
 main {
     display: grid;
     justify-items: center;
-    /* height: 100%; */
     align-items: start;
 
     a {
@@ -32,20 +31,18 @@ main {
 
 .btns-add-toy {
     display: flex;
-    /* flex-direction: column; */
     align-items: center;
     gap: 3px;
-    /* 
-    height: 10vh;
-    margin-top: 1em; */
 
     a,
     button {
-        padding-block: .3em;
+        font-weight: 200;
+        font-size: 1rem;
+        padding-block: .25em;
         margin-inline: .2em;
         background-color: var(--clr2-dark);
         color: var(--gray1-light);
-        border-radius: 5px;
+        border-radius: 8px;
 
         &:hover {
             background-color: var(--clr2);
@@ -60,6 +57,8 @@ main.main-layout {
     display: grid;
     grid-template-columns: 1fr minmax(auto, 800px) 1fr;
     grid-template-rows: 1fr;
+
+    margin-top: 2em;
 }
 
 .toy-index {

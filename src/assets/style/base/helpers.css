@@ -81,9 +81,11 @@
 }
 
 .not-in-stock {
-    color: red;
+    color: rgb(234, 8, 65);
+    /* color: var(--gray3); */
 }
 
 .in-stock {
-    color: green;
+    color: rgb(15, 189, 79);
+    /* color: var(--clr2); */
 }

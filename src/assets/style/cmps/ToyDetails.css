@@ -1,6 +1,7 @@
 .toy-details {
     display: grid;
     grid-template-rows: 6fr 1fr;
+    grid-column: 2;
 
     .body-details {
         gap: .5em;

@@ -40,7 +40,7 @@ export function ToyDetails() {
                     </div>
                     <div className="div-img-stock">
                         <img className="toy-img" src={toy.imgUrl} alt="toy-img" />
-                        <h5 className={(toy.inStock) ? 'green' : 'red'}>{(toy.inStock) ? 'In stock ' : 'Not in stock'}</h5>
+                        <h5 className={(toy.inStock) ? 'in-stock' : 'not-in-stock'}>{(toy.inStock) ? 'In stock ' : 'Not in stock'}</h5>
                     </div>
                 </div>
             </div>

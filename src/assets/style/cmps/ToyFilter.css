@@ -50,27 +50,30 @@
     cursor: pointer;
     text-decoration: underline;
     padding: 0;
-    transition: color 0.2s;
+    transition: .2s;
 }
 
 .toy-filter .btn-clear:hover {
-    color: #f148b9;
+    color: var(--clr2-very-dark);
 }
 
 .toy-filter .toggle-btn {
     position: absolute;
-    right: -67px;
-    top: 65px;
+    right: -80px;
+    top: 90px;
 
     background-color: transparent;
-    border: none;
+    background-color: var(--clr2-dark);
+    padding-block: .8em;
+    padding-inline: 1.5em;
+    font-weight: 200;
+    border-radius: 10px;
     cursor: pointer;
-    font-weight: 400;
-    color: #f148b9;
+    /* color: #f148b9; */
+    color: var(--gray1-light);
     transition: all 0.3s ease;
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin: 0;
-    width: max-content;
 
     display: flex;
     align-items: center;
@@ -78,7 +81,7 @@
 }
 
 .toy-filter .toggle-btn:hover {
-    color: #f148b9;
+    color: var(--clr2-very-dark);
 }
 
 .toy-filter select:hover,
@@ -224,7 +227,7 @@
 
 .toy-filter-menu .MuiMenuItem-root:hover {
     background-color: #ffebf6;
-    color: #f148b9;
+    color: var(--clr2-very-dark);
 }
 
 .toy-filter-menu .MuiMenuItem-root.Mui-selected {

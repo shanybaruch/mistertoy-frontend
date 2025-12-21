@@ -14,8 +14,10 @@ import { store } from "../store.js";
 
 export async function loadToys(pageIdx) {
     const { filterBy, sortBy } = store.getState().toyModule
-    store.dispatch({ type: SET_IS_LOADING, isLoading: true })
-
+    store.dispatch({ 
+        type: SET_IS_LOADING, 
+        isLoading: true 
+    })
     try {
         const res = await toyService.query(filterBy, sortBy, pageIdx)
         store.dispatch({
@@ -26,7 +28,6 @@ export async function loadToys(pageIdx) {
             totalCount: res.totalCount
         })
         return res
-
     } catch (err) {
         console.log('toy action -> Cannot load toys')
         throw err

@@ -26,19 +26,17 @@ export const toyService = {
     getToyLabelCounts,
 }
 
-function query(filterBy = {}, sortBy, pageIdx) {
-    // console.log('sortby: ', sortBy)
-
+function query(filterBy = {}, sortBy = {}, pageIdx) {
     const sortType = sortBy.type || ''
     const sortDesc = sortBy.desc || 1
 
     const params = {
         ...filterBy,
-        txt: filterBy.txt,
-        maxPrice: filterBy.maxPrice,
-        inStock: filterBy.inStock,
+        txt: filterBy.txt || '',
+        maxPrice: filterBy.maxPrice || '',
+        inStock: filterBy.inStock || '',
+        labels: filterBy.labels || [],
         sortBy: sortType,
-        labels: filterBy.labels,
         desc: sortDesc,
         pageIdx: pageIdx
     }

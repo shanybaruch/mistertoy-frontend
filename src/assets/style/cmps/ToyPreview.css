@@ -2,10 +2,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 
     padding-block: 0.3em;
     cursor: pointer;
-    
+    height: 170px;
+
+
     transition: .4s;
     opacity: 1;
 
@@ -27,6 +30,7 @@
     p.not-in-stock {
         opacity: .5;
     }
+
     p.in-stock {
         opacity: .7;
     }
@@ -51,7 +55,7 @@
         }
     }
 
-     .buy {
+    .buy {
         padding: .3em;
         margin-top: .1em;
         padding-inline: .6em;

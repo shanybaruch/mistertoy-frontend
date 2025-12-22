@@ -53,10 +53,6 @@
 
         .btn-back {
             transition: .3s;
-
-            &:hover {
-                background-color: var(--gray1-light);
-            }
         }
     }
 

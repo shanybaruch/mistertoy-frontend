@@ -13,28 +13,35 @@ export function ToyList({ loggedInUser, toys, onRemoveToy, onEditToy, addToCart 
         return () => clearTimeout(timer);
     }, [toys])
 
-    console.log('Rendering toys: ', toys);
-    
+    // console.log('Rendering toys: ', toys);
+
     if (!shouldAnimate) return <Loader />
     return (
         <ul className="toy-list">
-            {toys.map((toy, index) =>
-                <li
-                    className="toy-list-preview start-animation"
-                    key={toy?._id}
-                    style={{ animationDelay: (index * 0.1) + 's' }}
-                >
 
-                    <ToyPreview
-                        loggedInUser={loggedInUser}
-                        toy={toy}
-                        onRemoveToy={onRemoveToy}
-                    />
+            {toys && toys.length > 0 && toys.map((toy, index) => {
 
-                    {/* <button className="buy" onClick={() => addToCart(toy)}>
+                if (!toy || !toy._id) return null
+
+                return (
+                    <li
+                        className="toy-list-preview start-animation"
+                        key={toy._id}
+                        style={{ animationDelay: (index * 0.1) + 's' }}
+                    >
+
+                        <ToyPreview
+                            loggedInUser={loggedInUser}
+                            toy={toy}
+                            onRemoveToy={onRemoveToy}
+                        />
+
+                        {/* <button className="buy" onClick={() => addToCart(toy)}>
                         Add to Cart
                     </button> */}
-                </li>)}
+                    </li>
+                )
+            })}
         </ul>
     )
 }

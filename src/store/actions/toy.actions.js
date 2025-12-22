@@ -14,21 +14,25 @@ import { store } from "../store.js";
 
 export async function loadToys(pageIdx) {
     const { filterBy, sortBy } = store.getState().toyModule
-    store.dispatch({ 
-        type: SET_IS_LOADING, 
-        isLoading: true 
+    store.dispatch({
+        type: SET_IS_LOADING,
+        isLoading: true
     })
     try {
-        const res = await toyService.query(filterBy, sortBy, pageIdx)
+        const data = await toyService.query(filterBy, sortBy, pageIdx)
+        const toys = data.toys.map(toy => ({
+            ...toy,
+            id: toy._id
+        }))
         store.dispatch({
+            toys,
             type: SET_TOYS,
-            toys: res.toys,
-            maxPage: res.maxPage,
-            labels: res.labels,
-            totalCount: res.totalCount
+            maxPage: data.maxPage,
+            labels: data.labels,
+            totalCount: data.totalCount
         })
-        console.log('filter: ', res);
-        return res
+        // console.log('data: ', data);
+        return data
     } catch (err) {
         console.log('toy action -> Cannot load toys')
         throw err

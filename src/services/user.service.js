@@ -54,8 +54,6 @@ async function updateScore(diff) {
     return updateUser.score
 }
 
-
-
 async function getById(userId) {
     try {
         const user = await httpService.get('/api/user/' + userId)
@@ -70,7 +68,12 @@ function getLoggedinUser() {
 }
 
 function _setLoggedinUser(user) {
-    const userToSave = { _id: user._id, fullname: user.fullname, score: user.score }
+    const userToSave = { 
+        _id: user._id, 
+        fullname: user.fullname, 
+        score: user.score, 
+        isAdmin: user.isAdmin || false 
+    }
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN, JSON.stringify(userToSave))
     return userToSave
 }

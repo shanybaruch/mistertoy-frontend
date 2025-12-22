@@ -2,8 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 
 export function ToyPreview({ loggedInUser, toy, onRemoveToy }) {
-  const navigate = useNavigate()
   // console.log('toy: ', toy);
+  const navigate = useNavigate()
 
   if (!toy || !toy._id) return null
   return (
@@ -19,7 +19,7 @@ export function ToyPreview({ loggedInUser, toy, onRemoveToy }) {
       <p className={toy.inStock ? 'in-stock' : 'not-in-stock'}>{toy.inStock ? 'In stock' : 'Not in stock'}</p>
 
       <div className="btns-preview">
-        {loggedInUser?.isAdmin && (
+        {loggedInUser?._id && loggedInUser.isAdmin && (
           <>
             <Link
               className="btn-edit"

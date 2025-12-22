@@ -38,7 +38,7 @@ export function ShoppingCart({ isCartShown }) {
                 {
                     shoppingCart.map((toy, idx) => <li key={idx}>
                         <button onClick={() => {
-                            removeFromCart(toy._id)
+                            removeFromCart(toy?._id)
                         }}>x</button>
                         {toy.name} <span> ${toy.price} </span>
                     </li>)

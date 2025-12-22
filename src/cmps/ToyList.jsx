@@ -13,13 +13,15 @@ export function ToyList({ loggedInUser, toys, onRemoveToy, onEditToy, addToCart 
         return () => clearTimeout(timer);
     }, [toys])
 
+    console.log('Rendering toys: ', toys);
+    
     if (!shouldAnimate) return <Loader />
     return (
         <ul className="toy-list">
             {toys.map((toy, index) =>
                 <li
                     className="toy-list-preview start-animation"
-                    key={toy._id}
+                    key={toy?._id}
                     style={{ animationDelay: (index * 0.1) + 's' }}
                 >
 

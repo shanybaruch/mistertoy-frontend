@@ -22,7 +22,7 @@ export function ToyIndex() {
     const dispatch = useDispatch()
 
     const toys = useSelector(storeState => storeState.toyModule.toys)
-    // console.log(toys);
+    console.log(toys);
     const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
     const isLoading = useSelector(storeState => storeState.toyModule.isLoading)
     const sortBy = useSelector(storeState => storeState.toyModule.sortBy)

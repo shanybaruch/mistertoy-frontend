@@ -53,8 +53,8 @@ function remove(toyId) {
 }
 
 function save(toy) {
-    const method = toy._id ? 'put' : 'post'
-    const url = toy._id ? BASE_URL + toy._id : BASE_URL
+    const method = toy?._id ? 'put' : 'post'
+    const url = toy?._id ? BASE_URL + toy?._id : BASE_URL
 
     return httpService[method](url, toy)
 }

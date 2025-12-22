@@ -45,7 +45,7 @@ export function toyReducer(state = initialState, action = {}) {
             const lastToys = [...state.toys]
             return {
                 ...state,
-                toys: state.toys.filter(toy => toy._id !== action.toyId),
+                toys: state.toys.filter(toy => toy?._id !== action.toyId),
                 lastToys,
                 totalCount: state.totalCount - 1
             }
@@ -58,7 +58,7 @@ export function toyReducer(state = initialState, action = {}) {
         case UPDATE_TOY:
             return {
                 ...state,
-                toys: state.toys.map(toy => toy._id === action.toy._id ? action.toy : toy)
+                toys: state.toys.map(toy => toy?._id === action.toy?._id ? action.toy : toy)
             }
         case SET_FILTER_BY:
             return {
@@ -98,7 +98,7 @@ export function toyReducer(state = initialState, action = {}) {
         case REMOVE_TOY_FROM_CART:
             const shoppingCart =
                 state.shoppingCart
-                    .filter(toy => toy._id !== action.toyId)
+                    .filter(toy => toy?._id !== action.toyId)
             return {
                 ...state,
                 shoppingCart

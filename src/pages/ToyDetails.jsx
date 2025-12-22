@@ -51,7 +51,7 @@ export function ToyDetails() {
                     <Link className="btn-back" to={`/toy`}>Back</Link>
                 </div>
                 {/* <div>
-                    <Link to={`/toy/edit/${toy._id}`}>Edit</Link>
+                    <Link to={`/toy/edit/${toy?._id}`}>Edit</Link>
                     &nbsp;
                 </div> */}
                 {/* <div>

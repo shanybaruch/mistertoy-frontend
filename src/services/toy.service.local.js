@@ -238,7 +238,7 @@ function remove(toyId) {
 
 
 function save(toy) {
-    if (toy._id) {
+    if (toy?._id) {
         return storageService.put(STORAGE_KEY, toy)
     } else {
         // when switching to backend - remove the next line

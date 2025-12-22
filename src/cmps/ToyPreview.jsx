@@ -8,9 +8,9 @@ export function ToyPreview({ loggedInUser, toy, onRemoveToy }) {
   return (
     <article
       className="toy-preview"
-      onClick={() => navigate(`/toy/${toy._id}`)}
+      onClick={() => navigate(`/toy/${toy?._id}`)}
     >
-      <h4 className="title">{toy.name}</h4>
+      <h4 className="title">{toy.name || ''}</h4>
       <img className="toy-img" src={toy.imgUrl} alt="toy-img" />
 
       <p> <span>${toy.price.toLocaleString()}</span></p>
@@ -28,13 +28,13 @@ export function ToyPreview({ loggedInUser, toy, onRemoveToy }) {
         </p>} */}
 
       <div className="btns-preview">
-        {/* <Link className="btn-details" to={`/toy/${toy._id}`}>Details</Link> */}
+        {/* <Link className="btn-details" to={`/toy/${toy?._id}`}>Details</Link> */}
 
         {loggedInUser?._id === toy.owner._id &&
           <>
             <Link
               className="btn-edit"
-              to={`/toy/edit/${toy._id}`}
+              to={`/toy/edit/${toy?._id}`}
               onClick={(ev) => {
                 ev.stopPropagation()
               }}
@@ -45,7 +45,7 @@ export function ToyPreview({ loggedInUser, toy, onRemoveToy }) {
               className='btn-remove'
               onClick={(ev) => {
                 ev.stopPropagation()
-                onRemoveToy(toy._id)
+                onRemoveToy(toy?._id)
               }}>
               Delete
             </button>

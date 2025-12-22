@@ -2,6 +2,8 @@
     text-align: center;
     max-width: 600px;
     margin: 0 auto;
+
+    grid-column: 2 / 3;
 }
 
 .form-group {

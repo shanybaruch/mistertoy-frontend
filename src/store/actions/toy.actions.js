@@ -27,6 +27,7 @@ export async function loadToys(pageIdx) {
             labels: res.labels,
             totalCount: res.totalCount
         })
+        console.log('filter: ', res);
         return res
     } catch (err) {
         console.log('toy action -> Cannot load toys')
@@ -57,7 +58,7 @@ export function removeToyOptimistic(toyId) {
 }
 
 export async function saveToy(toy) {
-    const type = toy._id ? UPDATE_TOY : ADD_TOY
+    const type = toy?._id ? UPDATE_TOY : ADD_TOY
     try {
         const savedToy = await toyService.save(toy)
         store.dispatch({ type, toy: savedToy })

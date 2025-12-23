@@ -6,6 +6,7 @@ import { LoginSignup } from "../cmps/LoginSignup.jsx"
 import { logout } from "../store/actions/user.actions.js"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 import { ShoppingCart } from "../cmps/ShoppingCart.jsx"
+import { Link } from "react-router-dom"
 
 
 export function HomePage() {
@@ -27,12 +28,20 @@ export function HomePage() {
         <section className="home-page flex">
             <div className="login-container">
 
-                <h3 className="title">Mister Toy</h3>
+                {/* <h3 className="title">Mister Toy</h3> */}
                 {/* <img src="../img/vite.svg" /> */}
                 <div className="login">
                     {user ? (
                         <section>
-                            <span to={`/user/${user._id}`}>{user.fullname} <span>${user.score.toLocaleString()}</span></span>
+                            <Link
+                                to={`/user/${user._id}`}
+                                className="title">
+                                {user.fullname}
+                                {user.score &&
+                                    <span className="score">$ {user.score.toLocaleString()}</span>
+                                }
+                                {/* <span> ${(user.score || 0).toLocaleString()} </span> */}
+                            </Link>
                             <button onClick={onLogout}>Logout</button>
                         </section>
                     ) : (

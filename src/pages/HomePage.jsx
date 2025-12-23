@@ -26,36 +26,8 @@ export function HomePage() {
 
     return (
         <section className="home-page flex">
-            <div className="login-container">
-
-                {/* <h3 className="title">Mister Toy</h3> */}
-                {/* <img src="../img/vite.svg" /> */}
-                <div className="login">
-                    {user ? (
-                        <section>
-                            <Link
-                                to={`/user/${user._id}`}
-                                className="title">
-                                {user.fullname}
-                                {user.score &&
-                                    <span className="score">$ {user.score.toLocaleString()}</span>
-                                }
-                                {/* <span> ${(user.score || 0).toLocaleString()} </span> */}
-                            </Link>
-                            <button onClick={onLogout}>Logout</button>
-                        </section>
-                    ) : (
-                        <section>
-                            <LoginSignup />
-                        </section>
-                    )}
-                </div>
-
-            </div>
-            <button className="toggle-theme" onClick={toggleTheme}>Toggle Theme</button>
-
+      
             < ShoppingCart isCartShown={isCartShown} />
-
         </section >
     )
 }

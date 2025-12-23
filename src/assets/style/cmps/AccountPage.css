@@ -1,0 +1,111 @@
+.account-page {
+    flex-direction: column;
+    position: absolute;
+
+    .toggle-theme {
+        margin-top: 2em;
+    }
+
+    .login-container {
+        background-color: var(--gray1-light);
+        padding-block: .6em;
+        padding-inline: 4em;
+        border-radius: 10px;
+        margin-top: 2em;
+
+        .title {
+            font-size: 1.8rem;
+            font-weight: 200;
+            text-transform: uppercase;
+            padding-top: .5em;
+        }
+
+        .login {
+            section {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 0;
+                align-items: center;
+
+                .title-fullname {
+                    padding: .3em;
+                    font-weight: 200;
+                    font-size: 1.5rem;
+                    margin-top: .8em;
+                    text-transform: capitalize;
+                    text-align: center;
+                    transition: .3s;
+
+                    &:hover {
+                        color: var(--gray3);
+                        background-color: transparent;
+                        scale: 1.1;
+                    }
+
+                    .score {
+                        margin-top: .4em;
+                        display: block;
+                        font-size: 1rem;
+                        text-align: center;
+                        color: var(--gray2);
+                        font-weight: 200;
+                    }
+                }
+
+                button {
+                    font-weight: 200;
+                    margin-top: .5em;
+                    background-color: transparent;
+                    margin-bottom: 1em;
+                    font-size: 1rem;
+                    transition: .3s;
+                    padding: 0;
+
+                    &:hover {
+                        color: inherit;
+                        scale: 1.1;
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+.login-signup {
+    margin-top: 1.3em;
+    margin-bottom: 1.5em;
+
+    input {
+        font-size: .9rem;
+        border-radius: 2px;
+        border: 1px solid rgb(205, 205, 205);
+        padding: .8em;
+        padding-inline: 1.8em;
+        margin-block: .4em;
+    }
+
+    .btns {
+        display: flex;
+        justify-content: center;
+
+        a {
+            font-size: .9rem;
+            margin-top: -1em;
+        }
+    }
+
+    .login-form {
+        display: flex;
+        gap: .8em;
+        flex-direction: column;
+
+
+        button {
+            margin: .2em auto;
+            padding: .5em 2em .6em;
+            border-radius: 10px;
+            font-size: .9rem;
+        }
+    }
+}

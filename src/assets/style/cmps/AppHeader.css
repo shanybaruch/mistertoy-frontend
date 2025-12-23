@@ -16,9 +16,10 @@
         
         .title {
             grid-column: 2 / 3;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 200;
             text-align: center;
+            text-transform: uppercase;
         }
     }
 }
@@ -26,23 +27,24 @@
 .app-nav {
     display: flex;
     justify-content: center;
-    gap: .6em;
+    gap: .8em;
 
     margin-block: .3em;
 
     a {
         font-family: 'Elms Sans', sans-serif;
         font-weight: 100;
+        font-size: 1.1rem;
         transition: .3s;
         text-decoration: none;
 
         &:hover {
-            scale: 1.2;
+            scale: 1.1;
         }
     }
 
     a.active {
         font-weight: 700;
-        color: var(--clr2);
+        color: var(--clr2-dark);
     }
 }

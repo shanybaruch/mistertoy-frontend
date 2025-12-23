@@ -34,6 +34,7 @@ export function AppHeader() {
                     <NavLink to="/toy" >Toys</NavLink>
                     <NavLink to="/map" >Map</NavLink>
                     <NavLink to="/dashboard" >Dashboard</NavLink>
+                    <NavLink to="/account" >Account</NavLink>
                     {/* <a onClick={onToggleCart} href="#">Cart</a> */}
                 </nav>
             </section>

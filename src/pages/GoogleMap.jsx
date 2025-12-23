@@ -10,7 +10,7 @@ export function GoogleMap() {
 
     const defaultCenter = { lat: 32.073, lng: 34.78 }
     const [coords, setCoords] = useState({ ...defaultCenter })
-    const zoom = 13
+    const zoom = 12
 
     const [selectedBranch, setSelectedBranch] = useState(null)
 

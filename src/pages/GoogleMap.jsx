@@ -1,4 +1,4 @@
-import { AdvancedMarker, APIProvider, InfoWindow, Map, Marker, useAdvancedMarkerRef } from "@vis.gl/react-google-maps"
+import { AdvancedMarker, APIProvider, InfoWindow, Map, Marker, Pin, useAdvancedMarkerRef } from "@vis.gl/react-google-maps"
 import { useState } from "react"
 import { ShoppingCart } from "../cmps/ShoppingCart"
 import { useSelector } from "react-redux"
@@ -20,28 +20,28 @@ export function GoogleMap() {
     const branches = [
         {
             _id: 'b101',
-            name: 'Mister Toy - דיזנגוף סנטר',
+            name: 'Mister Toy דיזנגוף סנטר',
             address: 'דיזנגוף סנטר, דיזנגוף 50',
             position: { lat: 32.0747, lng: 34.7738 },
             hours: 'א׳-ה׳: 09:30-20:30  ו׳: 09:30-14:30'
         },
         {
             _id: 'b102',
-            name: 'Mister Toy - נמל תל אביב',
+            name: 'Mister Toy נמל תל אביב',
             address: 'האנגר 15, נמל תל אביב',
             position: { lat: 32.0988, lng: 34.7725 },
             hours: 'א׳-ה׳: 10:00-21:00  ו׳: 10:00-15:00'
         },
         {
             _id: 'b103',
-            name: 'Mister Toy - דרך נמיר',
+            name: 'Mister Toy דרך נמיר',
             address: 'דרך נמיר 85',
             position: { lat: 32.0910, lng: 34.7925 },
             hours: 'א׳-ה׳: 09:00-20:00  ו׳: 09:00-14:00'
         },
         {
             _id: 'b104',
-            name: 'Mister Toy - מגדל שלום',
+            name: 'Mister Toy מגדל שלום',
             address: 'מגדל שלום, אחד העם 9',
             position: { lat: 32.0620, lng: 34.7709 },
             hours: 'א׳-ה׳: 10:00-19:00  ו׳: סגור'
@@ -58,8 +58,8 @@ export function GoogleMap() {
         <section className="google-map">
             <APIProvider apiKey={API_KEY}>
                 <Map
-                    mapId={'bf51a910020fa25a'}
-                    // mapId={null}
+                    // mapId={'bf51a910020fa25a'}
+                    mapId={"DEMO_MAP_ID"}
                     defaultZoom={zoom}
                     defaultCenter={defaultCenter}
                     gestureHandling={'greedy'}
@@ -68,7 +68,7 @@ export function GoogleMap() {
                 >
 
                     {branches.map(branch => (
-                        <Marker
+                        <AdvancedMarker
                             key={branch._id}
                             position={branch.position}
                             title={branch.name}
@@ -94,7 +94,9 @@ export function GoogleMap() {
                         onClick={() => setIsInfoOpen(isOpen => !isOpen)}
                         position={coords}
                     >
-                        <div className="location-icon">📍</div>
+                        <Pin className="location-icon"
+                            background={'#04b9fbff'}
+                        />
 
                         {isInfoOpen &&
                             <InfoWindow
@@ -114,18 +116,16 @@ export function GoogleMap() {
                         <article
                             key={branch._id}
                             className={`branch-card ${selectedBranch?._id === branch._id ? 'active' : ''}`}
-                            onClick={() => onSelectStore(branch)}
+                        // onClick={() => onSelectStore(branch)}
                         >
                             <div className="card-content">
                                 <h3>{branch.name}</h3>
                                 <p className="address">{branch.address}</p>
                                 <div className="divider"></div>
                                 <p className="hours">
-                                    {/* <span className="clock-icon">⏰</span>  */}
                                     {branch.hours}
                                 </p>
                             </div>
-                            <div className="card-icon">📍</div>
                         </article>
                     ))}
                 </div>

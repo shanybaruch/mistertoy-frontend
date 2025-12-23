@@ -6,7 +6,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "build:prod": "vite build && rm -rf ../mister-backend/public/* && cp -r dist/* ../mister-backend/public",
+        "build:prod": "vite build && rm -rf ../mistertoy-backend/public/* && cp -r dist/* ../mistertoy-backend/public",
         "lint": "eslint .",
         "preview": "vite preview"
     },

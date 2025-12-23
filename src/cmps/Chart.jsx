@@ -1,6 +1,10 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
+import { loadToys } from '../store/actions/toy.actions';
+import { showErrorMsg } from '../services/event-bus.service';
+import { toyService } from '../services/toy.service';
+import { useEffect } from 'react';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -18,6 +22,16 @@ export function Chart() {
         'Outdoor',
         'Battery Powered',
     ]
+
+       useEffect(() => {
+            loadToys()
+                .then(() => toyService.getToyLabels())
+                .catch(err => {
+                    console.log('err:', err)
+                    showErrorMsg('Cannot load toys')
+                })
+        }, [])
+    
 
     const dataValues = labels.map(label => {
         return toys.reduce((acc, toy) => {

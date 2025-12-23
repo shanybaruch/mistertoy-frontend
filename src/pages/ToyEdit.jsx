@@ -104,7 +104,7 @@ export function ToyEdit() {
                             value={toyToEdit.price || ''}
                             {...priceValidations}
                             onChange={handleChange}
-                            min={50}
+                            min={10}
                             max={300}
                             placeholder="Enter price"
                         />

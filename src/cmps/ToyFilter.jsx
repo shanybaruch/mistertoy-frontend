@@ -81,9 +81,9 @@ export function ToyFilter({ filterBy, onSetFilter, sortBy, onSetSort, toyLabels 
                             className="filter-by-price"
                             name="maxPrice"
                             placeholder="Max price"
-                            min={50}
+                            min={10}
                             max={300}
-                            step={50}
+                            step={5}
                             value={filterByToEdit.maxPrice || ''}
                             onChange={handleChange}
                         />

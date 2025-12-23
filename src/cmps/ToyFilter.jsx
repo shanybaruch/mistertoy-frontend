@@ -42,7 +42,7 @@ export function ToyFilter({ filterBy, onSetFilter, sortBy, onSetSort, toyLabels 
         onSetFilter(filterByToEdit)
     }
 
-    const { txt, inStock, labels } = filterByToEdit
+    const { txt, inStock, labels } = filterByToEdit    
 
     return (
         <section className="main-layout">

@@ -33,6 +33,7 @@ export function ToyEdit() {
     async function loadToyLabels() {
         try {
             const labelsToy = await toyService.getToyLabels()
+            
             setLabels(labelsToy)
         } catch (err) {
             console.log('Had issues in toy edit:', err)
@@ -40,7 +41,7 @@ export function ToyEdit() {
             showErrorMsg('Could not load labels')
         }
     }
-
+    
     function handleChange({ target }) {
         const { name, value, type, checked } = target
         let fieldValue = value
@@ -51,13 +52,13 @@ export function ToyEdit() {
         } else if (type === 'select-multiple') {
             fieldValue = [...target.selectedOptions].map(option => option.value)
         }
-
+        
         setToyToEdit(prevToy => ({
             ...prevToy,
             [name]: fieldValue
         }))
     }
-
+    
     async function onSaveToy(ev) {
         ev.preventDefault()
         if (!toyToEdit.price) toyToEdit.price = 100
@@ -70,12 +71,12 @@ export function ToyEdit() {
             showErrorMsg('Had issues in toy details')
         }
     }
-
+    
     const priceValidations = {
         min: "1",
         required: true
     }
-
+    
     return (
         <>
             <section className="toy-edit">
@@ -86,7 +87,6 @@ export function ToyEdit() {
                         <label htmlFor="name">Name:</label>
                         <input
                             type="search"
-                            id="name"
                             name="name"
                             value={toyToEdit.name}
                             onChange={handleChange}

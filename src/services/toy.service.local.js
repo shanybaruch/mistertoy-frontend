@@ -303,19 +303,3 @@ function getFilterFromSearchParams(searchParams) {
 function getDefaultSort() {
     return { type: '', desc: 1 }
 }
-
-// TEST DATA
-// storageService.post(STORAGE_KEY, {name: 'Subali Rahok 6', price: 980}).then(x => console.log(x))
-
-// const labels = ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle',
-//     'Outdoor', 'Battery Powered']
-// const toy = {
-//     _id: 't101',
-//     name: 'Talking Doll',
-//     imgUrl: 'hardcoded-url-for-now'
-//     ,
-//     price: 123,
-//     labels: ['Doll', 'Battery Powered', 'Baby'],
-//     createdAt: 1631031801011,
-//     inStock: true,
-// }

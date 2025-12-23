@@ -15,7 +15,7 @@
     margin-bottom: 0.5rem;
 }
 
-.form-group input[type="text"],
+.form-group input[type="search"],
 .form-group input[type="number"],
 .form-group select {
     width: 100%;

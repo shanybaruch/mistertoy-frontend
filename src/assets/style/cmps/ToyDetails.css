@@ -24,6 +24,75 @@
         }
     }
 
+    .toy-db-messages {
+
+        .msg-form {
+            display: flex;
+            justify-content: center;
+            gap: .5em;
+            margin-top: 1em;
+
+            input {
+                padding-block: 8px;
+                padding-inline: 10px;
+                border-radius: 10px;
+                font-size: .8rem;
+                font-family: 'Elms Sans', sans-serif;
+                border: 1px solid var(--gray2-light);
+            }
+
+            button {
+                padding: 0;
+                transition: .3s;
+                margin: 0;
+
+                &:hover {
+                    background-color: inherit;
+                    font-size: .95rem;
+                    color: inherit;
+                }
+            }
+        }
+
+        margin-top: 2em;
+
+        .clean-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        li {
+            width: 60vw;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .btn-remove-msg {
+                margin: 0;
+                padding: 5px;
+            }
+        }
+
+        .title-comment {
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .name-comment,
+        .txt-comment,
+        .date-comment {
+            font-size: .9rem;
+            font-weight: 200;
+
+        }
+
+        .date-comment {
+            font-size: .8rem;
+            margin: 0;
+        }
+    }
+
     .div-img-stock {
         display: flex;
         flex-direction: column;

@@ -24,6 +24,8 @@ export const toyService = {
     getDefaultSort,
     getToyLabels,
     getToyLabelCounts,
+    addMsg,
+    removeMsg
 }
 
 function query(filterBy = {}, sortBy = {}, pageIdx) {
@@ -109,3 +111,10 @@ function _getRandomLabels() {
     return randomLabels
 }
 
+async function addMsg(toyId, txt) {
+  return httpService.post(BASE_URL + `${toyId}/msg`, {txt})
+}
+
+async function removeMsg(toyId, msgId) {
+  return httpService.delete(BASE_URL + `${toyId}/msg/${msgId}`)
+}

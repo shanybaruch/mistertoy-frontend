@@ -86,10 +86,10 @@ export function Chat({ toy, onToyUpdate }) {
         }
     }, [msgs, toy?.msgs])
 
-    function addChatMsg(text, from) {
+    function addChatMsg(txt, from) {
         const newMsg = {
             id: utilService.makeId(),
-            text,
+            txt,
             from,
             sentAt: new Date()
         }
@@ -108,14 +108,39 @@ export function Chat({ toy, onToyUpdate }) {
         setUserInput('')
     }
 
+    // return (
+    //     <div className="chat-container">
+    //         <section className="support-chat">
+    //             <div ref={msgsRef} className="chat-messages" style={{ height: '150px', overflowY: 'auto' }}>
+    //                 {msgs.map(msg => (
+    //                     <div key={msg.id} className={`message ${msg.from === 'user' ? 'user' : 'other'}`}>
+    //                         <small>{msg.from}: </small>
+    //                         <p>{msg.txt}</p>
+    //                     </div>
+    //                 ))}
+    //             </div>
+
+    //             <form onSubmit={handleChatSubmit} className="chat-input-form">
+    //                 <input
+    //                     type="text"
+    //                     value={userInput}
+    //                     onChange={(ev) => setUserInput(ev.target.value)}
+    //                     placeholder="Chat with us..."
+    //                 />
+    //                 <button type="submit">Send</button>
+    //             </form>
+    //         </section>
+    //     </div>
+    // )
+
     return (
         <div className="chat-container">
             <section className="support-chat">
-                <div ref={msgsRef} className="chat-messages" style={{ height: '150px', overflowY: 'auto' }}>
+                <div ref={msgsRef} className="chat-messages" style={{ overflowY: 'auto', padding: '5px' }}>
                     {msgs.map(msg => (
                         <div key={msg.id} className={`message ${msg.from === 'user' ? 'user' : 'other'}`}>
                             <small>{msg.from}: </small>
-                            <p>{msg.text}</p>
+                            <p>{msg.txt}</p>
                         </div>
                     ))}
                 </div>

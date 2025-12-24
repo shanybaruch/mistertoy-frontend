@@ -16,7 +16,7 @@
 
 .popup-container {
     background-color: var(--gray1-light);
-    border-radius: 20px;
+    border-radius: 2px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     width: 65%;
     max-width: 320px;
@@ -48,4 +48,35 @@
     display: flex;
     font-size: .7rem;
     justify-content: center;
+}
+
+@media (max-width: 480px) {
+    .popup-container {
+        transition: .3s;
+        width: 200px;
+    }
+
+    .chat-input-form {
+        gap: 3px;
+
+        input {
+            width: 60%;
+            font-weight: 200;
+            font-size: .8rem;
+            padding-inline: 10px;
+        }
+
+        button {
+            padding-block: 8px;
+            padding-inline: 12px;
+            font-size: .8rem;
+            font-weight: 200;
+        }
+    }
+
+    .popup-header {
+        h3 {
+            font-size: 1rem;
+        }
+    }
 }

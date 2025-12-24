@@ -2,9 +2,11 @@
     display: grid;
     grid-template-rows: 6fr 1fr;
     grid-column: 2;
+    width: 100%;
 
     .body-details {
         gap: .5em;
+        justify-content: space-evenly;
 
         .main-details {
             display: flex;

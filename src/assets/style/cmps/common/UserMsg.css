@@ -8,8 +8,9 @@
     bottom: 0;
     right: 1em;
     color: white;
-    border-radius: 2px;
+    border-radius: 10px;
     font-size: 1.1em;
+    font-weight: 300;
 }
 
 .user-msg.success {
@@ -17,12 +18,12 @@
 }
 
 .user-msg.error {
-    background-color: var(--clr-err);
+    background-color: var(--clr1-dark);
 }
 
 .user-msg button {
-    font-size: .8em;
+    font-size: .9em;
+    color: var(--gray1);
     float: right;
-    border-radius: 0;
-    background-color: var(--clr1);
+    background-color: transparent;
 }

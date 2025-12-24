@@ -24,6 +24,33 @@ export function ToyDetails() {
         }
     }
 
+    async function onSaveToyMsg(ev) {
+        ev.preventDefault()
+        const txt = ev.target.elements.msgTxt.value
+        try {
+            const savedMsg = await toyService.addMsg(toy._id, txt)
+
+            const updatedMsgs = [...(toy.msgs || []), savedMsg]
+            onToyUpdate({ ...toy, msgs: updatedMsgs })
+
+            ev.target.reset()
+            showSuccessMsg('Message added to toy!')
+        } catch (err) {
+            showErrorMsg('Cannot add message to database')
+        }
+    }
+
+    async function onRemoveToyMsg(msgId) {
+        try {
+            await toyService.removeMsg(toy._id, msgId)
+            const updatedMsgs = toy.msgs.filter(m => m.id !== msgId)
+            onToyUpdate({ ...toy, msgs: updatedMsgs })
+            showSuccessMsg('Message removed')
+        } catch (err) {
+            showErrorMsg('Cannot remove message')
+        }
+    }
+
     if (!toy) return <div className="loading">Loading...</div>
     const formattedDate = new Date(toy.createdAt).toLocaleString('he')
     return (
@@ -44,7 +71,6 @@ export function ToyDetails() {
                     </div>
                 </div>
             </div>
-            {/* <p className="descruption-toy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi voluptas cumque tempore, aperiam sed dolorum rem! Nemo quidem, placeat perferendis tempora aspernatur sit, explicabo veritatis corrupti perspiciatis repellat, enim quibusdam!</p> */}
 
             <div className="links bottom-page">
                 <div>
@@ -59,21 +85,47 @@ export function ToyDetails() {
                 </div> */}
             </div>
 
-            <section>
+            {/* <section className="toy-db-messages">
+                <h3>Reviews & Comments</h3>
+                <ul className="clean-list msg-list">
+                    {toy.msgs && toy.msgs.length > 0 ? (
+                        toy.msgs.map(msg => (
+                            <li key={msg.id} className="msg-item">
+                                <button className="btn-remove" onClick={() => onRemoveToyMsg(msg.id)}>x</button>
+                                <p>"{msg.txt}"</p>
+                                <small>By: <b>{msg.by?.fullname || 'Guest'}</b></small>
+                            </li>
+                        ))
+                    ) : (
+                        <p>No reviews yet...</p>
+                    )}
+                </ul>
+
+                <form className="msg-form" onSubmit={onSaveToyMsg}>
+                    <input type="text" name="msgTxt" placeholder="Post a public comment..." required />
+                    <button>Post</button>
+                </form>
+            </section> */}
+
+            <section className="toy-messages">
                 <PopUp
-                    header={<h3>Chat About {toy.name}</h3>}
+                    header={<h3>Customer Support - {toy.name}</h3>}
                     footer={<h4>&copy; 2025-9999 Toys INC.</h4>}
                     onClose={() => setIsChatOpen(false)}
                     isOpen={isChatOpen}
                 >
-                    <Chat />
+                    <Chat
+                        toy={toy}
+                        onToyUpdate={(updatedToy) => setToy(updatedToy)}
+                    />
                 </PopUp>
             </section >
-            {!isChatOpen && <button
-                onClick={() => setIsChatOpen(true)}
-                className='open-chat'
-            >Chat </button>
+            {
+                !isChatOpen && <button
+                    onClick={() => setIsChatOpen(true)}
+                    className='open-chat'
+                >Chat </button>
             }
-        </section>
+        </section >
     )
 }

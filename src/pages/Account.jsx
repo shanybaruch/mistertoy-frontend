@@ -23,6 +23,7 @@ export function Account() {
             showErrorMsg('OOPs try again')
         }
     }
+    // console.log('user name: ', user?.fullname);
 
     return (
         <section className="account-page flex">
@@ -38,8 +39,8 @@ export function Account() {
                             <Link
                                 to={`/user/${user._id}`}
                                 className="title-fullname">
-                                {user.fullname}
-                                {user.score &&
+                                {user?.fullname}
+                                {user?.score &&
                                     <span className="score">$ {user.score.toLocaleString()}</span>
                                 }
                                 {/* <span> ${(user.score || 0).toLocaleString()} </span> */}

@@ -30,7 +30,7 @@ export function ToyIndex() {
     const [pageIdx, setPageIdx] = useState(0)
     const [toyLabels, setToyLabels] = useState()
     const loggedInUser = useSelector(storeState => storeState.userModule.loggedInUser)
-
+    const user = useSelector(storeState => storeState.userModule.loggedInUser)
 
     useEffect(() => {
         loadToys(pageIdx)
@@ -109,10 +109,13 @@ export function ToyIndex() {
                     onSetSort={onSetSort}
                     toyLabels={toyLabels}
                 />
-                <section className='btns-add-toy'>
-                    <Link to="/toy/edit">Add Toy</Link>
-                    <button className='add-btn' onClick={onAddToy}>Add Random Toy</button>
-                </section>
+                {user?.isAdmin &&
+                    <section className='btns-add-toy'>
+                        <Link to="/toy/edit">Add Toy</Link>
+                        <button className='add-btn' onClick={onAddToy}>Add Random Toy</button>
+                    </section>
+                }
+
                 {isLoading && <Loader />}
                 {!isLoading && toys
                     && <ToyList

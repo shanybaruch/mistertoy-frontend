@@ -6,14 +6,14 @@
     display: grid;
     grid-template-columns: 1fr minmax(auto, 800px) 1fr;
     grid-template-rows: 1fr;
-    
+
     .header-container {
         align-items: center;
         display: flex;
         justify-content: space-between;
 
         grid-column: 2;
-        
+
         .title {
             grid-column: 2 / 3;
             font-size: 1.1rem;
@@ -46,5 +46,44 @@
     a.active {
         font-weight: 700;
         color: var(--clr2-dark);
+    }
+}
+
+@media (max-width: 550px) {
+    .app-nav {
+        gap: .8em;
+
+        a {
+            font-size: 1rem;
+        }
+    }
+
+    .app-header {
+        .header-container {
+            flex-direction: column;
+
+            .title {
+                font-size: 1rem;
+            }
+        }
+    }
+}
+@media (max-width: 380px) {
+    .app-nav {
+        gap: .5em;
+
+        a {
+            font-size: .9rem;
+        }
+    }
+
+    .app-header {
+        .header-container {
+            flex-direction: column;
+
+            .title {
+                font-size: .8rem;
+            }
+        }
     }
 }

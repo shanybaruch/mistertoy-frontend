@@ -42,7 +42,7 @@
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 380px) {
     .toy-list {
         grid-template-columns: 1fr;
     }

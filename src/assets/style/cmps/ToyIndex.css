@@ -77,3 +77,9 @@ main.main-layout {
     padding: 0;
     background-color: transparent;
 }
+
+@media (max-width: 380px) {
+    .btns-add-toy {
+        flex-direction: column;
+    }
+}

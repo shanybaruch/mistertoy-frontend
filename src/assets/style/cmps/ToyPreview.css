@@ -105,3 +105,27 @@
         transform: translateY(0);
     }
 }
+
+@media (min-width: 751px) {
+    .toy-preview {
+        height: 170px;
+    }
+}
+
+@media (max-width: 750px) {
+    .toy-preview {
+        height: 155px;
+    }
+}
+
+@media (max-width: 550px) {
+    .toy-preview {
+        height: 140px;
+    }
+}
+
+@media (max-width: 380px) {
+    .toy-preview {
+        height: 130px;
+    }
+}

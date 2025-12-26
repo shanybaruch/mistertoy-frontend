@@ -8,6 +8,16 @@ import { useContext } from 'react'
 import { ThemeContext } from '../contexts/ThemeContext.jsx'
 import { LoginSignup } from './LoginSignup.jsx'
 
+import { faUser } from '@fortawesome/free-regular-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChartLine } from '@fortawesome/free-solid-svg-icons'
+// import { faMapLocationDot } from '@fortawesome/free-solid-svg-icons'
+import { faMap } from '@fortawesome/free-regular-svg-icons'
+import { faShop } from '@fortawesome/free-solid-svg-icons'
+import { faInfo } from '@fortawesome/free-solid-svg-icons'
+// import { faHouse } from '@fortawesome/free-solid-svg-icons'
+import { faHouse } from '@fortawesome/free-regular-svg-icons'
+
 export function AppHeader() {
     const dispatch = useDispatch()
     const user = useSelector(storeState => storeState.userModule.loggedInUser)
@@ -16,7 +26,7 @@ export function AppHeader() {
 
     async function onLogout() {
         try {
-           await logout()
+            await logout()
             showSuccessMsg('logout successfully')
         }
         catch (err) {
@@ -29,18 +39,38 @@ export function AppHeader() {
             <section className="header-container">
                 <h1 className='title'>Mister Toy</h1>
                 <nav className="app-nav">
-                    <NavLink to="/" >Home</NavLink>
-                    <NavLink to="/about" >About</NavLink>
-                    <NavLink to="/toy" >Toys</NavLink>
-                    <NavLink to="/map" >Map</NavLink>
-                    <NavLink to="/dashboard" >Dashboard</NavLink>
-                    <NavLink to="/account" >Account</NavLink>
+                    <NavLink to="/" >
+                        <FontAwesomeIcon icon={faHouse} style={{ marginLeft: '8px' }} />
+                        {/* Home */}
+                    </NavLink>
+                    <NavLink to="/about" >
+                        <FontAwesomeIcon icon={faInfo} style={{ marginLeft: '8px' }} />
+                        {/* About */}
+                    </NavLink>
+                    <NavLink to="/toy" >
+                        <FontAwesomeIcon icon={faShop} style={{ marginLeft: '8px' }} />
+                        {/* Toys */}
+                    </NavLink>
+                    <NavLink to="/map" >
+                        <FontAwesomeIcon icon={faMap} style={{ marginLeft: '8px' }} />
+                        {/* Map */}
+                    </NavLink>
+                    <NavLink to="/dashboard" >
+                        <FontAwesomeIcon icon={faChartLine} style={{ marginLeft: '8px' }} />
+                        {/* Dashboard */}
+                    </NavLink>
+                    <NavLink to="/account" >
+                        <FontAwesomeIcon icon={faUser} style={{ marginLeft: '8px' }} />
+                        {/* Account */}
+                    </NavLink>
                     {/* <a onClick={onToggleCart} href="#">Cart</a> */}
                 </nav>
             </section>
             {/* {user ? (
                 < section >
-                    <span to={`/user/${user._id}`}>{user.fullname} <span>${user.score.toLocaleString()}</span></span>
+                        <NavLink to={`/user/${user._id}`}>
+                        {user.fullname} <span>${user.score?.toLocaleString()}</span>
+                    </NavLink>                    
                     <button onClick={onLogout}>Logout</button>
                 </ section >
             ) : (

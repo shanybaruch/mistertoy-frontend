@@ -27,7 +27,7 @@
 .app-nav {
     display: flex;
     justify-content: center;
-    gap: .8em;
+    gap: 1.3em;
 
     margin-block: .3em;
 

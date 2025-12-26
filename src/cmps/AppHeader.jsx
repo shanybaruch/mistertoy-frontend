@@ -40,27 +40,27 @@ export function AppHeader() {
                 <h1 className='title'>Mister Toy</h1>
                 <nav className="app-nav">
                     <NavLink to="/" >
-                        <FontAwesomeIcon icon={faHouse} style={{ marginLeft: '8px' }} />
+                        <FontAwesomeIcon icon={faHouse} />
                         {/* Home */}
                     </NavLink>
                     <NavLink to="/about" >
-                        <FontAwesomeIcon icon={faInfo} style={{ marginLeft: '8px' }} />
+                        <FontAwesomeIcon icon={faInfo} />
                         {/* About */}
                     </NavLink>
                     <NavLink to="/toy" >
-                        <FontAwesomeIcon icon={faShop} style={{ marginLeft: '8px' }} />
+                        <FontAwesomeIcon icon={faShop} />
                         {/* Toys */}
                     </NavLink>
                     <NavLink to="/map" >
-                        <FontAwesomeIcon icon={faMap} style={{ marginLeft: '8px' }} />
+                        <FontAwesomeIcon icon={faMap} />
                         {/* Map */}
                     </NavLink>
                     <NavLink to="/dashboard" >
-                        <FontAwesomeIcon icon={faChartLine} style={{ marginLeft: '8px' }} />
+                        <FontAwesomeIcon icon={faChartLine} />
                         {/* Dashboard */}
                     </NavLink>
                     <NavLink to="/account" >
-                        <FontAwesomeIcon icon={faUser} style={{ marginLeft: '8px' }} />
+                        <FontAwesomeIcon icon={faUser} />
                         {/* Account */}
                     </NavLink>
                     {/* <a onClick={onToggleCart} href="#">Cart</a> */}

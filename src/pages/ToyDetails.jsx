@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { toyService } from "../services/toy.service.js"
-import { Link, useParams, useNavigate } from "react-router-dom"
+import { Link, useParams, useNavigate, Navigate } from "react-router-dom"
 import { PopUp } from "../cmps/PopUp.jsx"
 import { Chat } from "../cmps/Chat.jsx"
 import { showSuccessMsg, showErrorMsg } from "../services/event-bus.service.js"
@@ -44,6 +44,10 @@ export function ToyDetails() {
         }
     }
 
+    function onClickBack() {
+        navigate(-1)
+    }
+
     async function onRemoveToyMsg(msgId) {
         try {
             await toyService.removeMsg(toy._id, msgId)
@@ -81,7 +85,9 @@ export function ToyDetails() {
 
             <div className="links bottom-page">
                 <div>
-                    <Link className="btn-back" to={`/toy`}>Back</Link>
+                    <button className="btn-back"
+                        onClick={onClickBack}
+                    >Back</button>
                 </div>
                 {/* <div>
                     <Link to={`/toy/edit/${toy?._id}`}>Edit</Link>

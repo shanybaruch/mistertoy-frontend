@@ -16,6 +16,8 @@ import { ThemeContext, ThemeProvider } from './contexts/ThemeContext.jsx'
 import { GoogleMap } from './pages/GoogleMap.jsx'
 import { Chart } from './cmps/Chart.jsx'
 import { Account } from './pages/Account.jsx'
+import { AdminPage} from './pages/AdminPage.jsx'
+import { ReviewPage } from './pages/ReviewPage.jsx'
 
 
 export function App() {
@@ -34,6 +36,8 @@ export function App() {
                                 <Route element={<GoogleMap />} path="/map" />
                                 <Route element={<Chart />} path="/dashboard" />
                                 <Route element={<Account />} path="/account" />
+                                <Route element={<ReviewPage />} path="/review" />
+                                <Route element={<AdminPage />} path="/admin" />
                                 {/* <Route element={<ToyEdit />} path="/toy/edit" /> */}
                                 <Route element={<ToyEdit />} path="/toy/edit/:toyId?" />
                                 <Route element={<ToyDetails />} path="/toy/:toyId" />

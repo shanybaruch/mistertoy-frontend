@@ -9,14 +9,14 @@ import { ThemeContext } from '../contexts/ThemeContext.jsx'
 import { LoginSignup } from './LoginSignup.jsx'
 
 import { faUser } from '@fortawesome/free-regular-svg-icons'
+import { faUsers } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChartLine } from '@fortawesome/free-solid-svg-icons'
-// import { faMapLocationDot } from '@fortawesome/free-solid-svg-icons'
 import { faMap } from '@fortawesome/free-regular-svg-icons'
 import { faShop } from '@fortawesome/free-solid-svg-icons'
 import { faInfo } from '@fortawesome/free-solid-svg-icons'
-// import { faHouse } from '@fortawesome/free-solid-svg-icons'
 import { faHouse } from '@fortawesome/free-regular-svg-icons'
+import { faComments } from '@fortawesome/free-regular-svg-icons'
 
 export function AppHeader() {
     const dispatch = useDispatch()
@@ -59,6 +59,16 @@ export function AppHeader() {
                         <FontAwesomeIcon icon={faChartLine} />
                         {/* Dashboard */}
                     </NavLink>
+                    <NavLink to="/review" >
+                        <FontAwesomeIcon icon={faComments} />
+                        {/* Review */}
+                    </NavLink>
+                    {user?.isAdmin &&
+                        <NavLink to="/admin" >
+                            <FontAwesomeIcon icon={faUsers} />
+                            {/* Admin */}
+                        </NavLink>
+                    }
                     <NavLink to="/account" >
                         <FontAwesomeIcon icon={faUser} />
                         {/* Account */}

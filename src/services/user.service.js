@@ -23,7 +23,7 @@ async function query(filterBy = {}) {
 }
 
 async function remove(userId) {
-    return await httpService.get(USER_URL + userId)
+    return await httpService.delete(USER_URL + userId)
 }
 
 async function login({ username, password }) {

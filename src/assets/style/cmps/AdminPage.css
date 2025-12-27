@@ -24,13 +24,13 @@
     .users-table th {
         background-color: var(--gray1-light);
         color: var(--gray3);
-        /* text-align: start; */
         padding-block: .8em;
         width: 130px;
     }
     
-    .users-table tr {
+    .users-table tr:not(:first-child)  {
         transition: .2s;
+        cursor: pointer;
     }
     
     .users-table tr:hover {

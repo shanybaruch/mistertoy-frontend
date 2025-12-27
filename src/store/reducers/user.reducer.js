@@ -10,6 +10,7 @@ export const CHANGE_BY = 'CHANGE_BY'
 export const SET_USERS = 'SET_USERS'
 export const SET_USER = 'SET_USER'
 export const SET_USER_SCORE = 'SET_USER_SCORE'
+export const REMOVE_USER = 'REMOVE_USER'
 
 export const SET_IS_LOADING = 'SET_IS_LOADING'
 
@@ -51,6 +52,11 @@ export function userReducer(state = initialState, action = {}) {
             return {
                 ...state,
                 isLoading: action.isLoading
+            }
+        case REMOVE_USER:
+            return {
+                ...state,
+                users: state.users.filter(user => user._id !== action.userId)
             }
 
         default:

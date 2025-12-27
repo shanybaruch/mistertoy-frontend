@@ -4,7 +4,8 @@ import {
     SET_USER,
     SET_USER_SCORE,
     SET_USERS,
-    SET_IS_LOADING
+    SET_IS_LOADING,
+    REMOVE_USER,
 } from "../reducers/user.reducer.js"
 import { store } from "../store.js"
 
@@ -30,6 +31,16 @@ export async function loadUsers() {
         throw err
     } finally {
         store.dispatch({ type: SET_IS_LOADING, isLoading: false })
+    }
+}
+
+export async function removeUser(userId) {
+    try {
+        await userService.remove(userId)
+        store.dispatch({ type: REMOVE_USER, userId })
+    } catch (err) {
+        console.log('UserActions: err in removeUser', err)
+        throw err
     }
 }
 

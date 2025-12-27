@@ -1,3 +1,118 @@
+
 .review-page {
     grid-column: 2;
+    margin: 1rem auto;
+    padding: 0 1rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: var(--gray3);
 }
+
+.review-page h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.review-list {
+    margin-top: 1rem;
+}
+
+.review-list ul {
+    list-style: none;
+    padding: 0;
+   
+    display: flex;
+    /* flex-direction: column; */
+    gap: 1.5rem;
+}
+
+.review-list li {
+    position: relative;
+    background: var(--gray1-light);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.2rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: var(--gray3);
+}
+
+.review-list li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.review-list .actions {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.review-list .actions button {
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+    background-color: transparent;
+    padding-inline: .2em;
+    padding-block: .4em;
+    margin: 0;
+  
+    position: absolute;
+    top: -20px;
+
+    &:hover {
+        font-size: .95rem;
+        color: var(--gray3);
+    }
+
+}
+
+
+.review-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+
+    a {
+        transition: .2s;
+        padding: .3em;
+        color: var(--clr1-dark);
+        text-decoration: none;
+        font-weight: 600;
+     
+        &:hover {
+            font-size: .95rem;
+            background-color: inherit;
+            color: inherit;
+        }
+    }
+
+    p {
+        margin: 0;
+        padding: 0;
+    }
+  
+    .review-by {
+        font-size: 0.9rem;
+        color: var(--gray3);
+    }
+   
+    .review-txt {
+       font-size: .9rem;
+       font-weight: bold;
+       color: var(--gray3);
+       /* border-left: 3px solid var(--border-color); */
+    }
+  
+    .review-edit {
+        background: var(--gray1-light);
+        padding: 1.5rem;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        margin-bottom: 3rem;
+        box-shadow: var(--gray3);
+    }
+}
+
+

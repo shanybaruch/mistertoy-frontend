@@ -28,7 +28,7 @@ export function AdminPage() {
     }
 
     function handleChangeToUser(userId) {
-        navigate('/user/userId')
+        navigate(`/user/${userId}`)
     }
 
     if (isLoading && !users.length) return <Loader />

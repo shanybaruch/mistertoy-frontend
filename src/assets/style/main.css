@@ -22,6 +22,7 @@
 @import 'cmps/HomePage.css';
 @import 'cmps/AccountPage.css';
 @import 'cmps/AdminPage.css';
+@import 'cmps/UserDetails.css';
 
 @import 'cmps/ShoppingCart.css';
 @import 'cmps/ToggleBtn.css';

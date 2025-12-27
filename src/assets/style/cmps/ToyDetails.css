@@ -26,6 +26,11 @@
 
     .toy-db-messages {
 
+        .no-comment {
+            text-align: center;
+            color: var(--gray2);
+        }
+
         .msg-form {
             display: flex;
             justify-content: center;

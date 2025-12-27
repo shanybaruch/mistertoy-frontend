@@ -122,11 +122,10 @@ export function ToyDetails() {
                                         <p className="txt-comment" style={{ margin: 0 }}><span className="name-comment">{msg.by.fullname}:</span> {msg.txt}</p>
                                     }
                                 </div>
-
-
                                 <p
                                     className="date-comment"
-                                    style={{ color: 'var(--gray2)' }}>{new Date(msg.createdAt).toLocaleDateString()}</p>
+                                    style={{ color: 'var(--gray2)' }}>{new Date(msg.createdAt).toLocaleDateString()}
+                                </p>
                             </li>
                         ))
                     ) : (
@@ -139,7 +138,7 @@ export function ToyDetails() {
                         <button>Post</button>
                     </form>
                 ) : (
-                    <p>Please login to comment</p>
+                    <p className="no-comment">Please login to comment</p>
                 )}
             </section>
 

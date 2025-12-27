@@ -2,7 +2,7 @@ import { reviewService } from '../../services/review/review.service.remote.js'
 
 import { store } from '../store.js'
 import { ADD_REVIEW, REMOVE_REVIEW, SET_REVIEWS } from '../reducers/review.reducer.js'
-import { SET_SCORE } from '../reducers/review.reducer.js'
+import { SET_SCORE } from '../reducers/user.reducer.js'
 
 export async function loadReviews() {
 	try {

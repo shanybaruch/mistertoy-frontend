@@ -5,13 +5,13 @@ export const INCREMENT = 'INCREMENT'
 export const DECREMENT = 'DECREMENT'
 export const CHANGE_BY = 'CHANGE_BY'
 
-
 //* User
 export const SET_USERS = 'SET_USERS'
 export const SET_USER = 'SET_USER'
 export const SET_USER_SCORE = 'SET_USER_SCORE'
 export const REMOVE_USER = 'REMOVE_USER'
 
+export const SET_SCORE = 'SET_SCORE'
 export const SET_IS_LOADING = 'SET_IS_LOADING'
 
 const initialState = {
@@ -58,6 +58,11 @@ export function userReducer(state = initialState, action = {}) {
                 ...state,
                 users: state.users.filter(user => user._id !== action.userId)
             }
+        case SET_SCORE:
+            const user = { ...state.user, score: action.score }
+            newState = { ...state, user }
+            userService.saveLoggedinUser(user)
+            break
 
         default:
             return state;

@@ -15,7 +15,8 @@ export const userService = {
     updateScore,
     getEmptyCredentials,
     query,
-    remove
+    remove,
+    saveLoggedinUser,
 }
 
 async function query(filterBy = {}) {
@@ -86,4 +87,16 @@ function getEmptyCredentials() {
         password: '',
         fullname: ''
     }
+}
+
+function saveLoggedinUser(user) {
+	user = { 
+        _id: user._id, 
+        fullname: user.fullname, 
+        imgUrl: user.imgUrl, 
+        score: user.score, 
+        isAdmin: user.isAdmin 
+    }
+	sessionStorage.setItem(STORAGE_KEY_LOGGEDIN, JSON.stringify(user))
+	return user
 }

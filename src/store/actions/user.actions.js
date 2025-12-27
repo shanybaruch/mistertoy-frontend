@@ -1,7 +1,37 @@
 import { userService } from "../../services/user.service.js"
 import { CLEAR_CART } from "../reducers/toy.reducer.js"
-import { SET_USER, SET_USER_SCORE } from "../reducers/user.reducer.js"
+import {
+    SET_USER,
+    SET_USER_SCORE,
+    SET_USERS,
+    SET_IS_LOADING
+} from "../reducers/user.reducer.js"
 import { store } from "../store.js"
+
+export async function loadUsers() {
+    const { filterBy } = store.getState().userModule
+    store.dispatch({
+        type: SET_IS_LOADING,
+        isLoading: true
+    })
+    try {
+        const users = await userService.query(filterBy)
+        const formattedUsers = users.map(user => ({
+            ...user,
+            id: user._id
+        }))
+        store.dispatch({
+            type: SET_USERS, 
+            users: formattedUsers
+        })
+        return formattedUsers
+    } catch (err) {
+        console.error('user action -> Cannot load users', err)
+        throw err
+    } finally {
+        store.dispatch({ type: SET_IS_LOADING, isLoading: false })
+    }
+}
 
 export async function login(credentials) {
     try {

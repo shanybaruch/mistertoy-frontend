@@ -3,14 +3,18 @@
   --clr1-dark: #007bff;
   --clr1-light: #a5ecff;
 
-  --clr2: #ffc1f4;
+  --clr2: #ffc9f5;
   --clr2-dark: #ffa6e9;
   --clr2-very-dark: #f148b9;
-  --clr2-light: #ffcff6;
+  --clr2-light: #ffe4fa;
 
-  --clr1bg: #c3eddf;
-  --clr1bg-light: #c1f1e1;
-  --gray3-light: #c0ffeb;
+  --clr1bg: #c4ffeb;
+  --clr1bg-light: #daf8ff;
+  
+  --clr3: rgb(223, 108, 0);
+  --clr3-light: #fbf9b7;
+
+  --clr-red: red;
 
   --gray1: rgb(240, 240, 240);
   --gray1-light: rgb(255, 255, 255);

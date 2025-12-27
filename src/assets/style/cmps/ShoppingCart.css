@@ -1,5 +1,5 @@
 .shopping-cart {
-    background-color: var(--gray3-light);
+    background-color: var(--clr1bg-light);
     color: var(--gray3);
     padding: 10px;
     position: fixed;

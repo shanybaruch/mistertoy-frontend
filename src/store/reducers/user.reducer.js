@@ -7,12 +7,16 @@ export const CHANGE_BY = 'CHANGE_BY'
 
 
 //* User
+export const SET_USERS = 'SET_USERS'
 export const SET_USER = 'SET_USER'
 export const SET_USER_SCORE = 'SET_USER_SCORE'
 
+export const SET_IS_LOADING = 'SET_IS_LOADING'
 
 const initialState = {
+    users: [],
     count: 105,
+    isLoading: false,
     loggedInUser: userService.getLoggedinUser()
 }
 
@@ -28,14 +32,26 @@ export function userReducer(state = initialState, action = {}) {
 
 
         //* User
+        case SET_USERS:
+            return {
+                ...state,
+                users: action.users,
+            }
         case SET_USER:
             return {
                 ...state,
                 loggedInUser: action.user
             }
         case SET_USER_SCORE:
-            const loggedInUser = { ...state.loggedInUser, score: action.score }
-            return { ...state, loggedInUser }
+            return {
+                ...state,
+                loggedInUser: { ...state.loggedInUser, score: action.score }
+            }
+        case SET_IS_LOADING:
+            return {
+                ...state,
+                isLoading: action.isLoading
+            }
 
         default:
             return state;

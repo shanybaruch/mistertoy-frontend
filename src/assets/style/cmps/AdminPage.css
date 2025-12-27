@@ -1,0 +1,86 @@
+.admin-page {
+    grid-column: 2;
+ 
+    .table-container {
+        overflow-x: auto;
+        margin-top: 2rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        border-radius: 8px;
+    }
+    
+    .users-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: var(--gray1-light);
+    }
+    
+    .users-table th,
+    .users-table td {
+        padding-inline: .5rem;
+        border-bottom: 1px solid var(--gray1);
+        text-align: center;
+    }
+    
+    .users-table th {
+        background-color: var(--gray1-light);
+        color: var(--gray3);
+        /* text-align: start; */
+        padding-block: .8em;
+        width: 130px;
+    }
+    
+    .users-table tr {
+        transition: .2s;
+    }
+    
+    .users-table tr:hover {
+        background-color: var(--gray1);
+    }
+    
+    .badge {
+        padding: 4px 8px;
+        border-radius: 8px;
+        font-size: 0.8rem;
+        font-weight: bold;
+    }
+    
+    .badge.admin {
+        background-color: var(--clr3-light);
+        color: var(--clr3);
+    }
+    
+    .badge.user {
+        background-color: var(--clr1bg-light);
+        color: var(--clr1-dark);
+    }
+    
+    .btn-remove {
+        background-color: var(--clr2-light);
+        color: var(--clr2-very-dark);
+        border: none;
+        padding: 4px 10px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.2s;
+        font-weight: bold;
+    }
+    
+    .btn-remove:hover {
+        background-color: #dc2626;
+        color: var(--gray1-light);
+    }
+    
+    .fade-in-row {
+        opacity: 0;
+        transform: translateY(10px);
+        animation: tableFadeIn 0.4s forwards ease-out;
+    }
+}
+
+
+@keyframes tableFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -34,11 +34,21 @@
 
 import { useSelector } from "react-redux"
 import { ShoppingCart } from "../cmps/ShoppingCart.jsx"
+import { useNavigate } from 'react-router-dom'
 import img from "../assets/style/img/teddy6.png"
 
 export function HomePage() {
+    const navigate = useNavigate()
     // const isCartShown = useSelector(storeState => storeState.toyModule.isCartShown)
-
+   
+    function handleClickToToys() {
+        console.log("Navigating to about...")
+        navigate('/toy')
+    }
+    function handleClickToMap() {
+        console.log("Navigating to about...")
+        navigate('/map')
+    }
     return (
         <section className="home-page main-layout">
             <div className="hero-section flex align-center justify-between">
@@ -46,15 +56,15 @@ export function HomePage() {
                     <h1>The Home of <br />Happy Toys</h1>
                     <p>Discover a world of premium plushies and unique toys designed for your little ones. <br /> the best memories for your children.</p>
                     <div className="hero-btns flex gap-1">
-                        <button className="btn btn-primary">About Us</button>
-                        <button className="btn btn-secondary">Our toys</button>
+                        <button className="btn btn-primary" onClick={handleClickToToys}>Toys</button>
+                        <button className="btn btn-secondary" onClick={handleClickToMap}>Branches</button>
                     </div>
                 </div>
                 <div className="hero-img">
                     <img src={img} alt="Big Teddy Bear" />
                 </div>
             </div>
-{/* 
+            {/* 
             <div className="toys-container">
                 <h2>Our collection</h2>
             </div> */}

@@ -104,38 +104,42 @@ export function ToyDetails() {
                     marginBottom: '10px',
                     paddingBottom: '10px'
                 }}>
-                <h3 className="title-comment">Comments</h3>
                 <ul
                     className="clean-list"
                     style={{
                         maxHeight: '150px',
                         overflowY: 'auto'
                     }}>
-                    {toy?.msgs && toy.msgs.length > 0 ? (
-                        toy.msgs.map(msg => (
-                            <li key={msg.id} style={{ marginBottom: '8px' }}>
-                                <div className="flex align-center">
-                                    {user && (user.isAdmin || user._id === msg.by?._id) && (
-                                        <button
-                                            className="btn-remove-msg"
-                                            onClick={() => onRemoveToyMsg(msg.id)}
-                                            style={{ float: 'right', color: 'red', border: 'none', background: 'none', cursor: 'pointer' }}
-                                        >
-                                            x
-                                        </button>
-                                    )}
-                                    {msg.by?.fullname &&
-                                        <p className="txt-comment" style={{ margin: 0 }}><span className="name-comment">{msg.by.fullname}:</span> {msg.txt}</p>
-                                    }
-                                </div>
-                                <p
-                                    className="date-comment"
-                                    style={{ color: 'var(--gray2)' }}>{new Date(msg.createdAt).toLocaleDateString()}
-                                </p>
-                            </li>
-                        ))
-                    ) : (
-                        <p>No comments yet...</p>
+                    {user && (
+                        toy?.msgs && toy.msgs.length > 0 ? (
+                            toy.msgs.map(msg => (
+                                <li key={msg.id} style={{ marginBottom: '8px' }}>
+                                    <h3 className="title-comment">Comments</h3>
+                                    <div className="flex align-center">
+                                        {(user.isAdmin || user._id === msg.by?._id) && (
+                                            <button
+                                                className="btn-remove-msg"
+                                                onClick={() => onRemoveToyMsg(msg.id)}
+                                                style={{ float: 'right', color: 'red', border: 'none', background: 'none', cursor: 'pointer' }}
+                                            >
+                                                x
+                                            </button>
+                                        )}
+
+                                        {msg.by?.fullname &&
+                                            <p className="txt-comment" style={{ margin: 0 }}>
+                                                <span className="name-comment">{msg.by.fullname}:</span> {msg.txt}
+                                            </p>
+                                        }
+                                    </div>
+                                    <p className="date-comment" style={{ color: 'var(--gray2)' }}>
+                                        {new Date(msg.createdAt).toLocaleDateString()}
+                                    </p>
+                                </li>
+                            ))
+                        ) : (
+                            <p className="no-comment">No comments yet...</p>
+                        )
                     )}
                 </ul>
                 {user ? (
@@ -144,7 +148,7 @@ export function ToyDetails() {
                         <button>Post</button>
                     </form>
                 ) : (
-                    <p className="no-comment">Please login to comment</p>
+                    <p className="no-comment-login">Please login to comment</p>
                 )}
             </section>
 

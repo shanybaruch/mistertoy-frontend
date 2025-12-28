@@ -15,21 +15,28 @@
 
         h5 {
             margin-block: 1em;
-            font-weight: 300;
+            font-weight: 400;
 
             span {
                 display: block;
-                font-weight: 200;
+                font-weight: 400;
             }
         }
     }
 
     .toy-db-messages {
 
-        .no-comment {
+        .no-comment,
+        .no-comment-login {
             text-align: center;
             color: var(--gray2);
+            font-size: .9rem;
         }
+
+        /* .no-comment-login {
+            text-align: center;
+            color: var(--gray2);
+        } */
 
         .msg-form {
             display: flex;

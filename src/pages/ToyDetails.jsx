@@ -94,17 +94,15 @@ export function ToyDetails() {
 
     // console.log('toy: ', toy)
     // console.log('user: ', user)
-    // console.log('reviews: ', reviews)
-  
+    console.log('reviews: ', reviews)
+
     if (!toy) return <Loader />
     const formattedDate = new Date(toy.createdAt).toLocaleString('he')
     return (
         <section className="toy-details">
             <div className="top-page">
                 <h1 className="title">{toy.name}</h1>
-
                 <div className="body-details flex">
-
                     <div className="main-details">
                         <h5>Created: <span>{formattedDate}</span></h5>
                         <h5>Price: <span>${toy.price}</span></h5>
@@ -116,22 +114,19 @@ export function ToyDetails() {
                     </div>
                 </div>
             </div>
-
             <div className="links bottom-page">
                 <div>
                     <button className="btn-back"
                         onClick={onClickBack}
                     >Back</button>
                 </div>
-                {/* <div>
-                    <Link to={`/toy/edit/${toy?._id}`}>Edit</Link>
-                    &nbsp;
-                </div> */}
-                {/* <div>
-                    <Link to="/toy/nmRU3">Next Toy</Link>
-                </div> */}
+                {user.isAdmin &&
+                    <div>
+                        <Link to={`/toy/edit/${toy?._id}`}>Edit</Link>
+                        &nbsp;
+                    </div>
+                }
             </div>
-
             <section
                 className="section-reviews-messages"
             >
@@ -160,8 +155,7 @@ export function ToyDetails() {
                                             }
                                         </div>
                                         <p className="date-review" style={{ color: 'var(--gray2)' }}>
-                                            {new Date(review.createdAt).toLocaleDateString()}
-                                        </p>
+                                            {new Date(review.createdAt || Date.now()).toLocaleDateString('he-IL')}                                        </p>
                                     </li>
                                 ))
                             ) : (

@@ -1,10 +1,10 @@
-
 .review-page {
     grid-column: 2;
-    margin: 1rem auto;
-    padding: 0 1rem;
+    margin: .2em auto;
+    padding: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     color: var(--gray3);
+    width: 100%;
 }
 
 .review-page h2 {
@@ -20,11 +20,13 @@
 
 .review-list ul {
     list-style: none;
+    margin: 0;
     padding: 0;
-   
-    display: flex;
-    /* flex-direction: column; */
-    gap: 1.5rem;
+    
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(auto, 160px));
+    gap: 1.4rem;
 }
 
 .review-list li {
@@ -57,7 +59,7 @@
     padding-inline: .2em;
     padding-block: .4em;
     margin: 0;
-  
+
     position: absolute;
     top: -20px;
 
@@ -79,7 +81,7 @@
         color: var(--clr1-dark);
         text-decoration: none;
         font-weight: 600;
-     
+
         &:hover {
             font-size: .95rem;
             background-color: inherit;
@@ -91,19 +93,19 @@
         margin: 0;
         padding: 0;
     }
-  
+
     .review-by {
         font-size: 0.9rem;
         color: var(--gray3);
     }
-   
+
     .review-txt {
-       font-size: .9rem;
-       font-weight: bold;
-       color: var(--gray3);
-       /* border-left: 3px solid var(--border-color); */
+        font-size: .9rem;
+        font-weight: bold;
+        color: var(--gray3);
+        /* border-left: 3px solid var(--border-color); */
     }
-  
+
     .review-edit {
         background: var(--gray1-light);
         padding: 1.5rem;
@@ -113,5 +115,3 @@
         box-shadow: var(--gray3);
     }
 }
-
-

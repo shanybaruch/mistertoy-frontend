@@ -120,12 +120,12 @@ export function ToyDetails() {
                         onClick={onClickBack}
                     >Back</button>
                 </div>
-                {user.isAdmin &&
+                {/* {user.isAdmin &&
                     <div>
                         <Link to={`/toy/edit/${toy?._id}`}>Edit</Link>
                         &nbsp;
                     </div>
-                }
+                } */}
             </div>
             <section
                 className="section-reviews-messages"

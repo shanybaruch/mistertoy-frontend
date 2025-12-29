@@ -10,5 +10,6 @@ export function ReviewPreview({ review }) {
             <Link to={`/toy/${toy._id}`}>{toy.name}</Link></p>
         <p className="review-by"><Link to={`/user/${user._id}`}>{user.fullname}</Link></p>
         <p className="review-txt">{review.txt}</p>
+        {/* <p className="review-date">{review.createdAt}</p> */}
     </article>
 }

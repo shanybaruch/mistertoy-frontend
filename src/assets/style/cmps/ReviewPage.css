@@ -22,7 +22,7 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    
+
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(auto-fit, minmax(auto, 160px));
@@ -73,6 +73,7 @@
 .review-preview {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 0.7rem;
 
     a {
@@ -92,11 +93,19 @@
     p {
         margin: 0;
         padding: 0;
+
+        a {
+            color: var(--clr1-dark);
+            font-size: 1rem;
+            font-weight: bold;
+
+        }
     }
 
-    .review-by {
-        font-size: 0.9rem;
-        color: var(--gray3);
+    .review-by a {
+        font-size: 0.8rem;
+        color: var(--clr1-dark);
+        font-weight: 300;
     }
 
     .review-txt {
@@ -104,6 +113,13 @@
         font-weight: bold;
         color: var(--gray3);
         /* border-left: 3px solid var(--border-color); */
+    }
+
+    .review-date {
+        font-size: .7rem;
+        font-weight: 200;
+        color: var(--gray2);
+
     }
 
     .review-edit {

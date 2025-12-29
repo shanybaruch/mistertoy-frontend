@@ -2,7 +2,7 @@ import { reviewService } from '../../services/review/review.service.remote.js'
 
 import { store } from '../store.js'
 import { ADD_REVIEW, REMOVE_REVIEW, SET_REVIEWS } from '../reducers/review.reducer.js'
-import { SET_SCORE } from '../reducers/user.reducer.js'
+import { SET_USER_SCORE } from '../reducers/user.reducer.js'
 
 export async function loadReviews(filterBy = {}) {
 	try {
@@ -19,7 +19,7 @@ export async function addReview(review) {
 		const addedReview = await reviewService.add(review)
 		store.dispatch(getActionAddReview(addedReview))
 		const { score } = addedReview.user
-		store.dispatch({ type: SET_SCORE, score })
+		store.dispatch({ type: SET_USER_SCORE, score })
 	} catch (err) {
 		console.log('ReviewActions: err in addReview', err)
 		throw err
@@ -28,7 +28,7 @@ export async function addReview(review) {
 
 export async function removeReview(reviewId) {
 	try {
-		await reviewService.remove(reviewId)
+		const res = await reviewService.remove(reviewId)
 		store.dispatch(getActionRemoveReview(reviewId))
 	} catch (err) {
 		console.log('ReviewActions: err in removeReview', err)

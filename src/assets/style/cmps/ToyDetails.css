@@ -1,8 +1,9 @@
 .toy-details {
-    display: grid;
-    /* grid-template-rows: 6fr 1fr; */
-    grid-template-rows: auto auto auto;
+    /* display: grid; */
+    /* grid-template-rows: auto auto auto; */
     grid-column: 2;
+    /* display: flex; */
+    /* flex-direction: column; */
     width: 100%;
 
     .body-details {
@@ -40,6 +41,11 @@
         .section-reviews,
         .section-comments {
             width: 100%;
+
+            .clean-list {
+                max-height: 100px;
+                overflow-y: auto;
+            }
         }
 
         h3 {}
@@ -56,13 +62,15 @@
             color: var(--gray2);
         } */
 
-        .msg-form {
+        .msg-form,
+        .review-form {
             display: flex;
             justify-content: center;
             gap: .5em;
             margin-top: .5em;
 
             input {
+                box-shadow: 0 0 5px 0 var(--gray2-light);
                 padding-block: 8px;
                 padding-inline: 10px;
                 border-radius: 10px;
@@ -79,8 +87,7 @@
 
                 &:hover {
                     background-color: inherit;
-                    font-size: .95rem;
-                    color: inherit;
+                    color: var(--gray2);
                 }
             }
         }
@@ -89,6 +96,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+
+            height: 150px;
+            overflow-y: auto;
 
             p {
                 margin: 0;
@@ -162,13 +172,19 @@
         align-self: end;
         margin: 0 auto;
 
-        .btn-back {
-            transition: .3s;
-            font-size: .9rem;
+        div {
+            display: flex;
+            justify-content: center;
 
-            &:hover {
-                background-color: transparent;
-                color: var(--gray2);
+            .btn-back {
+                text-align: center;
+                transition: .3s;
+                font-size: .9rem;
+
+                &:hover {
+                    background-color: transparent;
+                    color: var(--gray2);
+                }
             }
         }
     }
@@ -220,6 +236,10 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+
+        .clean-list {
+            max-height: 150px;
+        }
     }
 
     .body-details {

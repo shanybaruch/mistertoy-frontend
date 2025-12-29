@@ -58,7 +58,7 @@ main.main-layout {
     grid-template-columns: 1fr minmax(auto, 800px) 1fr;
     grid-template-rows: 1fr;
 
-    margin-top: 1em;
+    margin-top: 0;
 }
 
 .toy-index {

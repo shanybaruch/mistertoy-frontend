@@ -5,6 +5,8 @@ import { PopUp } from "../cmps/PopUp.jsx"
 import { Chat } from "../cmps/Chat.jsx"
 import { showSuccessMsg, showErrorMsg } from "../services/event-bus.service.js"
 import { useSelector } from "react-redux"
+import { loadReviews, removeReview, addReview } from '../store/actions/review.actions.js'
+import { Loader } from "../cmps/Loader.jsx"
 
 export function ToyDetails() {
     const [toy, setToy] = useState(null)
@@ -12,11 +14,14 @@ export function ToyDetails() {
     const [isChatOpen, setIsChatOpen] = useState(false)
     const navigate = useNavigate()
     const user = useSelector(storeState => storeState.userModule.loggedInUser)
-	const reviews = useSelector(storeState => storeState.reviewModule.reviews)
+    const reviews = useSelector(storeState => storeState.reviewModule.reviews)
 
 
     useEffect(() => {
-        if (toyId) loadToy()
+        if (toyId) {
+            loadToy()
+            loadReviews({ toyId })
+        }
     }, [toyId])
 
     async function loadToy() {
@@ -63,8 +68,35 @@ export function ToyDetails() {
         }
     }
 
-    console.log('toy: ', toy)
-    if (!toy) return <div className="loading">Loading...</div>
+    async function onRemoveReview(reviewId) {
+        try {
+            await removeReview(reviewId)
+            showSuccessMsg('Review removed')
+        } catch (err) {
+            showErrorMsg('Cannot remove')
+        }
+    }
+
+    async function onAddReview(ev) {
+        ev.preventDefault()
+        const txt = ev.target.elements.reviewTxt.value
+        try {
+            await addReview({
+                txt,
+                toyId,
+            })
+            ev.target.reset()
+            showSuccessMsg('Review Added')
+        } catch (err) {
+            showErrorMsg('Cannot add')
+        }
+    }
+
+    // console.log('toy: ', toy)
+    // console.log('user: ', user)
+    // console.log('reviews: ', reviews)
+  
+    if (!toy) return <Loader />
     const formattedDate = new Date(toy.createdAt).toLocaleString('he')
     return (
         <section className="toy-details">
@@ -105,35 +137,30 @@ export function ToyDetails() {
             >
                 <section className="section-reviews">
                     <h3 className="title-review">Reviews</h3>
-                    <ul
-                        className="clean-list"
-                        style={{
-                            maxHeight: '150px',
-                            overflowY: 'auto'
-                        }}>
+                    <ul className="clean-list">
                         {user && (
-                            toy?.msgs && toy.msgs.length > 0 ? (
-                                toy.msgs.map(msg => (
-                                    <li key={msg.id} style={{ marginBottom: '8px' }}>
+                            reviews && reviews.length > 0 ? (
+                                reviews.map(review => (
+                                    <li key={review._id}>
                                         <div className="flex align-center">
-                                            {(user.isAdmin || user._id === msg.by?._id) && (
+                                            {(user.isAdmin || user._id === review.user?._id) && (
                                                 <button
                                                     className="btn-remove-rvw"
-                                                    onClick={() => onRemoveToyMsg(msg.id)}
-                                                    style={{ float: 'right', color: 'red', border: 'none', background: 'none', cursor: 'pointer' }}
+                                                    onClick={() => onRemoveReview(review._id)}
+                                                    style={{ float: 'right', border: 'none', background: 'none', cursor: 'pointer' }}
                                                 >
                                                     x
                                                 </button>
                                             )}
 
-                                            {msg.by?.fullname &&
+                                            {review.user?.fullname &&
                                                 <p className="txt-review" style={{ margin: 0 }}>
-                                                    <span className="name-review">{msg.by.fullname}:</span> {msg.txt}
+                                                    <span className="name-review">{review.user.fullname}:</span> {review.txt}
                                                 </p>
                                             }
                                         </div>
                                         <p className="date-review" style={{ color: 'var(--gray2)' }}>
-                                            {new Date(msg.createdAt).toLocaleDateString()}
+                                            {new Date(review.createdAt).toLocaleDateString()}
                                         </p>
                                     </li>
                                 ))
@@ -143,8 +170,8 @@ export function ToyDetails() {
                         )}
                     </ul>
                     {user ? (
-                        <form className="msg-form" onSubmit>
-                            <input type="text" placeholder="Write a review..." required />
+                        <form className="review-form" onSubmit={onAddReview}>
+                            <input type="text" name="reviewTxt" placeholder="Write a review..." required />
                             <button>Post</button>
                         </form>
                     ) : (
@@ -153,22 +180,17 @@ export function ToyDetails() {
                 </section>
                 <section className="section-comments">
                     <h3 className="title-comment">Comments</h3>
-                    <ul
-                        className="clean-list"
-                        style={{
-                            maxHeight: '150px',
-                            overflowY: 'auto'
-                        }}>
+                    <ul className="clean-list">
                         {user && (
                             toy?.msgs && toy.msgs.length > 0 ? (
                                 toy.msgs.map(msg => (
-                                    <li key={msg.id} style={{ marginBottom: '8px' }}>
+                                    <li key={msg.id}>
                                         <div className="flex align-center">
                                             {(user.isAdmin || user._id === msg.by?._id) && (
                                                 <button
                                                     className="btn-remove-msg"
                                                     onClick={() => onRemoveToyMsg(msg.id)}
-                                                    style={{ float: 'right', color: 'red', border: 'none', background: 'none', cursor: 'pointer' }}
+                                                    style={{ float: 'right', border: 'none', background: 'none', cursor: 'pointer' }}
                                                 >
                                                     x
                                                 </button>

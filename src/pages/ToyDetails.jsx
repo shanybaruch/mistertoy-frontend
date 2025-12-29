@@ -12,6 +12,8 @@ export function ToyDetails() {
     const [isChatOpen, setIsChatOpen] = useState(false)
     const navigate = useNavigate()
     const user = useSelector(storeState => storeState.userModule.loggedInUser)
+	const reviews = useSelector(storeState => storeState.reviewModule.reviews)
+
 
     useEffect(() => {
         if (toyId) loadToy()
@@ -99,57 +101,104 @@ export function ToyDetails() {
             </div>
 
             <section
-                className="toy-db-messages"
-                style={{
-                    marginBottom: '10px',
-                    paddingBottom: '10px'
-                }}>
-                <ul
-                    className="clean-list"
-                    style={{
-                        maxHeight: '150px',
-                        overflowY: 'auto'
-                    }}>
-                    {user && (
-                        toy?.msgs && toy.msgs.length > 0 ? (
-                            toy.msgs.map(msg => (
-                                <li key={msg.id} style={{ marginBottom: '8px' }}>
-                                    <h3 className="title-comment">Comments</h3>
-                                    <div className="flex align-center">
-                                        {(user.isAdmin || user._id === msg.by?._id) && (
-                                            <button
-                                                className="btn-remove-msg"
-                                                onClick={() => onRemoveToyMsg(msg.id)}
-                                                style={{ float: 'right', color: 'red', border: 'none', background: 'none', cursor: 'pointer' }}
-                                            >
-                                                x
-                                            </button>
-                                        )}
+                className="section-reviews-messages"
+            >
+                <section className="section-reviews">
+                    <h3 className="title-review">Reviews</h3>
+                    <ul
+                        className="clean-list"
+                        style={{
+                            maxHeight: '150px',
+                            overflowY: 'auto'
+                        }}>
+                        {user && (
+                            toy?.msgs && toy.msgs.length > 0 ? (
+                                toy.msgs.map(msg => (
+                                    <li key={msg.id} style={{ marginBottom: '8px' }}>
+                                        <div className="flex align-center">
+                                            {(user.isAdmin || user._id === msg.by?._id) && (
+                                                <button
+                                                    className="btn-remove-rvw"
+                                                    onClick={() => onRemoveToyMsg(msg.id)}
+                                                    style={{ float: 'right', color: 'red', border: 'none', background: 'none', cursor: 'pointer' }}
+                                                >
+                                                    x
+                                                </button>
+                                            )}
 
-                                        {msg.by?.fullname &&
-                                            <p className="txt-comment" style={{ margin: 0 }}>
-                                                <span className="name-comment">{msg.by.fullname}:</span> {msg.txt}
-                                            </p>
-                                        }
-                                    </div>
-                                    <p className="date-comment" style={{ color: 'var(--gray2)' }}>
-                                        {new Date(msg.createdAt).toLocaleDateString()}
-                                    </p>
-                                </li>
-                            ))
-                        ) : (
-                            <p className="no-comment">No comments yet...</p>
-                        )
+                                            {msg.by?.fullname &&
+                                                <p className="txt-review" style={{ margin: 0 }}>
+                                                    <span className="name-review">{msg.by.fullname}:</span> {msg.txt}
+                                                </p>
+                                            }
+                                        </div>
+                                        <p className="date-review" style={{ color: 'var(--gray2)' }}>
+                                            {new Date(msg.createdAt).toLocaleDateString()}
+                                        </p>
+                                    </li>
+                                ))
+                            ) : (
+                                <p className="no-comment">No reviews yet...</p>
+                            )
+                        )}
+                    </ul>
+                    {user ? (
+                        <form className="msg-form" onSubmit>
+                            <input type="text" placeholder="Write a review..." required />
+                            <button>Post</button>
+                        </form>
+                    ) : (
+                        <p className="no-comment-login">Please login to comment</p>
                     )}
-                </ul>
-                {user ? (
-                    <form className="msg-form" onSubmit={onSaveToyMsg}>
-                        <input type="text" name="msgTxt" placeholder="Write a comment..." required />
-                        <button>Post</button>
-                    </form>
-                ) : (
-                    <p className="no-comment-login">Please login to comment</p>
-                )}
+                </section>
+                <section className="section-comments">
+                    <h3 className="title-comment">Comments</h3>
+                    <ul
+                        className="clean-list"
+                        style={{
+                            maxHeight: '150px',
+                            overflowY: 'auto'
+                        }}>
+                        {user && (
+                            toy?.msgs && toy.msgs.length > 0 ? (
+                                toy.msgs.map(msg => (
+                                    <li key={msg.id} style={{ marginBottom: '8px' }}>
+                                        <div className="flex align-center">
+                                            {(user.isAdmin || user._id === msg.by?._id) && (
+                                                <button
+                                                    className="btn-remove-msg"
+                                                    onClick={() => onRemoveToyMsg(msg.id)}
+                                                    style={{ float: 'right', color: 'red', border: 'none', background: 'none', cursor: 'pointer' }}
+                                                >
+                                                    x
+                                                </button>
+                                            )}
+
+                                            {msg.by?.fullname &&
+                                                <p className="txt-comment" style={{ margin: 0 }}>
+                                                    <span className="name-comment">{msg.by.fullname}:</span> {msg.txt}
+                                                </p>
+                                            }
+                                        </div>
+                                        <p className="date-comment" style={{ color: 'var(--gray2)' }}>
+                                            {new Date(msg.createdAt).toLocaleDateString()}
+                                        </p>
+                                    </li>
+                                ))
+                            ) : (
+                                <p className="no-comment">No comments yet...</p>
+                            )
+                        )}
+                    </ul>
+                    {user ? (
+                        <form className="msg-form" onSubmit={onSaveToyMsg}>
+                            <input type="text" name="msgTxt" placeholder="Write a comment..." required />
+                            <button>Post</button>
+                        </form>
+                    ) : (
+                        <p className="no-comment-login">Please login to comment</p>
+                    )}
+                </section>
             </section>
 
             <section className="toy-messages">

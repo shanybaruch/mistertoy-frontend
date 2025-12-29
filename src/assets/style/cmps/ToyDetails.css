@@ -1,6 +1,7 @@
 .toy-details {
     display: grid;
-    grid-template-rows: 6fr 1fr;
+    /* grid-template-rows: 6fr 1fr; */
+    grid-template-rows: auto auto auto;
     grid-column: 2;
     width: 100%;
 
@@ -10,21 +11,38 @@
 
         .main-details {
             display: flex;
+            justify-content: center;
             flex-direction: column;
+            gap: 5px;
         }
 
         h5 {
-            margin-block: 1em;
-            font-weight: 400;
+            font-weight: 300;
+            font-size: .9rem;
 
             span {
                 display: block;
-                font-weight: 400;
+                font-weight: 300;
             }
+        }
+
+        .div-img-stock {
+            justify-content: center;
         }
     }
 
-    .toy-db-messages {
+    .section-reviews-messages {
+        margin-top: 1em;
+
+        display: flex;
+        justify-content: center;
+
+        .section-reviews,
+        .section-comments {
+            width: 100%;
+        }
+
+        h3 {}
 
         .no-comment,
         .no-comment-login {
@@ -42,7 +60,7 @@
             display: flex;
             justify-content: center;
             gap: .5em;
-            margin-top: 1em;
+            margin-top: .5em;
 
             input {
                 padding-block: 8px;
@@ -50,7 +68,8 @@
                 border-radius: 10px;
                 font-size: .8rem;
                 font-family: 'Elms Sans', sans-serif;
-                border: 1px solid var(--gray2-light);
+                /* border: 1px solid var(--gray2-light); */
+                border: 0;
             }
 
             button {
@@ -66,40 +85,48 @@
             }
         }
 
-        margin-top: 2em;
-
         .clean-list {
             display: flex;
             flex-direction: column;
             align-items: center;
+
+            p {
+                margin: 0;
+            }
         }
 
         li {
-            width: 60vw;
             display: flex;
+            /* flex-direction: column; */
             align-items: center;
             justify-content: space-between;
+            gap: 10px;
 
-            .btn-remove-msg {
+            .btn-remove-msg,
+            .btn-remove-rvw {
                 margin: 0;
                 padding: 5px;
             }
         }
 
-        .title-comment {
+        .title-comment,
+        .title-review {
             font-size: 1rem;
             text-align: center;
         }
 
         .name-comment,
         .txt-comment,
-        .date-comment {
+        .date-comment,
+        .name-review,
+        .txt-review,
+        .date-review {
             font-size: .9rem;
             font-weight: 200;
-
         }
 
-        .date-comment {
+        .date-comment,
+        .date-review {
             font-size: .8rem;
             margin: 0;
         }
@@ -137,6 +164,12 @@
 
         .btn-back {
             transition: .3s;
+            font-size: .9rem;
+
+            &:hover {
+                background-color: transparent;
+                color: var(--gray2);
+            }
         }
     }
 
@@ -179,5 +212,36 @@
             scale: 1.2;
             background-color: var(--clr1-dark);
         }
+    }
+}
+
+@media (max-width: 550px) {
+    .toy-details {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .body-details {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .section-reviews-messages {
+        margin-top: 0;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 1em;
+
+        .section-reviews,
+        .section-comments {
+            max-width: 320px;
+        }
+    }
+
+    .links {
+        grid-auto-flow: row;
+        gap: 10px;
     }
 }

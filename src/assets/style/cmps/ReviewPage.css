@@ -62,8 +62,7 @@
     top: -20px;
 
     &:hover {
-        font-size: .95rem;
-        color: var(--gray3);
+        color: var(--gray2);
     }
 
 }

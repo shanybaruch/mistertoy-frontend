@@ -1,7 +1,7 @@
 .app-header {
     background-color: var(--gray1);
-    padding-block: .8em;
-    padding-inline: .5em;
+    padding-block: 1.2em;
+    padding-inline: 1em;
 
     display: grid;
     grid-template-columns: 1fr minmax(auto, 800px) 1fr;
@@ -51,7 +51,7 @@
 
 @media (max-width: 550px) {
     .app-nav {
-        gap: .8em;
+        gap: 1.5em;
 
         a {
             font-size: 1rem;
@@ -59,6 +59,10 @@
     }
 
     .app-header {
+        padding-block: .4rem;
+        padding-inline: 0;
+
+
         .header-container {
             flex-direction: column;
 
@@ -68,9 +72,10 @@
         }
     }
 }
+
 @media (max-width: 380px) {
     .app-nav {
-        gap: .5em;
+        gap: 1em;
 
         a {
             font-size: .9rem;
@@ -78,6 +83,9 @@
     }
 
     .app-header {
+        padding-block: .2rem;
+        padding-inline: 0;
+
         .header-container {
             flex-direction: column;
 

@@ -20,31 +20,31 @@ export function GoogleMap() {
     const branches = [
         {
             _id: 'b101',
-            name: 'Mister Toy דיזנגוף סנטר',
-            address: 'דיזנגוף סנטר, דיזנגוף 50',
+            name: 'Mister Toy Dizengoff Center',
+            address: 'Dizengoff Center, Dizengoff 50',
             position: { lat: 32.0747, lng: 34.7738 },
-            hours: 'א׳-ה׳: 09:30-20:30  ו׳: 09:30-14:30'
+            hours: 'Sun-Thu: 09:30-20:30, Fri: 09:30-14:30'
         },
         {
             _id: 'b102',
-            name: 'Mister Toy נמל תל אביב',
-            address: 'האנגר 15, נמל תל אביב',
+            name: 'Mister Toy Tel Aviv Port',
+            address: 'Hangar 15, Tel Aviv Port',
             position: { lat: 32.0988, lng: 34.7725 },
-            hours: 'א׳-ה׳: 10:00-21:00  ו׳: 10:00-15:00'
+            hours: 'Sun-Thu: 10:00-21:00, Fri: 10:00-15:00'
         },
         {
             _id: 'b103',
-            name: 'Mister Toy דרך נמיר',
-            address: 'דרך נמיר 85',
+            name: 'Mister Toy Namir Road',
+            address: 'Namir Road 85',
             position: { lat: 32.0910, lng: 34.7925 },
-            hours: 'א׳-ה׳: 09:00-20:00  ו׳: 09:00-14:00'
+            hours: 'Sun-Thu: 09:00-20:00, Fri: 09:00-14:00'
         },
         {
             _id: 'b104',
-            name: 'Mister Toy מגדל שלום',
-            address: 'מגדל שלום, אחד העם 9',
+            name: 'Mister Toy Shalom Tower',
+            address: 'Shalom Tower, Ahad Ha\'Am 9',
             position: { lat: 32.0620, lng: 34.7709 },
-            hours: 'א׳-ה׳: 10:00-19:00  ו׳: סגור'
+            hours: 'Sun-Thu: 10:00-19:00, Fri: Closed'
         }
     ]
 
@@ -56,6 +56,7 @@ export function GoogleMap() {
 
     return (
         <section className="google-map">
+            <h1 className="title">Branches</h1>
             <APIProvider apiKey={API_KEY}>
                 <Map
                     // mapId={'bf51a910020fa25a'}
@@ -65,6 +66,7 @@ export function GoogleMap() {
                     gestureHandling={'greedy'}
                     disableDefaultUI={true}
                     onClick={handleClick}
+                    className="map"
                 >
 
                     {branches.map(branch => (
@@ -83,8 +85,8 @@ export function GoogleMap() {
                         >
                             <div style={{ padding: '10px' }}>
                                 <h4>{selectedBranch.name}</h4>
-                                <p><strong>כתובת:</strong> {selectedBranch.address}</p>
-                                <p><strong>שעות:</strong> {selectedBranch.hours}</p>
+                                <p><strong>Address:</strong> {selectedBranch.address}</p>
+                                <p><strong>Hours:</strong> {selectedBranch.hours}</p>
                             </div>
                         </InfoWindow>
                     )}

@@ -74,8 +74,8 @@ export function Chart() {
     }
 
     return (
-        <section className="chart-dashboard" style={{ maxWidth: '500px', margin: ' 2em auto', gridColumn: 2}}>
-            <h2 style={{ textAlign: 'center', marginBlock: '.5em' }}>Toys by Labels</h2>
+        <section className="chart-dashboard" style={{ margin: '0 auto', gridColumn: 2}}>
+            <h1 className='title' style={{ textAlign: 'center', marginBlock: '.5em' }}>Toys by Labels</h1>
             <Doughnut data={data} />
         </section >
     )

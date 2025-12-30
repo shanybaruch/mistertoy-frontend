@@ -40,7 +40,7 @@ export function Account() {
                                 to={`/user/${user._id}`}
                                 className="title-fullname">
                                 {user?.fullname}
-                                {user?.score &&
+                                {user?.score && user.score !== 0 &&
                                     <span className="score">$ {user.score.toLocaleString()}</span>
                                 }
                                 {/* <span> ${(user.score || 0).toLocaleString()} </span> */}

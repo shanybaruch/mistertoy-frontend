@@ -169,7 +169,7 @@ export function ToyDetails() {
                             <button>Post</button>
                         </form>
                     ) : (
-                        <p className="no-comment-login">Please login to comment</p>
+                        <p className="no-comment-login">Please login to review</p>
                     )}
                 </section>
                 <section className="section-comments">

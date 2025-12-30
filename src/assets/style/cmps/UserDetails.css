@@ -1,3 +1,29 @@
 .user-details {
     grid-column: 2;
+
+    background-color: var(--gray1-light);
+    padding: 1em;
+    border-radius: 10px;
+
+    /* .title {
+        margin: auto;
+    } */
+
+    .details {
+        padding-block: .5em;
+        padding-inline: 2em;
+    }
+
+    .btn-back {
+        font-size: .9rem;
+        transition: .3s;
+        margin: 0;
+        background-color: transparent;
+
+        &:hover {
+            font-size: 1rem;
+            color: inherit;
+            background-color: transparent;
+        }
+    }
 }

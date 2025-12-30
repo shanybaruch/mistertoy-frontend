@@ -55,7 +55,7 @@ export function Account() {
                 </div>
 
             </div>
-            <button className="toggle-theme" onClick={toggleTheme}>Toggle Theme</button>
+            {/* <button className="toggle-theme" onClick={toggleTheme}>Toggle Theme</button> */}
 
             < ShoppingCart isCartShown={isCartShown} />
 

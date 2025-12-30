@@ -29,21 +29,23 @@ export function UserDetails() {
         navigate(-1)
     }
 
-    console.log('user: ',user);
-    
+    console.log('user: ', user);
+
     if (!user) return <Loader />
 
     return (
         <section className="user-details">
-            <h1>{user.fullname}</h1>
-            <h5>ID: {user._id}</h5>
-            <h5>Score: {user.score}</h5>
-            {isMyProfile && (
-                <section>
-                    <h2>My Stuff!</h2>
-                </section>
-            )}
-            <button onClick={onClickBack}>Back</button>
+            <h1 className="title">{user.fullname}</h1>
+            <section className="details">
+                <p>ID: {user._id}</p>
+                <p>Score: {user.score}</p>
+                {isMyProfile && (
+                    <section>
+                        <p style={{ color: 'var(--clr1)' }}>My Stuff!</p>
+                    </section>
+                )}
+            </section>
+            <button className="btn-back" onClick={onClickBack}>Back</button>
         </section>
     )
 }

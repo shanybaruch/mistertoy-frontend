@@ -62,8 +62,8 @@ main.main-layout {
 }
 
 .toy-index {
-    margin: 0;
-
+    margin-block: 1em;
+    
     grid-column: 2;
 
     .pagination {

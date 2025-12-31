@@ -4,6 +4,8 @@ export const reviewService = {
 	add,
 	query,
 	remove,
+	getDefaultFilter,
+	getDefaultSort,
 }
 
 function query(filterBy) {
@@ -17,4 +19,14 @@ async function remove(reviewId) {
 
 async function add({ txt, toyId }) {
 	return await httpService.post(`review`, { txt, toyId })
+}
+
+function getDefaultFilter() {
+    return {
+        txt: '',
+    }
+}
+
+function getDefaultSort() {
+    return { type: '', desc: 1 }
 }

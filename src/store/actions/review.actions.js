@@ -35,6 +35,15 @@ export async function removeReview(reviewId) {
 		throw err
 	}
 }
+
+export function setFilter(filterBy = reviewService.getDefaultFilter()) {
+	store.dispatch({ type: SET_FILTER_BY, filterBy: filterBy })
+}
+
+export function setSort(sortBy = reviewService.getDefaultSort()) {
+	store.dispatch({ type: SET_SORT_BY, sortBy: sortBy })
+}
+
 // Command Creators
 export function getActionRemoveReview(reviewId) {
 	return { type: REMOVE_REVIEW, reviewId }

@@ -18,11 +18,15 @@ import { socketService, SOCKET_EVENT_REVIEW_ADDED, SOCKET_EVENT_REVIEW_REMOVED }
 import { ReviewList } from '../cmps/ReviewList.jsx'
 import { ReviewEdit } from '../cmps/ReviewEdit.jsx'
 import { loadToys } from '../store/actions/toy.actions.js'
+import { ReviewFilter } from '../cmps/ReviewFilter.jsx'
 
 export function ReviewPage() {
 	const toys = useSelector(storeState => storeState.toyModule.toys)
 	const loggedInUser = useSelector(storeState => storeState.userModule.loggedInUser)
 	const reviews = useSelector(storeState => storeState.reviewModule.reviews)
+
+	const filterBy = useSelector(storeState => storeState.reviewModule.filterBy)
+	const sortBy = useSelector(storeState => storeState.reviewModule.sortBy)
 
 	const dispatch = useDispatch()
 
@@ -30,7 +34,6 @@ export function ReviewPage() {
 		loadReviews()
 		loadUsers()
 		loadToys()
-
 
 		socketService.on(SOCKET_EVENT_REVIEW_ADDED, review => {
 			console.log('GOT from socket', review)
@@ -46,7 +49,7 @@ export function ReviewPage() {
 			socketService.off(SOCKET_EVENT_REVIEW_ADDED)
 			socketService.off(SOCKET_EVENT_REVIEW_REMOVED)
 		}
-	}, [])
+	}, [filterBy, sortBy])
 
 	async function onRemoveReview(reviewId) {
 		try {
@@ -61,6 +64,7 @@ export function ReviewPage() {
 	return <div className="review-page">
 		<h2>Reviews</h2>
 		{loggedInUser && <ReviewEdit toys={toys} />}
+		<ReviewFilter filterBy={filterBy} sortBy={sortBy} />
 		<ReviewList
 			reviews={reviews}
 			onRemoveReview={onRemoveReview} />

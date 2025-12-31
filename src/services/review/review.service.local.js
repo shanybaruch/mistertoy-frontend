@@ -5,6 +5,8 @@ export const reviewService = {
 	add,
 	query,
 	remove,
+	getDefaultFilter,
+	getDefaultSort,
 }
 
 function query(filterBy) {
@@ -32,4 +34,14 @@ async function add({ txt, toyId }) {
 
 	const addedReview = await storageService.post('review', reviewToAdd)
 	return addedReview
+}
+
+function getDefaultFilter() {
+    return {
+        txt: '',
+    }
+}
+
+function getDefaultSort() {
+    return { type: '', desc: 1 }
 }

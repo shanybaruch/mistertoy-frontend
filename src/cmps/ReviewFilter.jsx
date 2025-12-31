@@ -1,17 +1,13 @@
 import { useEffect, useRef, useState } from "react"
-import { setFilter, setSort } from "../store/actions/review.actions.js"
 import { utilService } from "../services/util.service.js"
 
-export function ReviewFilter({ filterby, sortBy }) {
-    // const filterBy = useSelector(storeState => storeState.reviewModule.filterBy)
-    // const sortBy = useSelector(storeState => storeState.reviewModule.sortBy)
-    const [filterByToEdit, setFilterByToEdit] = useState({ ...filterby })
-    const [sortByToEdit, setsortByToEdit] = useState({ ...sortBy })
+export function ReviewFilter({ filterBy, onSetFilter, sortBy, onSetSort }) {
+    const [filterByToEdit, setfilterByToEdit] = useState({ ...filterBy })
     const debouncedOnSetFilter = useRef(utilService.debounce(onSetFilter, 300)).current
 
     useEffect(() => {
         debouncedOnSetFilter(filterByToEdit)
-    }, [filterby, sortBy])
+    }, [filterByToEdit])
 
     function handleChange(ev) {
         let { value, name: field, type } = ev.target
@@ -20,33 +16,34 @@ export function ReviewFilter({ filterby, sortBy }) {
             value = +value || ''
         }
 
-        setFilterByToEdit(prevFilter => ({ ...prevFilter, [field]: value }))
-    }
-
-    function onSetFilter(filterBy) {
-        setFilter(filterBy)
-    }
-
-    function onSetSort(sortBy) {
-        setSort(sortBy)
+        setfilterByToEdit(prevFilter => ({ ...prevFilter, [field]: value }))
     }
 
     function onClearFilter() {
-        setFilterByToEdit({
+        setfilterByToEdit(prev => ({
+            ...prev,
             txt: '',
             sortBy: ''
-        })
+        }))
     }
+
+    function onSubmitFilter(ev) {
+        ev.preventDefault()
+        onSetFilter(filterByToEdit)
+    }
+
     return (
         <section className="review-filter">
-            <input
-                className="filter-by-txt"
-                type="search"
-                name="txt"
-                placeholder="Review txt.."
-                value={filterByToEdit.txt}
-                onChange={handleChange}
-            />
+            <form onSubmit={onSubmitFilter}>
+                <input
+                    className="filter-by-txt"
+                    type="search"
+                    name="txt"
+                    placeholder="Review txt.."
+                    value={filterByToEdit.txt || ''}
+                    onChange={handleChange}
+                />
+            </form>
             <button className="btn-clear" onClick={onClearFilter}>Clear</button>
 
         </section>

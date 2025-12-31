@@ -4,8 +4,8 @@ export const SET_REVIEWS = 'SET_REVIEWS'
 export const ADD_REVIEW = 'ADD_REVIEW'
 export const REMOVE_REVIEW = 'REMOVE_REVIEW'
 export const UPDATE_REVIEW = 'UPDATE_REVIEW'
-export const SET_FILTER_BY = 'SET_FILTER_BY'
-export const SET_SORT_BY = 'SET_SORT_BY'
+export const SET_REVIEW_FILTER_BY = 'SET_REVIEW_FILTER_BY'
+export const SET_SORT_BY = 'SET_REVIEW_SORT_BY'
 
 const initialState = {
   reviews: [],
@@ -28,7 +28,7 @@ export function reviewReducer(state = initialState, action = {}) {
           review._id === action.review._id ? action.review : review
         )
       }
-    case SET_FILTER_BY:
+    case SET_REVIEW_FILTER_BY:
       return {
         ...state,
         filterBy: { ...state.filterBy, ...action.filterBy }

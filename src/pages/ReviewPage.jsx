@@ -10,7 +10,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { loadReviews, removeReview, getActionAddReview, getActionRemoveReview } from '../store/actions/review.actions.js'
+import { loadReviews, removeReview, getActionAddReview, getActionRemoveReview, setFilter, setSort } from '../store/actions/review.actions.js'
 import { loadUsers } from '../store/actions/user.actions.js'
 
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
@@ -49,6 +49,10 @@ export function ReviewPage() {
 			socketService.off(SOCKET_EVENT_REVIEW_ADDED)
 			socketService.off(SOCKET_EVENT_REVIEW_REMOVED)
 		}
+	}, [])
+
+	useEffect(() => {
+		loadReviews()
 	}, [filterBy, sortBy])
 
 	async function onRemoveReview(reviewId) {
@@ -60,11 +64,25 @@ export function ReviewPage() {
 		}
 	}
 
+	function onSetFilter(filterBy) {
+		setFilter(filterBy)
+	}
+
+	function onSetSort(sortBy) {
+		setSort(sortBy)
+	}
+
 	console.log('toys: ', toys)
 	return <div className="review-page">
 		<h2>Reviews</h2>
-		{loggedInUser && <ReviewEdit toys={toys} />}
-		<ReviewFilter filterBy={filterBy} sortBy={sortBy} />
+		{loggedInUser &&
+			<ReviewEdit toys={toys}/>}
+		<ReviewFilter
+			filterBy={filterBy}
+			onSetFilter={onSetFilter}
+			sortBy={sortBy}
+			onSetSort={onSetSort}
+		/>
 		<ReviewList
 			reviews={reviews}
 			onRemoveReview={onRemoveReview} />

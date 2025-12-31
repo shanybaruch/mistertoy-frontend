@@ -1,10 +1,13 @@
 import { reviewService } from '../../services/review/review.service.remote.js'
 
 import { store } from '../store.js'
-import { ADD_REVIEW, REMOVE_REVIEW, SET_REVIEWS } from '../reducers/review.reducer.js'
+import { ADD_REVIEW, REMOVE_REVIEW, SET_REVIEWS, SET_REVIEW_FILTER_BY } from '../reducers/review.reducer.js'
 import { SET_USER_SCORE } from '../reducers/user.reducer.js'
 
-export async function loadReviews(filterBy = {}) {
+export async function loadReviews() {
+	const { filterBy } = store.getState().reviewModule
+	console.log('filterBy from review action: ',{filterBy});
+	
 	try {
 		const reviews = await reviewService.query(filterBy)
 		store.dispatch({ type: SET_REVIEWS, reviews })
@@ -37,7 +40,7 @@ export async function removeReview(reviewId) {
 }
 
 export function setFilter(filterBy = reviewService.getDefaultFilter()) {
-	store.dispatch({ type: SET_FILTER_BY, filterBy: filterBy })
+	store.dispatch({ type: SET_REVIEW_FILTER_BY, filterBy: filterBy })
 }
 
 export function setSort(sortBy = reviewService.getDefaultSort()) {

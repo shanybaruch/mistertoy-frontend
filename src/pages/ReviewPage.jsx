@@ -17,9 +17,11 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { socketService, SOCKET_EVENT_REVIEW_ADDED, SOCKET_EVENT_REVIEW_REMOVED } from '../services/socket.service.js'
 import { ReviewList } from '../cmps/ReviewList.jsx'
 import { ReviewEdit } from '../cmps/ReviewEdit.jsx'
+import { loadToys } from '../store/actions/toy.actions.js'
 
 export function ReviewPage() {
-	const loggedInUser = useSelector(storeState => storeState.userModule.user)
+	const toys = useSelector(storeState => storeState.toyModule.toys)
+	const loggedInUser = useSelector(storeState => storeState.userModule.loggedInUser)
 	const reviews = useSelector(storeState => storeState.reviewModule.reviews)
 
 	const dispatch = useDispatch()
@@ -27,6 +29,8 @@ export function ReviewPage() {
 	useEffect(() => {
 		loadReviews()
 		loadUsers()
+		loadToys()
+
 
 		socketService.on(SOCKET_EVENT_REVIEW_ADDED, review => {
 			console.log('GOT from socket', review)
@@ -39,9 +43,9 @@ export function ReviewPage() {
 		})
 
 		return () => {
-            socketService.off(SOCKET_EVENT_REVIEW_ADDED)
-            socketService.off(SOCKET_EVENT_REVIEW_REMOVED)
-        }
+			socketService.off(SOCKET_EVENT_REVIEW_ADDED)
+			socketService.off(SOCKET_EVENT_REVIEW_REMOVED)
+		}
 	}, [])
 
 	async function onRemoveReview(reviewId) {
@@ -53,11 +57,12 @@ export function ReviewPage() {
 		}
 	}
 
+	console.log('toys: ', toys)
 	return <div className="review-page">
-        <h2>Reviews</h2>
-        {loggedInUser && <ReviewEdit/>}
-        <ReviewList 
-            reviews={reviews} 
-            onRemoveReview={onRemoveReview}/>
-    </div>
+		<h2>Reviews</h2>
+		{loggedInUser && <ReviewEdit toys={toys} />}
+		<ReviewList
+			reviews={reviews}
+			onRemoveReview={onRemoveReview} />
+	</div>
 }

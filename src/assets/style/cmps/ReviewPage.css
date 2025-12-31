@@ -10,7 +10,8 @@
 .review-page h2 {
     font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 2rem;
+    margin-top: 0;
+    margin-bottom: .3em;
     text-align: center;
 }
 
@@ -129,5 +130,27 @@
         border: 1px solid var(--border-color);
         margin-bottom: 3rem;
         box-shadow: var(--gray3);
+    }
+}
+
+.review-edit {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 5px;
+
+    select {
+        cursor: pointer;
+        padding-block: .5em;
+
+    }
+
+    button {
+        margin: 0;
+
+        &:hover {
+            background-color: transparent;
+            color: var(--gray2);
+        }
     }
 }

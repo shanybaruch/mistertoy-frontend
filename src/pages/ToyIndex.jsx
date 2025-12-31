@@ -14,7 +14,6 @@ import { ADD_TOY_TO_CART } from '../store/reducers/toy.reducer.js'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { PaginationButtons } from '../cmps/PaginationButtons.jsx'
-import { userService } from '../services/user.service.js'
 import { Loader } from '../cmps/Loader.jsx'
 
 

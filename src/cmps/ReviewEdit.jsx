@@ -1,12 +1,9 @@
 import { useState } from "react"
 import { useSelector } from "react-redux"
-
 import { addReview } from "../store/actions/review.actions"
-
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 
-export function ReviewEdit() {
-	const users = useSelector(storeState => storeState.userModule.users)
+export function ReviewEdit({toys}) {
 	const [reviewToEdit, setReviewToEdit] = useState({ txt: '', toyId: '' })
 
 	function handleChange(ev) {
@@ -30,13 +27,13 @@ export function ReviewEdit() {
    return <form className="review-edit" onSubmit={onAddReview}>
         <select onChange={handleChange} value={reviewToEdit.toyId} name="toyId">
             <option value="">Review about...</option>
-            {users.map(user =>
-                <option key={user._id} value={user._id}>
-                    {user.fullname}
+            {toys?.map(toy =>
+                <option key={toy._id} value={toy._id}>
+                    {toy.name}
                 </option>
             )}
         </select>
-        <textarea name="txt" onChange={handleChange} value={reviewToEdit.txt}></textarea>
+        <input name="txt" onChange={handleChange} value={reviewToEdit.txt} />
         <button>Add</button>
     </form>
 

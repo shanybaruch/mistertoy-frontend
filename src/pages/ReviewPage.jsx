@@ -72,7 +72,7 @@ export function ReviewPage() {
 		setSort(sortBy)
 	}
 
-	console.log('toys: ', toys)
+	// console.log('toys: ', toys)
 	return <div className="review-page">
 		<h2>Reviews</h2>
 		{loggedInUser &&

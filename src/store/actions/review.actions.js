@@ -6,7 +6,7 @@ import { SET_USER_SCORE } from '../reducers/user.reducer.js'
 
 export async function loadReviews() {
 	const { filterBy } = store.getState().reviewModule
-	console.log('filterBy from review action: ',{filterBy});
+	// console.log('filterBy from review action: ',{filterBy});
 	
 	try {
 		const reviews = await reviewService.query(filterBy)

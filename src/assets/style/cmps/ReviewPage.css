@@ -154,3 +154,25 @@
         }
     }
 }
+
+.review-filter {
+    margin-top: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    input {
+        padding-block: .5em;
+    }
+
+    button {
+        margin: 0;
+
+        &:hover {
+            background-color: transparent;
+            color: var(--gray2);
+        }
+    }
+}

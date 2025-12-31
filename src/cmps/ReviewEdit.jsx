@@ -26,7 +26,7 @@ export function ReviewEdit({toys}) {
 
    return <form className="review-edit" onSubmit={onAddReview}>
         <select onChange={handleChange} value={reviewToEdit.toyId} name="toyId">
-            <option value="">Review about...</option>
+            <option value="">Add review about</option>
             {toys?.map(toy =>
                 <option key={toy._id} value={toy._id}>
                     {toy.name}

@@ -39,7 +39,7 @@ export function ReviewFilter({ filterBy, onSetFilter, sortBy, onSetSort }) {
                     className="filter-by-txt"
                     type="search"
                     name="txt"
-                    placeholder="Review txt.."
+                    placeholder="Review filter.."
                     value={filterByToEdit.txt || ''}
                     onChange={handleChange}
                 />

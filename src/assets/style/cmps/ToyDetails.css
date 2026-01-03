@@ -231,7 +231,12 @@
     }
 
     .customer-gallery {
-        
+        margin-top: 5em;
+
+        .upload-section {
+            display: flex;
+            justify-content: center;
+        }
     }
 }
 

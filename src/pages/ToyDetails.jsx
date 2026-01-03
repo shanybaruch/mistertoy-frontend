@@ -165,7 +165,7 @@ export function ToyDetails() {
                 <section className="section-reviews">
                     <h3 className="title-review">Reviews</h3>
                     <ul className="clean-list">
-                        {user && (
+                        {
                             reviews && reviews.length > 0 ? (
                                 reviews.map(review => (
                                     <li key={review._id}>
@@ -187,13 +187,14 @@ export function ToyDetails() {
                                             }
                                         </div>
                                         <p className="date-review" style={{ color: 'var(--gray2)' }}>
-                                            {new Date(review.createdAt || Date.now()).toLocaleDateString('he-IL')}                                        </p>
+                                            {new Date(review.createdAt || Date.now()).toLocaleDateString('he-IL')} 
+                                                                                   </p>
                                     </li>
                                 ))
                             ) : (
                                 <p className="no-comment">No reviews yet...</p>
                             )
-                        )}
+                        }
                     </ul>
                     {user ? (
                         <form className="review-form" onSubmit={onAddReview}>

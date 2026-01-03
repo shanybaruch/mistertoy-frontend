@@ -4,12 +4,11 @@ import { store } from '../store.js'
 import { ADD_REVIEW, REMOVE_REVIEW, SET_REVIEWS, SET_REVIEW_FILTER_BY } from '../reducers/review.reducer.js'
 import { SET_USER_SCORE } from '../reducers/user.reducer.js'
 
-export async function loadReviews() {
-	const { filterBy } = store.getState().reviewModule
-	// console.log('filterBy from review action: ',{filterBy});
+export async function loadReviews(filterBy) {
+const filterToUse = filterBy || store.getState().reviewModule.filterBy	// console.log('filterBy from review action: ',{filterBy});
 	
 	try {
-		const reviews = await reviewService.query(filterBy)
+		const reviews = await reviewService.query(filterToUse)
 		store.dispatch({ type: SET_REVIEWS, reviews })
 	} catch (err) {
 		console.log('ReviewActions: err in loadReviews', err)

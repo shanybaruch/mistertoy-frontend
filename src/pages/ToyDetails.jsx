@@ -7,6 +7,7 @@ import { showSuccessMsg, showErrorMsg } from "../services/event-bus.service.js"
 import { useSelector } from "react-redux"
 import { loadReviews, removeReview, addReview } from '../store/actions/review.actions.js'
 import { Loader } from "../cmps/Loader.jsx"
+import { uploadService } from "../services/upload.service.js"
 
 export function ToyDetails() {
     const [toy, setToy] = useState(null)
@@ -16,6 +17,7 @@ export function ToyDetails() {
     const user = useSelector(storeState => storeState.userModule.loggedInUser)
     const reviews = useSelector(storeState => storeState.reviewModule.reviews)
 
+    const [isUploading, setIsUploading] = useState(false)
 
     useEffect(() => {
         if (toyId) {
@@ -34,16 +36,32 @@ export function ToyDetails() {
         }
     }
 
+    async function onUploadGalleryImg(ev) {
+        setIsUploading(true)
+        try {
+            const imgUrl = await uploadService.uploadImg(ev, 'toys_app/gallery')
+            const updatedToy = await toyService.addToyImg(toy, imgUrl)
+            setToy(updatedToy)
+            showSuccessMsg('Image added to gallery!')
+        } catch (err) {
+            console.log('Failed to upload', err)
+            showErrorMsg('Failed to upload image')
+        } finally {
+            setIsUploading(false)
+        }
+    }
+
     async function onSaveToyMsg(ev) {
         ev.preventDefault()
         const txt = ev.target.elements.msgTxt.value
         try {
-            const savedMsg = await toyService.addMsg(toy._id, txt)
+            const savedMsg = await toyService.addMsg(toy._id, txt, msgImg)
             setToy(prevToy => ({
                 ...prevToy,
                 msgs: [...(prevToy.msgs || []), savedMsg]
             }))
             ev.target.reset()
+            setMsgImg(null)
             showSuccessMsg('Message added to toy!')
         } catch (err) {
             console.log('Cannot add message to database: ', err);
@@ -89,6 +107,20 @@ export function ToyDetails() {
             showSuccessMsg('Review Added')
         } catch (err) {
             showErrorMsg('Cannot add')
+        }
+    }
+
+    async function onRemoveGalleryImg(imgId) {
+        try {
+            await toyService.removeToyImg(toy._id, imgId)
+
+            setToy(prevToy => ({
+                ...prevToy,
+                gallery: prevToy.gallery.filter(img => img.id !== imgId)
+            }))
+            showSuccessMsg('Image removed')
+        } catch (err) {
+            showErrorMsg('Cannot remove image')
         }
     }
 
@@ -191,9 +223,18 @@ export function ToyDetails() {
                                             )}
 
                                             {msg.by?.fullname &&
-                                                <p className="txt-comment" style={{ margin: 0 }}>
-                                                    <span className="name-comment">{msg.by.fullname}:</span> {msg.txt}
-                                                </p>
+                                                <div className="msg-content">
+                                                    <p className="txt-comment" style={{ margin: 0 }}>
+                                                        <span className="name-comment">{msg.by.fullname}:</span> {msg.txt}
+                                                    </p>
+                                                    {msg.imgUrl && (
+                                                        <img
+                                                            src={msg.imgUrl}
+                                                            alt="comment-img"
+                                                            style={{ maxWidth: '150px', display: 'block', marginTop: '5px', borderRadius: '5px' }}
+                                                        />
+                                                    )}
+                                                </div>
                                             }
                                         </div>
                                         <p className="date-comment" style={{ color: 'var(--gray2)' }}>
@@ -217,6 +258,71 @@ export function ToyDetails() {
                 </section>
             </section>
 
+            <section className="customer-gallery">
+                <h3 className="title title-gallery">Customer Photos</h3>
+
+                {user ? (
+                    <div className="upload-section">
+                        <label
+                            htmlFor="gallery-upload"
+                            className="btn-upload"
+                            style={{ cursor: 'pointer', color: 'blue', textDecoration: 'underline' }}>
+                            {isUploading ? 'Uploading...' : 'Add your photo +'}
+                        </label>
+                        <input
+                            type="file"
+                            id="gallery-upload"
+                            onChange={onUploadGalleryImg}
+                            style={{ display: 'none' }}
+                            disabled={isUploading}
+                        />
+                    </div>
+                ) : (
+                    <p>Login to add photos</p>
+                )}
+
+                <div
+                    className="gallery-grid"
+                    style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '15px' }}>
+                    {toy.gallery && toy.gallery.map((imgItem) => {
+                        if (!imgItem) return null
+                        const imgUrl = imgItem.url || imgItem
+                        const imgId = imgItem.id
+                        const imgOwnerId = imgItem.by
+
+                        const isOwner = user && (user.isAdmin || (imgOwnerId && user._id === imgOwnerId))
+
+                        return (
+                            <div key={imgId || imgUrl} className="gallery-item" style={{ position: 'relative' }}>
+                                <img
+                                    src={imgUrl}
+                                    alt="Gallery"
+                                    style={{ width: '150px', height: '150px', objectFit: 'cover' }}
+                                />
+
+                                {isOwner && (
+                                    <button
+                                        onClick={() => onRemoveGalleryImg(imgId)}
+                                        style={{
+                                            position: 'absolute',
+                                            top: '5px',
+                                            right: '5px',
+                                            background: 'red',
+                                            color: 'white',
+                                            border: 'none',
+                                            borderRadius: '50%',
+                                            cursor: 'pointer'
+                                        }}
+                                    >
+                                        X
+                                    </button>
+                                )}
+                            </div>
+                        )
+                    })}
+                </div>
+            </section>
+
             <section className="toy-messages">
                 <PopUp
                     header={<h3>Customer Support - {toy.name}</h3>}
@@ -230,11 +336,12 @@ export function ToyDetails() {
                     />
                 </PopUp>
             </section >
-            {
-                !isChatOpen && <button
+            {!isChatOpen &&
+                <button
                     onClick={() => setIsChatOpen(true)}
                     className='open-chat'
-                >Chat </button>
+                >Chat
+                </button>
             }
         </section >
     )

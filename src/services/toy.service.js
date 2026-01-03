@@ -25,7 +25,8 @@ export const toyService = {
     getToyLabels,
     getToyLabelCounts,
     addMsg,
-    removeMsg
+    removeMsg,
+    addToyImg,
 }
 
 function query(filterBy = {}, sortBy = {}, pageIdx) {
@@ -88,7 +89,7 @@ function getEmptyToy() {
         name: '',
         price: '',
         labels: [],
-        inStock: true
+        inStock: true,
     }
 }
 
@@ -117,4 +118,17 @@ async function addMsg(toyId, txt) {
 
 async function removeMsg(toyId, msgId) {
   return httpService.delete(BASE_URL + `${toyId}/msg/${msgId}`)
+}
+
+async function addToyImg(toy, imgUrl) {
+    const res = await httpService.post(BASE_URL + `${toy._id}/gallery`, { imgUrl })
+    const updatedToy = { ...toy }
+    if (!updatedToy.gallery) updatedToy.gallery = []
+    updatedToy.gallery.push(imgUrl)
+    
+    return updatedToy
+}
+
+async function removeToyImg(toyId, imgId) {
+    return httpService.delete(BASE_URL + `${toyId}/gallery/${imgId}`)
 }

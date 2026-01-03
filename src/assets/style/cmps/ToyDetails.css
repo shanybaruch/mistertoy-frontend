@@ -229,6 +229,10 @@
             background-color: var(--clr1-dark);
         }
     }
+
+    .customer-gallery {
+        
+    }
 }
 
 @media (max-width: 550px) {

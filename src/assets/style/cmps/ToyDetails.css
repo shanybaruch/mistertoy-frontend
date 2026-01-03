@@ -5,14 +5,18 @@
     width: 100%;
 
     .body-details {
-        gap: .5em;
+        gap: .1em;
         justify-content: space-evenly;
 
         .main-details {
             display: flex;
-            justify-content: center;
+            justify-content: start;
             flex-direction: column;
-            gap: 5px;
+            gap: 0;
+        }
+
+        .in-stock {
+            font-size: 1rem;
         }
 
         h5 {
@@ -31,7 +35,7 @@
     }
 
     .section-reviews-messages {
-        margin-top: 1em;
+        margin-top: 3em;
 
         display: flex;
         justify-content: center;
@@ -41,7 +45,7 @@
             width: 100%;
 
             .clean-list {
-                max-height: 100px;
+                max-height: 40px;
                 overflow-y: auto;
             }
         }
@@ -148,7 +152,9 @@
         align-items: center;
 
         .toy-img {
-            max-width: 140px;
+            width: 200px;
+            height: 220px;
+            object-fit: cover;
         }
     }
 
@@ -231,11 +237,22 @@
     }
 
     .customer-gallery {
-        margin-top: 5em;
+        margin-top: 3em;
 
         .upload-section {
             display: flex;
             justify-content: center;
+        }
+
+        .btn-remove-img-toy {
+            font-size: .7rem;
+            background-color: transparent;
+
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding-block: .1rem;
+            padding-inline: .2rem;
         }
     }
 }
@@ -265,7 +282,7 @@
 
         .section-reviews,
         .section-comments {
-            max-width: 320px;
+            max-width: 300px;
         }
     }
 

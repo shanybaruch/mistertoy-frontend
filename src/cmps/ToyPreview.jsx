@@ -12,9 +12,9 @@ export function ToyPreview({ loggedInUser, toy, onRemoveToy }) {
       onClick={() => navigate(`/toy/${toy?._id}`)}
     >
       <h4 className="title">{toy.name || ''}</h4>
-      <img className="toy-img" src={toy.imgUrl} alt="toy-img" />
 
-      <p> <span>${toy.price.toLocaleString() || '0'}</span></p>
+      {/* <p> <span>${toy.price.toLocaleString() || '0'}</span></p> */}
+      <img className="toy-img" src={toy.imgUrl} alt="toy-img" />
 
       <p className={toy.inStock ? 'in-stock' : 'not-in-stock'}>{toy.inStock ? 'In stock' : 'Not in stock'}</p>
 

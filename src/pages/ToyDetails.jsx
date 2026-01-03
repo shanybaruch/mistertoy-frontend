@@ -136,13 +136,14 @@ export function ToyDetails() {
                 <h1 className="title">{toy.name}</h1>
                 <div className="body-details flex">
                     <div className="main-details">
+                        <h5 className={(toy.inStock) ? 'in-stock' : 'not-in-stock'}>{(toy.inStock) ? 'In stock ' : 'Not in stock'}</h5>
+                        <h5>ID: <span>{toy._id}</span></h5>
                         <h5>Created: <span>{formattedDate}</span></h5>
                         <h5>Price: <span>${toy.price}</span></h5>
                         <h5>Labels: <span>{(toy.labels || []).join(', ')}</span></h5>
                     </div>
                     <div className="div-img-stock">
                         <img className="toy-img" src={toy.imgUrl} alt="toy-img" />
-                        <h5 className={(toy.inStock) ? 'in-stock' : 'not-in-stock'}>{(toy.inStock) ? 'In stock ' : 'Not in stock'}</h5>
                     </div>
                 </div>
             </div>
@@ -187,8 +188,8 @@ export function ToyDetails() {
                                             }
                                         </div>
                                         <p className="date-review" style={{ color: 'var(--gray2)' }}>
-                                            {new Date(review.createdAt || Date.now()).toLocaleDateString('he-IL')} 
-                                                                                   </p>
+                                            {new Date(review.createdAt || Date.now()).toLocaleDateString('he-IL')}
+                                        </p>
                                     </li>
                                 ))
                             ) : (
@@ -304,17 +305,8 @@ export function ToyDetails() {
 
                                 {isOwner && (
                                     <button
+                                        className="btn-remove-img-toy"
                                         onClick={() => onRemoveGalleryImg(imgId)}
-                                        style={{
-                                            position: 'absolute',
-                                            top: '5px',
-                                            right: '5px',
-                                            background: 'red',
-                                            color: 'white',
-                                            border: 'none',
-                                            borderRadius: '50%',
-                                            cursor: 'pointer'
-                                        }}
                                     >
                                         X
                                     </button>

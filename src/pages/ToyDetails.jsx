@@ -55,7 +55,7 @@ export function ToyDetails() {
         ev.preventDefault()
         const txt = ev.target.elements.msgTxt.value
         try {
-            const savedMsg = await toyService.addMsg(toy._id, txt, msgImg)
+            const savedMsg = await toyService.addMsg(toy?._id, txt, msgImg)
             setToy(prevToy => ({
                 ...prevToy,
                 msgs: [...(prevToy.msgs || []), savedMsg]
@@ -75,7 +75,7 @@ export function ToyDetails() {
 
     async function onRemoveToyMsg(msgId) {
         try {
-            await toyService.removeMsg(toy._id, msgId)
+            await toyService.removeMsg(toy?._id, msgId)
             setToy(prevToy => ({
                 ...prevToy,
                 msgs: prevToy.msgs.filter(m => m.id !== msgId)
@@ -112,7 +112,7 @@ export function ToyDetails() {
 
     async function onRemoveGalleryImg(imgId) {
         try {
-            await toyService.removeToyImg(toy._id, imgId)
+            await toyService.removeToyImg(toy?._id, imgId)
 
             setToy(prevToy => ({
                 ...prevToy,
@@ -126,7 +126,7 @@ export function ToyDetails() {
 
     // console.log('toy: ', toy)
     // console.log('user: ', user)
-    console.log('reviews: ', reviews)
+    // console.log('reviews: ', reviews)
 
     if (!toy) return <Loader />
     const formattedDate = new Date(toy.createdAt).toLocaleString('he')
@@ -168,12 +168,12 @@ export function ToyDetails() {
                         {
                             reviews && reviews.length > 0 ? (
                                 reviews.map(review => (
-                                    <li key={review._id}>
+                                    <li key={review?._id}>
                                         <div className="flex align-center">
-                                            {(user.isAdmin || user._id === review.user?._id) && (
+                                            {(user?.isAdmin || user?._id === review.user?._id) && (
                                                 <button
                                                     className="btn-remove-rvw"
-                                                    onClick={() => onRemoveReview(review._id)}
+                                                    onClick={() => onRemoveReview(review?._id)}
                                                     style={{ float: 'right', border: 'none', background: 'none', cursor: 'pointer' }}
                                                 >
                                                     x
@@ -213,7 +213,7 @@ export function ToyDetails() {
                                 toy.msgs.map(msg => (
                                     <li key={msg.id}>
                                         <div className="flex align-center">
-                                            {(user.isAdmin || user._id === msg.by?._id) && (
+                                            {(user?.isAdmin || user?._id === msg.by?._id) && (
                                                 <button
                                                     className="btn-remove-msg"
                                                     onClick={() => onRemoveToyMsg(msg.id)}
@@ -287,11 +287,12 @@ export function ToyDetails() {
                     style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '15px' }}>
                     {toy.gallery && toy.gallery.map((imgItem) => {
                         if (!imgItem) return null
+                        // console.log('Image Item:', imgItem, 'Current User:', user._id);
                         const imgUrl = imgItem.url || imgItem
                         const imgId = imgItem.id
                         const imgOwnerId = imgItem.by
 
-                        const isOwner = user && (user.isAdmin || (imgOwnerId && user._id === imgOwnerId))
+                        const isOwner = user && (user?.isAdmin || (imgOwnerId && user?._id === imgOwnerId))
 
                         return (
                             <div key={imgId || imgUrl} className="gallery-item" style={{ position: 'relative' }}>

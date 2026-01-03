@@ -1,4 +1,5 @@
 import { httpService } from './http.service.js'
+import { userService } from './user.service.js'
 import { utilService } from './util.service.js'
 
 const BASE_URL = 'toy/'
@@ -27,6 +28,7 @@ export const toyService = {
     addMsg,
     removeMsg,
     addToyImg,
+    removeToyImg
 }
 
 function query(filterBy = {}, sortBy = {}, pageIdx) {
@@ -121,11 +123,17 @@ async function removeMsg(toyId, msgId) {
 }
 
 async function addToyImg(toy, imgUrl) {
-    const res = await httpService.post(BASE_URL + `${toy._id}/gallery`, { imgUrl })
+    const savedImg = await httpService.post(BASE_URL + `${toy._id}/gallery`, { imgUrl })
+    const loggedinUser = userService.getLoggedinUser()
     const updatedToy = { ...toy }
     if (!updatedToy.gallery) updatedToy.gallery = []
-    updatedToy.gallery.push(imgUrl)
-    
+
+    const imgObj = {
+        id: savedImg.id || utilService.makeId(),
+        url: savedImg.url || imgUrl,
+        by: loggedinUser ? loggedinUser._id : 'unknown'
+    }
+    updatedToy.gallery.push(imgObj)
     return updatedToy
 }
 
